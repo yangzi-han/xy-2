@@ -1,26 +1,57 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import List from './components/List'
+import Footer from './components/Footer'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+interface ItemType{
+  id:number,
+  name:string,
+  list_pic_url:string,
+  retail_price:number,
+  num:number
 }
-
-export default App;
+interface StateType{
+  list:ItemType[],
+  totalPice:number,
+  totalNum:number
+}
+class App extends React.Component<{},StateType>{
+  constructor(props:{}){
+    super(props)
+    this.numChange=this.numChange.bind(this)
+  }
+  state={
+    list:[],
+    totalPice:0,
+    totalNum:0
+  }
+  componentDidMount(){
+    fetch('http://easymarket.jasonandjay.com/goods/list').then(res=>res.json()).then(data=>{
+      console.log('data...',data.data.data)
+      this.setState({
+        list:data.data.data.map((item:Object)=>{return {...item,num:0}})
+      })
+    })
+  }
+  numChange(id:number,type:string){
+    // console.log(id,type)
+    let list=[...this.state.list] as ItemType[]
+    let index=list.findIndex((item:any)=>item.id===id)
+    type=='+'?list[index].num++:list[index].num--
+    if(list[index].num<0){
+      list[index].num=0
+    }
+    this.setState({
+      list
+    })
+  }
+  render(){
+    let {list,totalNum,totalPice} =this.state
+    return <>
+      <List list={list} numChange={this.numChange}/>
+      <Footer totalNum={totalNum} totalPice={totalPice}/>
+    </>
+  }
+}
+export default App
