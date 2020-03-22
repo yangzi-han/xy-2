@@ -1,0 +1,52 @@
+//二分查找
+1: 比较需要查找的元素和数组的中间元素做比较，如果相等则返回对应的坐标，否则
+2: 如果需要查找的元素比中间元素小，则在数组的前半部分继续采用步骤1的方法查找
+3: 如果需要查找的元素比中间元素大，则在数组的后半部分继续采用步骤1的方法查找
+4: 递归以上步骤
+5: 特别要注意的一点是，如果数组不包含需要查找的元素，则返回-1
+function binarySearch(arr, data) {
+    var end = arr.length - 1,
+        start = 0;
+    while (start <= end) {
+        var middle = Math.floor((start + end) / 2);
+        if (arr[middle] > data) {
+            end = middle - 1;
+        } else if (arr[middle] < data) {
+            start = middle + 1;
+        } else {
+            return middle;
+        }
+    }
+    return -1;
+}
+var arr = [1, 2, 3, 4, 5, 6];
+console.log(binarySearch(arr, 2));
+
+//斐波那契数列：1、1、2、3、5、8、13、21。输入n，输出数列中第n位数的值。
+function fn(n){
+        var num1 = 1, num2= 1, num3 = 0;
+        for(var i=0;i<n-2;i++){
+            num3 = num1+num2;
+            num1 = num2;
+            num2 = num3;
+        }
+        return num3;
+    }
+console.log(fn(7)) //13
+
+//冒泡排序
+function bubbleSort(arr) {
+    var len = arr.length;
+    for (var i = 0; i < len; i++) {
+        for (var j = 0; j < len - 1 - i; j++) {
+            if (arr[j] > arr[j+1]) {        //相邻元素两两对比
+                var temp = arr[j+1];        //元素交换
+                arr[j+1] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+    return arr;
+}
+var arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
+console.log(bubbleSort(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
