@@ -42,6 +42,21 @@ class App extends React.Component<{}, StateType> {
       list
     })
   }
+  get totalPrice(){
+    let list = [...this.state.list] as ItemType[];
+    return list.reduce((total,item)=>{
+          total += item.num*item.retail_price
+          console.log(total)
+          return total
+     },0)
+  }
+  get totalNum(){
+    let list = [...this.state.list] as ItemType[];
+    return list.reduce((total,item)=>{
+          total += item.num
+          return total
+     },0)
+  }
   render() {
     let {list, totalPrice, totalNum} = this.state
     return <>
