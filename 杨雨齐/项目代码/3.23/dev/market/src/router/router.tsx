@@ -77,6 +77,10 @@ let config={
                     component:TypePage
                 }
             ]
+        },
+        {
+            path: '*',
+            redirect: '/main/index'
         }
 
     ]

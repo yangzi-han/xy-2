@@ -8,3 +8,8 @@ export interface RouterItemTypes {
 export interface PropType{
     routes: RouterItemTypes []
 }
+
+export interface ActionType{
+    type:string,
+    payload:any
+}
