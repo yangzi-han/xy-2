@@ -1,0 +1,35 @@
+import Mock from 'mockjs'
+Mock.mock('/list',{
+    "data":[{
+        name:"张敏",
+        pass:"123"
+    },{
+        name:"贾思甜",
+        pass:"456"
+    },{
+        name:"贾思媛",
+        pass:"789"
+    }],
+    "date":[{
+        "name":"张敏",
+        "text":"中午吃啥:",
+        "chooseA":"米饭",
+        "chooseB":"面条",
+        "chooseC":"蛋糕",
+        "chooseD":"火锅"
+    },{
+        "name":"张敏",
+        "text":"情人节干啥:",
+        "chooseA":"吃饭",
+        "chooseB":"睡觉",
+        "chooseC":"打豆豆",
+        "chooseD":"秀恩爱"
+    },{
+        "name":"张敏",
+        "text":"晚上干啥:",
+        "chooseA":"睡觉",
+        "chooseB":"写作业",
+        "chooseC":"唱歌",
+        "chooseD":"看电视"
+    }]
+})
