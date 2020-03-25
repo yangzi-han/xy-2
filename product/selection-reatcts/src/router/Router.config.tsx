@@ -47,10 +47,10 @@ const config = {
                     path: '/main/my',
                     component: MyPage
                 },
-                // {
-                //     path:'/main',
-                //     redirect:'/main/index'
-                // }
+                {
+                    path:'/main',
+                    redirect:'/main/index'
+                }
             ]
         }
     ]

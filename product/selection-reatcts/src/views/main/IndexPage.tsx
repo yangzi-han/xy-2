@@ -2,6 +2,8 @@ import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 import {bannerAction} from '../../store/actions/home'
 import {RouteComponentProps} from 'react-router'
+import styles from '../../style/index.module.scss'
+import Banner from '../../components/Banner/banner'
 
 interface StateType{
     banner: Array<{
@@ -9,6 +11,7 @@ interface StateType{
         [name:string]: string|number
     }>,
     channel: Array<{
+        icon_url:string
         [name:string]: string|number
     }>,
     newGoodsList: Array<{
@@ -34,14 +37,23 @@ interface DispatchType{
 
 let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = props=>{
     useEffect(()=>{
-        props.getBanner();
+        props.getBanner()
     }, []);
 
-    return <>{
-        props.banner.map(item=>{
-            return <img key={item.id} src={item.image_url} />
-        })
-    }</>;
+    return <>
+        <Banner banner = {props.banner} />
+        <div className={styles.channelWrap}>
+            {
+                props.channel?props.channel.map(item=>{
+                    return <a href="" key={item.id} className={styles.channelItem}>
+                        <img src={item.icon_url} alt=""/>
+                        <div>{item.name}</div>
+                    </a>
+                }):''
+            }
+        </div>
+            
+    </>;
 }
 
 const mapStateToProps = (state: any)=>{

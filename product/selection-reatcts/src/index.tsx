@@ -8,6 +8,8 @@ import RouterView from './router/RouterView'
 //引入redux
 import store from './store'
 import {Provider} from 'react-redux'
+//引入antd-mobile
+import 'antd-mobile/dist/antd-mobile.css';
 
 ReactDOM.render(<Provider store={store}>
     <HashRouter>
