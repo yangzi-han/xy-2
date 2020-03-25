@@ -1,0 +1,90 @@
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+#root,.App,html,body{
+    width:100%;
+    height: 100%;
+}
+.home{
+    width:100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.header{
+  width:100%;
+  height: 50px;
+  background: #2A82E4;
+  display: flex;
+  justify-content: space-around;
+  line-height: 50px;
+}
+.tou{
+    flex:1;  
+}
+.message{
+    flex:1;
+    /* background: pink; */
+    color:#ffffff;
+    text-align: center;
+}
+.jia{
+    flex:1;
+    /* background: goldenrod; */
+    display: flex;
+    justify-content: space-around;
+    color:#FFF;
+}
+
+.header img{
+   width: 40px;
+   height: 40px;
+   border-radius: 50px;
+   margin-left:10px;
+   margin-top:5px;
+  
+}
+.main{
+    flex:1;
+    overflow: auto;
+}
+.footer{
+    width:100%;
+    height: 50px;
+    border-top:2px solid #D2D2D2 ;
+    display: flex;
+    color:#999999;
+    background: #ffffff;
+    justify-content:space-around;
+    font-size:15px;
+}
+.active{
+    color:#2A82E4;
+}
+a{
+    text-decoration: none;
+    text-align: center;
+    line-height:25px;
+    color:#999999;
+    /* border:1px solid red; */
+}
+.ipt{
+  width:300px;
+  height: 35px;
+  border-radius: 50px;
+  border:none;
+  /* margin-right: 15px; */
+  background: #E9E9E9;
+  padding-left: 15px;
+}
+.a1{
+    font-weight: 800;
+    font-size: 50px;
+    margin-right: 10px;
+}
+.a2{
+    background: #FFF;
+}
+
