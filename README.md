@@ -7,6 +7,7 @@
   - ts基础入门
   - react Hooks
   - webpack打包
+  - react-redux
 
 - 每日笔记
 
@@ -17,7 +18,8 @@
   - jquery源码解析1
   - jquery源码解析2
   - zepto源码解析
-  - react源码解析
+  - react源码解析1
+  - react源码解析2
 
 - 算法练习
 
