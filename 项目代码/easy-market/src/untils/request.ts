@@ -1,8 +1,8 @@
 import Axios from 'axios';
-
+import {Toast} from 'antd-mobile'
 const axios = Axios.create({//拦截器
     baseURL: 'http://127.0.0.1:8888',//配置baseURL
-    timeout: 5000,//配置timeout
+    timeout: 1000,//配置timeout
     headers: {'X-Custom-Header': 'foobar'}//配置请求头登录态
 });
 
@@ -12,7 +12,8 @@ axios.interceptors.request.use(function (config) {
     return config;
   }, function (error) {
     // 处理请求错误
-    return Promise.reject(error);
+    Toast.info(error.toString())
+    return Promise.resolve();
   });
  
 // 添加响应拦截器response是响应式拦截
@@ -21,13 +22,17 @@ axios.interceptors.response.use(function (response) {
     //处理响应数据
     if (response.status != 200 || response.data.errno != 0){
       // 做个错误提示，抛出Promise.resolve
+      Toast.info(response.data.errmsg)
+      return Promise.resolve()
     }else{
       return response.data.data;
     }
   }, function (error) {
     // 任何超出2xx范围的状态代码都会触发此功能
     //处理响应错误
-    return Promise.reject(error);
+    // 做个错误提示，抛出Promise.resolve
+    Toast.info(error.toString())
+    return Promise.resolve()
   });
 
 export default axios;

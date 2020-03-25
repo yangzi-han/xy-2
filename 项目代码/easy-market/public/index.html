@@ -24,7 +24,30 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>八维严选</title>
+    <script>
+      /**
+       * JS版本
+       * 以750为基础做适配，1rem = 100px, 1rem = 100rpx;
+       * 监听pc端的resize事件和mobile的横屏（orientationchange）事件
+       */
+      var fun = function (doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function () {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+
+                //这里是假设在750px宽度设计稿的情况下，1rem = 100px；
+                //可以根据实际需要修改
+                docEl.style.fontSize =  (clientWidth / 375) * 100 + 'px';
+            };
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+      }
+      fun(document, window);
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
