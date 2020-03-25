@@ -7,6 +7,9 @@ import RouterView from './router/RouterView'
 import store from './store'
 import {Provider} from 'react-redux'
 
+
+
+
 ReactDOM.render(
     <Provider store={store}>
     <HashRouter>

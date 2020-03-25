@@ -1,0 +1,31 @@
+
+
+.maintop{
+    width: 100%;
+    height: auto;
+    overflow: auto;
+
+}
+.mainfooter{
+    width: 100%;
+    height:50px;
+    border:solid 1px #ccc;
+    border-top:solid 1px #ccc;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    font-size: 12px;
+    text-align: center;
+    background: #fff;
+    i{
+        width: 75px;
+        height: 32px;
+        display: inline-block;
+    }
+}
+.nav{
+    width: 75px;
+    
+    flex:1;
+}

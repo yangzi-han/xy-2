@@ -1,9 +1,165 @@
-.swiper-container {
-  width: 100%;
-  height: 300px;
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  cursor: not-allowed;
 }
 
-img {
+.channel {
   width: 100%;
-  height: 300px;
+  height: 54px;
+  padding: 5px 0;
+  display: flex;
+  border-bottom: solid 1px #ccc;
+}
+
+.channel div {
+  flex: 1;
+  text-align: center;
+}
+
+.channel div i {
+  width: 38px;
+  height: 38px;
+  margin: 0 auto;
+  display: block;
+}
+
+.channel div i img {
+  width: 28px;
+  height: 28px;
+}
+
+.brandList {
+  width: 100%;
+  height: 270px;
+  margin-top: 6px;
+  border-top: solid 1px #ccc;
+  border-bottom: solid 1px #ccc;
+}
+
+.brandList .top {
+  width: 100%;
+  height: 50px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 50px;
+  text-align: center;
+}
+
+.wrap {
+  width: 375px;
+  height: 220px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.wrap .brandcenter {
+  position: relative;
+  width: 187.5px;
+  height: 110px;
+}
+
+.wrap .brandcenter img {
+  width: 100%;
+  height: 100%;
+}
+
+.wrap .brandwithin {
+  position: absolute;
+  left: 5px;
+  top: 10px;
+  z-index: 1000;
+}
+
+.newgoods {
+  width: 375px;
+  height: 450px;
+  display: flex;
+  flex-wrap: wrap;
+  border-top: solid 1px #ccc;
+  margin-top: 10px;
+}
+
+.newgoods .new {
+  width: 375px;
+  height: 400px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.newgood {
+  width: 100%;
+  height: 50px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 50px;
+  text-align: center;
+}
+
+.newgoodscenter {
+  width: 187.5px;
+  height: 200px;
+  text-align: center;
+}
+
+.newgoodscenter img {
+  width: 187.5px;
+  height: 140px;
+}
+
+.newgoodscenter p {
+  height: 30px;
+  width: 187.5px;
+  line-height: 30px;
+}
+
+.hotGoodsList {
+  width: 375px;
+  height: 500px;
+  border-top: solid 1px #ccc;
+  margin-top: 10px;
+}
+
+.hot {
+  width: 100%;
+  height: 50px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 50px;
+  text-align: center;
+}
+
+.hotcenter {
+  width: 375px;
+  height: 450px;
+}
+
+.hotGood {
+  width: 355;
+  height: 150px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-top: solid 1px #ccc;
+  display: flex;
+}
+
+.left {
+  width: 140px;
+  height: 140px;
+}
+
+.left img {
+  width: 100%;
+  height: 100%;
+}
+
+.right {
+  padding: 25px 0;
+  width: 215px;
+  height: 140px;
+}
+
+.hotp {
+  margin-top: 6px;
 }

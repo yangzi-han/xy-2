@@ -1,26 +1,36 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/anchor-has-content */
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 
-import styles from '../../scss/home.module.scss'
 import React,{useEffect} from 'react'
 import {connect} from 'react-redux'
 import {bannerAction} from '../../store/actions/home'
 import {RouteComponentProps} from 'react-router'
-import '../../../node_modules/swiper/css/swiper.min.css'
-import  Swiper from 'swiper'
+import { Carousel, WingBlank } from 'antd-mobile';
+import styles from '../../scss/home.module.scss'
+import 'antd-mobile/dist/antd-mobile.css';
 interface StateType{
     banner: Array<{
         image_url: string,
         [name:string]: string|number
     }>,
     channel: Array<{
+        icon_url:string,
         [name:string]: string|number
     }>,
     newGoodsList: Array<{
+        list_pic_url:string,
+        retail_price:number,
         [name:string]: string|number
     }>,
     hotGoodsList: Array<{
+        list_pic_url:string,
+        retail_price:number,
+        goods_brief:string,
         [name:string]: string|number
     }>,
     brandList: Array<{
+        new_pic_url:string,
         [name:string]: string|number
     }>,
     topicList: Array<{
@@ -35,46 +45,112 @@ interface DispatchType{
     getBanner: Function
 }
 
+
+
 let IndexPage: React.FC<StateType & DispatchType & RouteComponentProps> = props=>{
-    useEffect(()=>{
+    
+      useEffect(()=>{
         props.getBanner();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    useEffect(()=>{
-         new Swiper ('.swiper-container', {
-            direction: 'vertical', // 垂直切换选项
-            loop: true, // 循环模式选项
-            // 如果需要分页器
-            pagination: {
-              el: '.swiper-pagination',
-            },
-            
-          })
-    },[])
-        
+
     return <>
-        <div className={styles.swiperContainer}>
-            <div className="swiper-wrapper">
-        {
-        props.banner.map(item=>{
-            return <div className="swiper-slide" key={item.id}><img src={item.image_url} alt=""/></div>
-        })
+    <WingBlank style={{margin:0}}>
+        <Carousel
+          autoplay={true}
+          infinite
+        >
+            {
+                props.banner.map((item)=>{
+                    return <div 
+                    key={item.id}
+                    style={{ display: 'inline-block', width: '100%', height: '200px' }}
+                    >
+                         <img
+                src={item.image_url}
+                alt=""
+                style={{ width: '100%', verticalAlign: 'top',height:'200px' }}
+                onLoad={() => {
+                    // fire window resize event to change height
+                    window.dispatchEvent(new Event('resize'));
+                }}
+                    
+              />
+                    </div>
+                })
+            }
+        </Carousel>
+        </WingBlank>
+    <div className={styles.channel}>
+    {
+        props.channel?props.channel.map(item=>{
+        return <div key={item.id}>
+            <i><img src={item.icon_url} alt="" className={styles.icon}/></i>
+            <p>{item.name}</p>
+            </div>
+        }):""
     }
-     <div className="swiper-pagination"></div>
+    </div>
+    <div className={styles.brandList}>
+        <div className={styles.top}>品牌制造商直供</div>
+        <div className={styles.wrap}>
+    {
+        props.brandList?props.brandList.map(item=>{
+        return <div key={item.id} className={styles.brandcenter}>
+            <img src={item.new_pic_url} alt=""/>
+            <div className={styles.brandwithin}>
+        <p>{item.name}</p>
+        <p>{item.floor_price}</p>
+            </div>
+            </div>
+        }):""
+    }</div>
+    </div>
+    <div className={styles.newgoods}>
+        <div className={styles.newgood}>新品首发</div>
+        <div className={styles.new}>
+            {
+                props.newGoodsList?props.newGoodsList.map(item=>{
+                    return <div key={item.id} className={styles.newgoodscenter} >
+                        <img src={item.list_pic_url} alt=""/>
+                <p>{item.name}</p>
+                <p>￥{item.retail_price}</p>
+                    </div>
+                }):""
+            }
         </div>
+    </div>
+    <div className={styles.hotGoodsList}>
+        <div className={styles.hot}>人气推荐</div>
+        <div className={styles.hotcenter}>
+            {
+                props.hotGoodsList?props.hotGoodsList.map(item=>{
+                    return <div className={styles.hotGood} key={item.id}>
+                        <div className={styles.left}>
+                            <img src={item.list_pic_url} alt=""/>
+                        </div>
+                        <div className={styles.right}>
+                        <p className={styles.hotp}>{item.name}</p>
+                        <p className={styles.hotp}>{item.goods_brief}</p>
+                        <p className={styles.hotp}>￥{item.retail_price}</p>
+                        </div>
+                    </div>
+                }):""
+            }
         </div>
+    </div>
     </>;
 }
 
 const mapStateToProps = (state: any)=>{
-    return state.home
+    return  state.home
 }
 const mapDisptachToProps = (dispatch: Function)=>{
     return {
-        getBanner: ()=>{
-            dispatch(bannerAction())
+       getBanner: ()=>{
+             dispatch(bannerAction())
         }
     }
 }
-
 export default connect(mapStateToProps, mapDisptachToProps)(IndexPage);
