@@ -1,4 +1,4 @@
-#### isEmptyObject 是否是空对象
+#### isEmptyObject 是否是空对象  
 ```
 isEmptyObject: function (obj) {
 
