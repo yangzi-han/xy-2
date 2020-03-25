@@ -1,6 +1,7 @@
 import React from 'react'
 import {createStore,combineReducers,applyMiddleware} from 'redux'
-import ReduxLogger from 'redux-logger'//方便调试，实时触发，线下使用
+import ReduxLogger from 'redux-logger'//方便调试，实时触发，线下使用 日志中间件
+//redux-logger提供一个生成器createLogger，可以生成日志中间件logger
 import ReduxThunk from 'redux-thunk'
 // 目的：异步解决方案
 // 支持action的写法有对象变为函数
@@ -16,7 +17,8 @@ import home from './reducers/home'
 let reducers=combineReducers({
     home
 })
-
+//applyMiddleware方法的三个参数，就是三个中间件:applyMiddleware(thunk, promise, logger)
+//logger就一定要放在最后，否则输出结果会不正确。
 let store=createStore(reducers,applyMiddleware(ReduxThunk,ReduxLogger))
 
 export default store;

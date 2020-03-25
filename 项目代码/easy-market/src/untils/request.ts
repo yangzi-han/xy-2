@@ -1,11 +1,12 @@
 import Axios from 'axios';
 
-const axios = Axios.create({
-    baseURL: 'http://127.0.0.1:8888',
-    timeout: 5000,
-    headers: {'X-Custom-Header': 'foobar'}
+const axios = Axios.create({//拦截器
+    baseURL: 'http://127.0.0.1:8888',//配置baseURL
+    timeout: 5000,//配置timeout
+    headers: {'X-Custom-Header': 'foobar'}//配置请求头登录态
 });
 
+///request是请求拦截
 axios.interceptors.request.use(function (config) {
     // 在发出请求前做点什么
     return config;
@@ -14,7 +15,7 @@ axios.interceptors.request.use(function (config) {
     return Promise.reject(error);
   });
  
-// 添加响应拦截器
+// 添加响应拦截器response是响应式拦截
 axios.interceptors.response.use(function (response) {
     // 2xx范围内的任何状态代码都会触发此函数
     //处理响应数据

@@ -8,9 +8,8 @@ let RouterView: React.FC<PropType>=props=>{
             if(item.redirect){
                 if(item.path=='*'){
                     return <Redirect key={item.path} to={item.redirect}/>
-                // }else{
-                //     return <Redirect from={item.path} key={item.path} exact to={item.redirect} />
                 }
+                // return <Redirect from={item.path} key={item.path} exact to={item.redirect} />
             }
             return <Route key={item.path} path={item.path} render={renderProps=>{
                 if(item.children){

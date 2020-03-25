@@ -33,11 +33,12 @@ interface DispatchType{
 }
 
 let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = props=>{
+    console.log('props----',props)
     useEffect(()=>{
         props.getBanner();
     }, []);
 
-    return <>{
+    return <>首页{
         // props.banner.map(item=>{
         //     return <img key={item.id} src={item.image_url} />
         // })
