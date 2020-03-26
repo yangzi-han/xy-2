@@ -12,10 +12,12 @@ import ReduxThunk from 'redux-thunk'
 
 //引入子reducer
 import home from './reducers/home'
+import login from './reducers/login'
 
 //连接子reducer
 let reducers=combineReducers({
-    home
+    home,
+    login
 })
 //applyMiddleware方法的三个参数，就是三个中间件:applyMiddleware(thunk, promise, logger)
 //logger就一定要放在最后，否则输出结果会不正确。

@@ -1,6 +1,12 @@
 import {ActionType} from '../../untils/interface'
 const initVal={
-    banner:[]
+    banner:[],
+    channel:[],
+    newGoodsList:[],
+    hotGoodsList:[],
+    brandList:[],
+    topicList:[],
+    categoryList:[]
 }
 
 function homeReudcer(state:any,action:ActionType){

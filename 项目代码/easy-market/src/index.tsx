@@ -12,6 +12,9 @@ import {Provider} from 'react-redux'
 //引入antd-mobile
 import 'antd-mobile/dist/antd-mobile.css'
 
+//引入icon图标
+import './style/font_y0v5zzz4arj/iconfont.css'
+
 ReactDOM.render(
   <Provider store={store}>
     <HashRouter>
