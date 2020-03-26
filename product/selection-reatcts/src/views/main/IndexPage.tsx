@@ -15,12 +15,14 @@ interface StateType{
         [name:string]: string|number
     }>,
     newGoodsList: Array<{
+        list_pic_url: string
         [name:string]: string|number
     }>,
     hotGoodsList: Array<{
         [name:string]: string|number
     }>,
     brandList: Array<{
+        new_pic_url:string
         [name:string]: string|number
     }>,
     topicList: Array<{
@@ -52,7 +54,34 @@ let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = 
                 }):''
             }
         </div>
-            
+        <div className={styles.brandBox}>
+            <div className={styles.brandTitle}>品牌制造商直供</div>
+            <div className={styles.brandWrap}>
+                {
+                    props.brandList?props.brandList.map(item=>{
+                        return <a href="" className={styles.brandItem} key={item.id}>
+                            <div className={styles.brandItemName}>{item.name}</div>
+                            <div className={styles.brandItemMinPrice}>{item.floor_price}元起</div>
+                            <img className={styles.imgLazyload} src={item.new_pic_url} alt=""></img>
+                        </a>
+                    }):''
+                }
+            </div>
+        </div>
+        <div className={styles.newGoodsBox}>
+            <div className={styles.newGoodsTitle}>新品首发</div>
+            <div className={styles.newGoodsWrap}>
+                {
+                    props.newGoodsList?props.newGoodsList.map(item=>{
+                        return <a href="" className={styles.newGoodsItem} key={item.id}>
+                            <img className={styles.imgLazyload} src={item.list_pic_url} alt=""/>
+                            <div className={styles.newGoodsName}>{item.name}</div>
+                            <div className={styles.newGoodsPrice}>{item.retail_price}</div>
+                        </a>
+                    }):''
+                }
+            </div>
+        </div>
     </>;
 }
 
