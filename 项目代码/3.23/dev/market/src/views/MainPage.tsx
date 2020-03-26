@@ -11,11 +11,11 @@ let MainPage: React.FC<PropType> = props=>{
         <RouterView routes={props.routes}></RouterView>
     </div>
     <footer className={styles.mainfooter}>
-        <NavLink className={styles.nav} to="/main/index"><i></i>首页</NavLink>
-        <NavLink className={styles.nav} to="/main/topic"><i></i>专题</NavLink>
-        <NavLink className={styles.nav} to="/main/type"><i></i>分类</NavLink>
-        <NavLink className={styles.nav} to="/main/cart"><i></i>购物车</NavLink>
-        <NavLink className={styles.nav} to="/main/my"><i></i>我的</NavLink>
+        <NavLink className={styles.nav} activeClassName={styles.active} to="/main/index"><i className="iconfont icon-shouye"></i>首页</NavLink>
+        <NavLink className={styles.nav} activeClassName={styles.active} to="/main/topic"><i className="iconfont icon-zhuantifuwu"></i>专题</NavLink>
+        <NavLink className={styles.nav} activeClassName={styles.active} to="/main/type"><i className="iconfont icon-fenlei"></i>分类</NavLink>
+        <NavLink className={styles.nav} activeClassName={styles.active} to="/main/cart"><i className="iconfont icon-gouwuche"></i>购物车</NavLink>
+        <NavLink className={styles.nav} activeClassName={styles.active} to="/main/my"><i className="iconfont icon-ziyuan"></i>我的</NavLink>
     </footer>
     </>
 }

@@ -1,7 +1,11 @@
 import {ActionType} from '../../utils/interface'
 
 const initVal={
-    banner:[]
+    banner:[],
+    channel:[],
+    brandList:[],
+    newGoodsList:[],
+    hotGoodsList:[]
 }
 function homeReudcer(state:any,action:ActionType){
     switch (action.type){

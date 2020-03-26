@@ -6,6 +6,8 @@ import config from './router/router'
 import RouterView from './router/RouterView'
 import store from './store'
 import {Provider} from 'react-redux'
+import "./static/font_y0v5zzz4arj/iconfont.css"
+import 'antd-mobile/dist/antd-mobile.css';
 
 
 
