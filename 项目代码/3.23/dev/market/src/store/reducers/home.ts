@@ -5,7 +5,10 @@ const initVal={
     channel:[],
     brandList:[],
     newGoodsList:[],
-    hotGoodsList:[]
+    hotGoodsList:[],
+    topicList:[],
+    categoryList:[],
+    
 }
 function homeReudcer(state:any,action:ActionType){
     switch (action.type){

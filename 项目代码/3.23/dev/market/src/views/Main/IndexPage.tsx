@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 
-import React, { useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { bannerAction } from '../../store/actions/home'
 import { RouteComponentProps } from 'react-router'
@@ -33,15 +33,24 @@ interface StateType {
         [name: string]: string | number
     }>,
     topicList: Array<{
+        item_pic_url: string,
+        price_info: string,
         [name: string]: string | number
     }>,
     categoryList: Array<{
-        [name: string]: string | number
-    }>
+        name: string,
+        goodsList: goodlist[]
+    }>,
+
 }
 
 interface DispatchType {
     getBanner: Function
+}
+interface goodlist {
+    [name: string]: string | number,
+    list_pic_url: string,
+    retail_price: number
 }
 
 
@@ -138,6 +147,61 @@ let IndexPage: React.FC<StateType & DispatchType & RouteComponentProps> = props 
                     })
                 }
             </div>
+        </div>
+        <div className={styles.topicList}>
+            <div className={styles.topicListtop}>专题精选</div>
+            <div className={styles.topicListcenter}>
+                <Carousel className="space-carouesl"
+                    frameOverflow="hidden"
+                    cellSpacing={10}
+                    slideWidth={0.8}
+                    infinite
+                    dots={false}
+                >
+                    {
+
+                        props.topicList.map((item) => {
+                            return <div className={styles.topicListcentertop} key={item.id}>
+                                <div className={styles.topicimg}>
+                                    <img src={item.item_pic_url} alt=""
+                                        style={{ width: '100%', verticalAlign: 'top' }}
+                                        onLoad={() => {
+                                            // fire window resize event to change height
+                                            window.dispatchEvent(new Event('resize'));
+                                        }}
+                                    />
+                                </div>
+
+                                <div className={styles.topictext}>{item.title}<span className={styles.active}>￥{item.price_info}</span></div>
+                                <div>{item.subtitle}</div>
+                            </div>
+                        })
+                    }
+                </Carousel>
+            </div>
+
+        </div>
+        <div className={styles.categoryList}>
+            {
+                props.categoryList.map(item => {
+                    return <div>
+                        <div className={styles.categoryListtop}>{item.name}</div>
+                        <div className={styles.categoryListcenter}>
+                        {
+                            item.goodsList.map(item => {
+                                return <div className={styles.categoryListcenteritem}>
+                                    <div className={styles.categoryListimg}><img src={item.list_pic_url} alt="" /></div>
+                                    <div>{item.name}</div>
+                                    <div>{item.retail_price}</div>
+                                    </div>
+                                
+                            })
+
+                        }
+                        </div>
+                    </div>
+                })
+            }
         </div>
     </>;
 }
