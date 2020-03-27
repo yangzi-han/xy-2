@@ -4,6 +4,8 @@ import {bannerAction} from '../../store/actions/home'
 import {RouteComponentProps} from 'react-router'
 import Swiper from '../../component/swiper/swiper'
 import styles from '../../style/index.module.scss'
+import SwiperCarousel from '../../component/swiperCarousel/carousel'
+import CateGoryBox from '../../component/cateGoryBox/index'
 interface StateType{
     banner: Array<{
         image_url: string,
@@ -18,6 +20,7 @@ interface StateType{
         [name:string]: string|number
     }>,
     hotGoodsList: Array<{
+        list_pic_url:string,
         [name:string]: string|number
     }>,
     brandList: Array<{
@@ -25,10 +28,15 @@ interface StateType{
         [name:string]: string|number
     }>,
     topicList: Array<{
+        item_pic_url:string,
         [name:string]: string|number
     }>,
     categoryList: Array<{
-        [name:string]: string|number
+        goodsList:Array<{
+            list_pic_url:string,
+            [name:string]: string|number
+        }>,
+        [name:string]: string|number|Array<{}>
     }>
 }
 interface DispatchType{
@@ -81,6 +89,28 @@ let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = 
                 }
             </div>
         </div>
+        <div className={styles.hotGoodsBox}>
+            <div className={styles.hotGoodsTitle}>人气推荐</div>
+            <div className={styles.hotGoodsWrap}>
+                {
+                    props.hotGoodsList.map(item=>{
+                        return <div className={styles.hotGoodsItem} key={item.id}>
+                            <img src={item.list_pic_url} alt=""/>
+                            <div className={styles.hotGoodsInfos}>
+                                <p className={styles.hotGoodsName}>{item.name}</p>
+                                <p className={styles.hotGoodsInfo}>{item.goods_brief}</p>
+                                <p className={styles.hotGoodsPrice}>￥{item.retail_price}</p>
+                            </div>
+                        </div>
+                    })
+                }
+            </div>
+        </div>
+        <div  className={styles.topGoodsBox}>
+            <div className={styles.topGoodsTitle}>专题精选</div>
+            <SwiperCarousel topicList={props.topicList}/>
+        </div>
+        <CateGoryBox categoryList={props.categoryList}/>
     </div>;
 }
 

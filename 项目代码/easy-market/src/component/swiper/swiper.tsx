@@ -25,6 +25,7 @@ class Swiper extends React.Component<PropsType> {
       <WingBlank style={{margin:0}}>
         <Carousel
           autoplay
+          autoplayInterval={2000}
           infinite
           beforeChange={(from, to) =>{ console.log(`slide from ${from} to ${to}`)}}
           afterChange={index => {console.log('slide to', index)}}

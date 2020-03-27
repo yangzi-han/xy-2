@@ -1,0 +1,22 @@
+.spacecarousel {
+    padding: 0.05rem 0;
+    background: #fff;
+    overflow: hidden;
+    img{
+        height: auto;
+    }
+    p{
+        margin: 0.05rem;
+    }
+}
+.topGoodSubTitle{
+    font-size: 0.14rem;
+    color: #000;
+    .topGoodPrice{
+        color: #8b0000;
+    }
+}
+.topGoodTitle{
+    font-size: .024rem;
+    color: grey;
+}

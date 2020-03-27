@@ -97,11 +97,11 @@ button,input{
         height: 0.28rem;
     }
 }
-.brandBox,.newGoodsBox{
+.brandBox,.newGoodsBox,.hotGoodsBox,.topGoodsBox{
     margin-top: .1rem;
     background: #fff;
 }
-.brandTitle,.newGoodsTitle{
+.brandTitle,.newGoodsTitle,.hotGoodsTitle,.topGoodsTitle{
     height: 0.5rem;
     background: #fff;
     text-align: center;
@@ -152,6 +152,43 @@ button,input{
     align-items: center;
     font-size: .15rem;
 }
-.newGoodsPrice {
+.newGoodsPrice{
     color: #8b0000;
+}
+.hotGoodsWrap{
+    width: 95%;
+    margin: auto;
+    min-height: 2rem;
+}
+.hotGoodsItem{
+    height: 1.3rem;
+    position: relative;
+    padding: .08rem 0;
+    display: flex;
+    border-top: 0.01rem solid #eee;
+    img{
+        width: auto;
+        height: 100%;
+    }
+}
+.hotGoodsItem>div.hotGoodsInfos {
+    flex: 1;
+    padding: .2rem 0;
+    p{
+        height:30%;
+        display: flex;
+        align-items: center;
+        margin: 0;
+    }
+    .hotGoodsName {
+        font-size: .16rem;
+    }
+    .hotGoodsInfo {
+        color: #a9a9a9;
+        font-size: .13rem;
+    }
+    .hotGoodsPrice {
+        color: #8b0000;
+        font-size: .17rem;
+    }
 }
