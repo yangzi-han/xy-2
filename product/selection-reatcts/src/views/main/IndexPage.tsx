@@ -19,6 +19,7 @@ interface StateType{
         [name:string]: string|number
     }>,
     hotGoodsList: Array<{
+        list_pic_url: string
         [name:string]: string|number
     }>,
     brandList: Array<{
@@ -76,7 +77,25 @@ let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = 
                         return <a href="" className={styles.newGoodsItem} key={item.id}>
                             <img className={styles.imgLazyload} src={item.list_pic_url} alt=""/>
                             <div className={styles.newGoodsName}>{item.name}</div>
-                            <div className={styles.newGoodsPrice}>{item.retail_price}</div>
+                            <div className={styles.newGoodsPrice}>￥{item.retail_price}</div>
+                        </a>
+                    }):''
+                }
+            </div>
+        </div>
+        <div className={styles.hotGoodsBox}>
+            <div className={styles.hotGoodsTitle}>人气推荐</div>
+            <div className={styles.hotGoodsWrap}>
+                {
+                    props.hotGoodsList?props.hotGoodsList.map(item=>{
+                        return <a href="" className={styles.hotGoodsItem} key={item.id}>
+                            <img className={styles.imgLazyload} src={item.list_pic_url} alt=""/>
+                            <div className={styles.hotGoodsInfos}>
+                                <div className={styles.hotGoodsNamev}>{item.name}</div>
+                                <div className={styles.hotGoodsInfo}>{item.goods_brief}</div>
+                                <div className={styles.hotGoodsPrice}>￥{item.retail_price}</div>
+                            </div>
+                            
                         </a>
                     }):''
                 }

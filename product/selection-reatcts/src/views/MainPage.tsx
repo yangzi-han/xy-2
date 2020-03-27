@@ -6,7 +6,7 @@ import styles from '../style/index.module.scss'
 import '../static/font_y0v5zzz4arj/iconfont.css'
 let MainPage: React.FC<PropType> = props=>{
     return <>
-        <div>
+        <div className={styles.conter}>
             <RouterView routes={props.routes}/>
         </div>
         <footer className={styles.footer}>
