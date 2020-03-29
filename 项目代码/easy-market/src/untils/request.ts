@@ -1,14 +1,18 @@
 import Axios from 'axios';
 import {Toast} from 'antd-mobile'
+import { getToken } from './index';
 const axios = Axios.create({//拦截器
     baseURL: 'http://127.0.0.1:8888',//配置baseURL
     timeout: 5000,//配置timeout
-    headers: {'X-Custom-Header': 'foobar'}//配置请求头登录态
+    // headers: {'X-Custom-Header': 'foobar'}//配置请求头登录态
 });
 
 ///request是请求拦截
 axios.interceptors.request.use(function (config) {
     // 在发出请求前做点什么
+    if(getToken()){
+      config.headers['x-nideshop-token']=getToken()
+    }
     return config;
   }, function (error) {
     // 处理请求错误
