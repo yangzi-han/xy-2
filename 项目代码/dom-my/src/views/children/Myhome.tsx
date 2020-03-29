@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
-import {bannerAction,channelAction,brandListAction} from '../../store/actions/home'
+import { bannerAction, channelAction, brandListAction, newGoodsListAction, hotGoodsListAction, topicListAction, categoryListAction } from '../../store/actions/home';
 import {RouteComponentProps} from 'react-router'
 import { Carousel, WingBlank } from 'antd-mobile';
 import styles from '../../static/home.module.scss'
-// import { getChannel, getNewGoodsList, getBrandList } from '../../api/home';
+// import { getChannel, getNewGoodsList, getBrandList, getHotGoodsList, getTopicList, getCategoryList } from '../../api/home';
 interface StateType{
     banner: Array<{
         image_url: string,
@@ -16,9 +16,11 @@ interface StateType{
         [name:string]: string|number
     }>,
     newGoodsList: Array<{
+        list_pic_url:string,
         [name:string]: string|number
     }>,
     hotGoodsList: Array<{
+        list_pic_url:string,
         [name:string]: string|number
     }>,
     brandList: Array<{
@@ -26,9 +28,11 @@ interface StateType{
         [name:string]: string|number
     }>,
     topicList: Array<{
+        item_pic_url:string,
         [name:string]: string|number
     }>,
     categoryList: Array<{
+        list_pic_url:string,
         [name:string]: string|number
     }>
 }
@@ -37,13 +41,21 @@ interface DispatchType{
     getBanner: Function
     getChannel:Function
     getBrandList:Function
+    getNewGoodsList:Function
+    getHotGoodsList:Function
+    getTopicList:Function
+    getCategoryList:Function
 }
 
 let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = props=>{
     useEffect(()=>{
         props.getBanner();
         props.getChannel();
-        props.getBrandList()
+        props.getBrandList();
+        props.getNewGoodsList();
+        props.getHotGoodsList();
+        props.getTopicList();
+        props.getCategoryList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     return <><div>
@@ -103,6 +115,68 @@ let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = 
             }
           </div>
         </div>
+        <div className={styles.goodsList}>
+          <div className={styles.goodsText}>
+             新品首发
+          </div>
+          <div className={styles.goodsItem}>
+            {
+                props.newGoodsList.map(item=>{
+                    return <div key={item.id} className={styles.goodsTitle}>
+                      <img src={item.list_pic_url} alt=""/>
+                      <div className={styles.goodsName}>{item.name}</div>
+                      <div className={styles.goodsPrice}>
+                        $
+                        {item.retail_price}
+                      </div>
+                    </div>
+                })
+            }
+          </div>
+        </div>
+        <div className={styles.hotList}>
+          <div className={styles.hotText}>人气推荐</div>
+          <div className={styles.hotItem}>
+            {
+              props.hotGoodsList.map(item=>{
+                 return <div key={item.id} className={styles.hotTitle}>
+                    <img src={item.list_pic_url} alt=""/>
+                    <div className={styles.hotRight}>
+                      <div className={styles.hotName}>{item.name}</div>
+                      <div className={styles.hotBrief}>{item.goods_brief}</div>
+                      <div className={styles.hotPrice}>
+                        $
+                        {item.retail_price}
+                      </div>
+                    </div>
+                 </div>
+              })
+            }
+          </div>
+        </div>
+        <div className={styles.topicList}>
+          <div className={styles.topicText}>专题精选</div>
+          <div className={styles.topicItem}>
+           {
+             props.topicList.map(item=>{
+                return <div key={item.id} className={styles.topicTitle}>
+                   
+                </div>
+             })
+           }
+          </div>
+        </div>
+        <div className={styles.cateList}>
+          {
+             props.categoryList.map(item=>{
+                return <div key={item.id} className={styles.cateTitle}>
+                   <div className={styles.cateText}>{item.name}</div>
+                   <div className={styles.cateItem}>
+                   </div>
+                </div>
+             })
+          }
+        </div>
         </div></>;
 }
 
@@ -120,6 +194,18 @@ const mapDisptachToProps = (dispatch: Function)=>{
         },
         getBrandList:()=>{
             dispatch(brandListAction())
+        },
+        getNewGoodsList:()=>{
+            dispatch(newGoodsListAction())
+        },
+        getHotGoodsList:()=>{
+           dispatch(hotGoodsListAction())
+        },
+        getTopicList:()=>{
+           dispatch(topicListAction())
+        },
+        getCategoryList:()=>{
+          dispatch(categoryListAction())
         }
     }
 }

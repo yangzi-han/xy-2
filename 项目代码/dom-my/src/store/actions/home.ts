@@ -1,4 +1,4 @@
-import {getBanner,getChannel,getBrandList} from '../../api'
+import {getBanner,getChannel,getBrandList,getNewGoodsList,getHotGoodsList,getTopicList,getCategoryList} from '../../api'
 
 export let bannerAction = ()=>{
     return async (dispatch:Function)=>{
@@ -28,6 +28,50 @@ export let brandListAction=()=>{
         if (data){
             dispatch({
                 type: 'GET_BRANDLIST',
+                payload: data
+            })
+        }
+    }  
+}
+export let newGoodsListAction=()=>{
+    return async (dispatch:Function)=>{
+        let data = await getNewGoodsList();
+        if (data){
+            dispatch({
+                type: 'GET_NEWGOODSLIST',
+                payload: data
+            })
+        }
+    }  
+}
+export let hotGoodsListAction=()=>{
+    return async (dispatch:Function)=>{
+        let data = await getHotGoodsList();
+        if (data){
+            dispatch({
+                type: 'GET_HOTGOODSLIST',
+                payload: data
+            })
+        }
+    }  
+}
+export let topicListAction=()=>{
+    return async (dispatch:Function)=>{
+        let data = await getTopicList();
+        if (data){
+            dispatch({
+                type: 'GET_TOPICLIST',
+                payload: data
+            })
+        }
+    }  
+}
+export let categoryListAction=()=>{
+    return async (dispatch:Function)=>{
+        let data = await getCategoryList();
+        if (data){
+            dispatch({
+                type: 'GET_CATEGORYLIST',
                 payload: data
             })
         }

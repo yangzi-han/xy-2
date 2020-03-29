@@ -12,22 +12,29 @@ interface LoginDispatchType{
    login:(mobile:string,password:string)=>void
 }
 let Login : React.FC<LoginType&LoginDispatchType&RouteComponentProps>=props=>{
-   let [mobile,setMobile]=useState<string>('13333567991')
+   let [mobile,setMobile]=useState<string>('15323807318')
    let [password,setPassword]=useState<string>('123456')
+   if (props.isLogin){
+    let redirect = props.location.search.slice(1).split('=')[1]
+    props.history.replace(redirect?decodeURIComponent(redirect): '/')
+    return null;
+   }
    let getMobile=(e:React.ChangeEvent<HTMLInputElement>)=>{
      setMobile(e.target.value)
+     console.log(e.target.value)
    }
    let getPassword=(e:React.ChangeEvent<HTMLInputElement>)=>{
      setPassword(e.target.value)
+     console.log(e.target.value)
    }
    let btnLogin=()=>{
     if(!(/^1[3456789]\d{9}$/.test(mobile!))){ 
       Toast.info("手机号码有误，请重填");  
-      return false; 
+      return; 
     }
     if(!(/^\d{6}$/.test(password!))){ 
       Toast.info("密码有误，请重填");  
-      return false; 
+      return; 
     }
     props.login(mobile, password);
    }
@@ -49,6 +56,7 @@ let Login : React.FC<LoginType&LoginDispatchType&RouteComponentProps>=props=>{
      </>
 }
 const mapStateToProps = (state: any)=>{
+  console.log(state.login.isLogin)
   return {
       isLogin: state.login.isLogin
   }

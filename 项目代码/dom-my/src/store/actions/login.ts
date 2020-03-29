@@ -1,8 +1,8 @@
-import {getLogin} from '../../api'
+import {login} from '../../api'
 
 export let loginAction = (mobile: string, password: string)=>{
     return async (dispatch:Function)=>{
-        let data = await getLogin(mobile, password);
+        let data = await login(mobile, password);
         if (data){
             console.log('data...', data);
             dispatch({

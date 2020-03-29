@@ -97,3 +97,105 @@
     }
   }
 }
+.goodsList{
+  width:100%;
+  background: #FFF;
+  .goodsText{
+    width:100%;
+    height:1rem;
+    font-size: 0.3rem;
+    line-height: 1rem;
+    letter-spacing: 0.02rem;
+    font-weight: 700;
+    text-align: center;
+    background: #FFF;
+  }
+  .goodsItem{
+    display: flex;
+    flex-wrap: wrap;
+   .goodsTitle{
+      width: 50%;
+      height: 4rem;
+      img{
+        width:100%;
+        height: 70%;
+      }
+      .goodsName,.goodsPrice{
+         height: 15%;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         font-size: 0.3rem;
+      }
+      .goodsPrice{
+         color:#8b0000;
+      }
+    }
+  }
+}
+.hotList{
+  width:100%;
+  margin-top: 0.2rem;
+  background: #FFF;
+  .hotText{
+    width:100%;
+    height:1rem;
+    font-size: 0.3rem;
+    line-height: 1rem;
+    letter-spacing: 0.02rem;
+    font-weight: 700;
+    text-align: center;
+    background: #FFF;
+    border-bottom:1px solid #ccc;
+  }
+  .hotItem{
+    width:94%;
+    padding:0 0.2rem;
+    min-height:200px;
+   .hotTitle{
+       height: 3rem;
+       position: relative;
+       padding:0.1rem 0;
+       display: flex;
+       border-bottom:1px solid #ccc;
+       img{
+          width: auto;
+          height: 100%;
+       }
+       .hotRight{
+          flex:1 1;
+          padding:0.5rem 0;
+          .hotName,.hotBrief,.hotPrice{
+            height: 33.3333%;
+            display: flex;
+            align-items: center;
+          }
+          .hotBrief{
+            color:#a9a9a9;
+            font-size: 0.28rem;
+          }
+          .hotPrice{
+             color:#8b0000;
+             font-size: 0.3rem;
+          }
+       }
+    }
+  }
+}
+.topicList{
+  margin-top: .2rem;
+  background: #fff;
+  width:100%;
+  height:314px;
+  background: red;
+  .topicText{
+    width:100%;
+    height:1rem;
+    font-size: 0.3rem;
+    line-height: 1rem;
+    letter-spacing: 0.02rem;
+    font-weight: 700;
+    text-align: center;
+    background: #FFF;
+  }
+}

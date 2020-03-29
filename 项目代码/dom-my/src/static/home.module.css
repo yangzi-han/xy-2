@@ -110,3 +110,123 @@
   font-weight: 800;
   font-size: 0.3rem;
 }
+
+.goodsList {
+  width: 100%;
+  background: #FFF;
+}
+
+.goodsList .goodsText {
+  width: 100%;
+  height: 1rem;
+  font-size: 0.3rem;
+  line-height: 1rem;
+  letter-spacing: 0.02rem;
+  font-weight: 700;
+  text-align: center;
+  background: #FFF;
+}
+
+.goodsList .goodsItem {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.goodsList .goodsItem .goodsTitle {
+  width: 50%;
+  height: 4rem;
+}
+
+.goodsList .goodsItem .goodsTitle img {
+  width: 100%;
+  height: 70%;
+}
+
+.goodsList .goodsItem .goodsTitle .goodsName, .goodsList .goodsItem .goodsTitle .goodsPrice {
+  height: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.3rem;
+}
+
+.goodsList .goodsItem .goodsTitle .goodsPrice {
+  color: #8b0000;
+}
+
+.hotList {
+  width: 100%;
+  margin-top: 0.2rem;
+  background: #FFF;
+}
+
+.hotList .hotText {
+  width: 100%;
+  height: 1rem;
+  font-size: 0.3rem;
+  line-height: 1rem;
+  letter-spacing: 0.02rem;
+  font-weight: 700;
+  text-align: center;
+  background: #FFF;
+  border-bottom: 1px solid #ccc;
+}
+
+.hotList .hotItem {
+  width: 94%;
+  padding: 0 0.2rem;
+  min-height: 200px;
+}
+
+.hotList .hotItem .hotTitle {
+  height: 3rem;
+  position: relative;
+  padding: 0.1rem 0;
+  display: flex;
+  border-bottom: 1px solid #ccc;
+}
+
+.hotList .hotItem .hotTitle img {
+  width: auto;
+  height: 100%;
+}
+
+.hotList .hotItem .hotTitle .hotRight {
+  flex: 1 1;
+  padding: 0.5rem 0;
+}
+
+.hotList .hotItem .hotTitle .hotRight .hotName, .hotList .hotItem .hotTitle .hotRight .hotBrief, .hotList .hotItem .hotTitle .hotRight .hotPrice {
+  height: 33.3333%;
+  display: flex;
+  align-items: center;
+}
+
+.hotList .hotItem .hotTitle .hotRight .hotBrief {
+  color: #a9a9a9;
+  font-size: 0.28rem;
+}
+
+.hotList .hotItem .hotTitle .hotRight .hotPrice {
+  color: #8b0000;
+  font-size: 0.3rem;
+}
+
+.topicList {
+  margin-top: .2rem;
+  background: #fff;
+  width: 100%;
+  height: 314px;
+  background: red;
+}
+
+.topicList .topicText {
+  width: 100%;
+  height: 1rem;
+  font-size: 0.3rem;
+  line-height: 1rem;
+  letter-spacing: 0.02rem;
+  font-weight: 700;
+  text-align: center;
+  background: #FFF;
+}
