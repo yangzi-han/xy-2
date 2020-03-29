@@ -1,0 +1,17 @@
+# 地址
+https://juejin.im/post/5e7ef457518825738c3626c9
+
+# 总结
+1.组件渲染过程中做了两件事情 一个是实例化一个是mount
+实例化会遍历data和props上的没一个属性，使用defineProxy把它变为响应式，同时实例化一个dep（收集watcher和通过watcher渲染元素）
+mount会实例化一个渲染watcher然后渲染元素，在render的过程中会访问到元素中的动态数据，这个时候Dep会对当前渲染Watcher完成收集
+2.响应式原理使用的设计模式
+vue集合了观察者模式和订阅发布模式实现了响应式原理
+观察者模式：在实例化的时候，吧数据变为响应式的，从而实现对数据的监听
+订阅发布模式在访问数据的时候DEP订阅watcher，在数据变化是通知watcher更新
+3依赖收集
+真正的依赖收集是等所有的数据访问完之后，因为这个时候才能和上次比较哪些依赖的数据发生了变化，把上次依赖的本次不再依赖的数据，让它的Dep移除对Watcher的收集。
+4.watch和component
+watch的原理：监听一个响应式数据的变化，执行定义的方法watch的收集：在watch初始化的时候会遍历watch上定义的每个属性（这个属性是响应式的，已经生成Dep），然后实例化一个user Wachter（把watch上的属性和方法传进去），在实例化的过程中访问watch的属性，实现对user Wachter的依赖收集。watch的的更新：当watch中定义的响应式的属性变化时，通知 user Wachter执行该属性定义的方法
+
+computed的原理：定义的方法里面的响应式数据的变化会触发这个方法的执行，生成一个新的值，和旧值比较如果变了，间接影响渲染Wachter的更新。computed的收集：computed初始化的时候会computed上的遍历属性调用defineProperty使它变为响应式，然后实例化一个computed Watcher。再render阶段访问dom元素上computed的属性的时候，会触发defineProperty的get方法。在get方法中，会调用computed属性对应的方法，当访问方法中的响应式属性的时候，会对computed Watcher进行依赖收集。同时，computed Watcher也会有一个自己属性Dep，对渲染Watcher进行依赖收集。computed的更新：computed中定义的方法中响应式数据变化的时候，会通知computed Watcher的更新，也就是执行computed中定义的方法，如果和旧值比较发现变化，又会触发渲染Wachter的更新。
