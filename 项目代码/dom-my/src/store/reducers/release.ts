@@ -7,7 +7,12 @@ const initVal = {
 function ReleaseReducer(state: any, action: ActionType){
     switch (action.type) {
         case 'GET_RELEASE':
-            return {...state, release:action.payload}
+            if(action.page===1){
+                state.release=(action.payload)
+            }else{
+                state.release=state.release.connect(action.payload)
+            }
+            return {...state}
         default:
             return state;
     }

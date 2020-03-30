@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React,{useEffect,useState} from 'react';
 import {connect} from 'react-redux'
 import {releaseAction} from '../../store/actions/release'
 import {RouteComponentProps} from 'react-router-dom'
@@ -15,14 +15,27 @@ interface StateProps{
    release:Array<ItemType>
 }
 interface DispatchProps{
-  getReleaseList:()=>void
+  getReleaseList:(page:number)=>void
+  scrollBottom:Function
 }
 let Release:React.FC<DispatchProps&StateProps&RouteComponentProps>=(props)=>{
-    console.log('props',props)
+    let [page,setPage] = useState(1)
     useEffect(()=>{
-       props.getReleaseList()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[]);
+        if(page === 1){
+            props.getReleaseList(page)
+        }
+            window.addEventListener('scroll',scrollBottom)
+    },[])
+    let scrollBottom = () => {
+        const scrollY = window.scrollY//滚动条的位置
+        const viewHeight = window.innerHeight//当前页面的高度
+        const bodyHeight = document.body.clientHeight//body的高度
+        console.log((scrollY+viewHeight)-50 === bodyHeight,scrollY,viewHeight,bodyHeight)
+        if((scrollY+viewHeight)-50 === bodyHeight){
+            setPage(page += 1)
+            props.getReleaseList(page)
+        }
+    }
     let goDetail=(e:React.MouseEvent<HTMLLIElement>)=>{
         //监听事件的元素
        let id = e.currentTarget.dataset.id;
@@ -48,8 +61,8 @@ const mapStateToProps=(state:any)=>{
 }
 const mapDispatchToProps=(dispatch:Function)=>{
     return {
-        getReleaseList:()=>{
-            dispatch(releaseAction());
+        getReleaseList:(page: number)=>{
+            dispatch(releaseAction(page));
         }
     }
 }
