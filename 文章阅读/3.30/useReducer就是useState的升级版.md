@@ -1,0 +1,23 @@
+# 地址
+https://juejin.im/post/5e7eccff518825739021a8c5
+# 总结
+useReducer是useState的替代方案。它接收一个形如（state, action） => newState的reducer,并返回当前的state以及与其配套的dispatch方法。
+1. 在某些场景下，useReducer会比useState更适用。 例如 state逻辑复杂且包含多个子值（如state的值为一个对象），或者下一个state依赖于之前的state等。 并且，使用useReducer还能给那些会触发深更新的组件做性能优化，因为你可以向子组件传递dispatch而不是回调函数。
+
+
+2. useState更适合用于state值较为单一的状态
+
+对比：useState传入的参数为初始状态值，userReducer传入了reducer和初始状态值。
+useState返回的两个值count和setCount，userReducer返回的两个值为state和 dispatch。其中state为count的升级版，dispatch为setCount的升级版。dispatch的第一个参数为action，有些情况下我们还需要将修改后的值传入到state中，此时我们可以使用第二个参数payload将改变后值传入state中。
+注：React会确保dispatch函数的标识是稳定的，并且不会再组件重新渲染时改变。这就是为什么可以安全地从seEffect或useCallback的依赖中省略dispatch。
+
+
+3.指定初始state
+有两种不同初始化 useReducer state 的方式，你可以根据使用场景选择其中的一种。将初始state作为第二个参数传入useReducer是最简单的方法：
+注意：React不使用state = initialState 这一由 Redux推广开来的参数约定。有时候初始值依赖于props，因此需要在调用Hook时指定。如果你特别喜欢上述的参数约定，可以通过调用useReducer(reducer, undefined, reducer)来模拟Redux的行为，但我们不鼓励你这么做。
+
+惰性初始化
+你可以选择惰性地创建初始state。为此，需要将init函数作为useReducer的第三个参数传入，这样初始state将被设置为init(initalArg)。
+跳过dispatch
+如果Reducer Hook的返回值与当前state相同，React将跳过子组件的渲染及副作用的执行。（React使用Object.is比较算法来比较state。）
+需要注意的是，React可能仍需要跳过渲染前再次渲染该组件。不过由于React不会对组件树的“深层”节点进行不必要的渲染，所以大可不必担心。如果你在渲染期间执行了高开销的计算，则可以使用useMemo来进行优化
