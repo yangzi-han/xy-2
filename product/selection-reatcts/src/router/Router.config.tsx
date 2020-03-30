@@ -6,6 +6,7 @@ import Favorpage from '../views/FavorPage'
 import Loginpage from '../views/LoginPage'
 import GoodsDetailPage from '../views/GoodsDetailPage'
 import MainPage from '../views/MainPage'
+import TopicDetaile from '../views/TopicDetaile'
 //二级
 import IndexPage from '../views/main/IndexPage'
 import TypePage from '../views/main/TypePage'
@@ -27,6 +28,9 @@ const config = {
         },{
             path:'/goodsDetail',
             component:GoodsDetailPage
+        },{
+            path:'/topicDetaile/:id',
+            component:TopicDetaile
         },{
             path:'/main',
             component:MainPage,

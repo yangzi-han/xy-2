@@ -1,13 +1,21 @@
 import {ActionType} from '../../utils/interface'
 const initVal = {
-    list: []
+    list: [],
+    DetaileData:{}
 }
 
 function topicReudcer(state: any, action: ActionType){
     switch (action.type) {
         case 'GET_TOPIC_LIST':
-            return {...state, list:action.payload}
-    
+            if(action.page === 1){
+                state.list=(action.payload)
+            }else{
+                state.list = state.list.concat(action.payload)
+            }
+            return {...state}
+        case 'GET_DET':
+            state.DetaileData = action.payload
+            return {...state}
         default:
             return state;
     }
