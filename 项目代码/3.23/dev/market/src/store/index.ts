@@ -5,11 +5,13 @@ import ReduxThunk from 'redux-thunk'
 // 引入子reducer
 import home from './reducers/home'
 import login from './reducers/login'
+import topice from './reducers/topice'
 
 // 连接子reducer
 let reducers = combineReducers({
     home,
-    login
+    login,
+    topice
 })
 
 let store = createStore(reducers, applyMiddleware(ReduxThunk, ReduxLogger))

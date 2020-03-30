@@ -38,6 +38,7 @@ interface StateType {
         [name: string]: string | number
     }>,
     categoryList: Array<{
+        id:number,
         name: string,
         goodsList: goodlist[]
     }>,
@@ -50,7 +51,8 @@ interface DispatchType {
 interface goodlist {
     [name: string]: string | number,
     list_pic_url: string,
-    retail_price: number
+    retail_price: number,
+    id:number
 }
 
 
@@ -184,12 +186,12 @@ let IndexPage: React.FC<StateType & DispatchType & RouteComponentProps> = props 
         <div className={styles.categoryList}>
             {
                 props.categoryList.map(item => {
-                    return <div>
+                    return <div key={item.id}>
                         <div className={styles.categoryListtop}>{item.name}</div>
                         <div className={styles.categoryListcenter}>
                         {
                             item.goodsList.map(item => {
-                                return <div className={styles.categoryListcenteritem}>
+                                return <div className={styles.categoryListcenteritem} key={item.id}>
                                     <div className={styles.categoryListimg}><img src={item.list_pic_url} alt="" /></div>
                                     <div>{item.name}</div>
                                     <div>{item.retail_price}</div>
