@@ -192,3 +192,94 @@ button,input{
         font-size: .17rem;
     }
 }
+.tabPageContent{
+    min-height: 100%;
+    padding-bottom:0.50rem;
+}
+.topicItem {
+    height: 2.9rem;
+    margin-top: .1rem;
+    background: #fff;
+    display: block;
+    img {
+        width: 100%;
+        height: 2rem;
+    }
+    .topicItemSubtitle, .topicItemTitle {
+        margin: 0;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+.topicItem:first-of-type {
+    margin-top: 0;
+}
+.topicItemTitle {
+    padding: .06rem .05rem .05rem;
+    font-size: .15rem;
+    line-height: .2rem;
+    height: .2rem;
+}
+.topicItemSubtitle {
+    padding: .05rem .2rem;
+    font-size: .15rem;
+    color: grey;
+    line-height: .15rem;
+    height: .15rem;
+}
+.topicItemPrice {
+    margin: 0;
+    padding: .05rem .1rem;
+    font-size: .13rem;
+    text-align: center;
+    color: red;
+    line-height: .2rem;
+    height: .2rem;
+}
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0.5rem;
+    display: flex;
+    justify-content: space-around;
+    background: #fff;
+    box-shadow: 0 0.04rem 0.08rem 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
+    z-index: 10;
+}
+.topicDetailImg{
+    img{
+       width: 100%;
+        height: auto;
+        display: block; 
+    }
+}
+.relateTopic {
+    margin-top: .1rem;
+    padding: 0 .1rem;
+    .relateTopicTitle {
+        margin: 0;
+        line-height: .3rem;
+        text-align: center;
+    }
+    .relateTopicItem {
+        background: #fff;
+        padding: .1rem .1rem 0;
+        margin-bottom: .1rem;
+        display: block;
+        img{
+            width: 100%;
+            height: 2rem;
+        }
+        p{
+            margin: 0;
+            line-height: 0.5rem;
+            color: grey;
+            font-size: .13rem;
+        }
+    }
+}
+

@@ -1,7 +1,7 @@
 import React from 'react'
 
 let TopicDetailPage: React.FC = props=>{
-    return null;
+    return <>分类</>;
 }
 
 export default TopicDetailPage;

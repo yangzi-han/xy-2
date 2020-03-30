@@ -15,6 +15,7 @@ let RouterView: React.FC<PropType>=props=>{
             return <Route key={item.path} path={item.path} render={renderProps=>{
                 //路由拦截
                 let {match:{path}}=renderProps
+                // console.log(path,'pathrouterview')
                 if(path !== '/login' && path !== '/main'&& !getToken()){
                     return <Redirect to={`/login?redirect=${encodeURIComponent(path)}`} />
                 }

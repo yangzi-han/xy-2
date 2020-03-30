@@ -79,3 +79,13 @@ var s = swap([function(){console.log('function')}, {name: '美国'}]);
 console.log('s...', s);
 
 var x: Array<number|string|boolean|null> = [];
+
+
+//枚举
+enum Direction{
+    Top=100,
+    Down,
+    Left,
+    Right
+}
+console.log(Direction.Top,Direction[100])

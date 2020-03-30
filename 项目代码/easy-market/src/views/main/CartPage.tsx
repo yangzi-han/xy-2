@@ -10,9 +10,9 @@ interface DispatchType{
 }
 
 let CartPage: React.FC<StateType&DispatchType&RouteComponentProps> = props=>{
-    if(!props.isFlage){
-       props.history.push('/login')
-    }
+    // if(!props.isFlage){
+    //    props.history.push('/login')
+    // }
     // useEffect(()=>{
         
     // },[])

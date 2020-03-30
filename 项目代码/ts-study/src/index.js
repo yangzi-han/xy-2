@@ -81,3 +81,12 @@ function swap(tuple) {
 var s = swap([function () { console.log('function'); }, { name: '美国' }]);
 console.log('s...', s);
 var x = [];
+//枚举
+var Direction;
+(function (Direction) {
+    Direction[Direction["Top"] = 100] = "Top";
+    Direction[Direction["Down"] = 101] = "Down";
+    Direction[Direction["Left"] = 102] = "Left";
+    Direction[Direction["Right"] = 103] = "Right";
+})(Direction || (Direction = {}));
+console.log(Direction.Top, Direction[100]);
