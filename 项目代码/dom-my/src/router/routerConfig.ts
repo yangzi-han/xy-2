@@ -6,6 +6,7 @@ import My from '../views/children/my';
 import Login from '../views/login'
 import Regst from '../views/regest'
 import Zhuan from '../views/children/zhuan'
+import Detail from '../views/detail/detail'
 export default {
     routes:[{
         path:'/index',
@@ -35,5 +36,8 @@ export default {
     },{
         path:'/regest',
         component:Regst
+    },{
+        path:'/detail/:id',
+        component:Detail
     }]
 }
