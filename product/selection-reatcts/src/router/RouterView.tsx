@@ -13,7 +13,6 @@ const RouterView: React.FC<PropType>= props =>{
                     return <Route path={item.path} key={key} render={props => {
                         // 路由拦截
                         let {path} = props.match//获取到上一个页面的路由
-                        console.log(props,'1111111')
                         if(path !== '/login' && path !== '/main' && !getToken()){//判断
                             return <Redirect to={`/login?redirect=${encodeURIComponent(path)}`} />
                         }
