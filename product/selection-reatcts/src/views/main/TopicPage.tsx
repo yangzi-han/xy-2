@@ -21,9 +21,7 @@ interface DispatchProps{
 const TopPage: React.FC<DispatchProps & StateProps & RouteComponentProps> = (props) =>{
     let [page,setPage] = useState(1)
     useEffect(()=>{
-        if(page === 1){
             props.getList(page)
-        }
             window.addEventListener('scroll',scrollBottom)
     },[])
     let scrollBottom = () => {
