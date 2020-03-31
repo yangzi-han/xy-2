@@ -24,11 +24,11 @@ let TopicDetailPage: React.FC<DispatchType&StateType&RouteComponentProps> = prop
         props.getTopicDetail(id)
         props.getTopicRelated(id)
     },[])
-    let goDetail=(event: React.MouseEvent<HTMLDivElement, MouseEvent>)=>{
-        let id=event.currentTarget.dataset.id
+    let goDetail=(e: React.MouseEvent<HTMLDivElement, MouseEvent>)=>{
+        let id=e.currentTarget.dataset.id
         props.history.replace('/topicDetail/'+id)
     }
-    return <>
+    return <div>
         <div className={styles.header}>
             <p onClick={props.history.goBack}>返回</p>
             <p>{props.TopicDetailList.title}</p>
@@ -47,7 +47,7 @@ let TopicDetailPage: React.FC<DispatchType&StateType&RouteComponentProps> = prop
             }
             
         </div>
-    </>
+    </div>
 }
 
 const mapStateToProps = (state: any)=>{

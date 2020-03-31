@@ -1,3 +1,4 @@
 export * from './home';
 export * from './login';
-export * from './topic'
+export * from './topic';
+export * from './classify'
