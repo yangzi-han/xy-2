@@ -19,12 +19,16 @@ interface DispatchProps{
   scrollBottom:Function
 }
 let Release:React.FC<DispatchProps&StateProps&RouteComponentProps>=(props)=>{
+    // let [id] =useState(props.match.params)
+    // console.log(props)
     let [page,setPage] = useState(1)
     useEffect(()=>{
         if(page === 1){
             props.getReleaseList(page)
         }
             window.addEventListener('scroll',scrollBottom)
+      
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
     let scrollBottom = () => {
         const scrollY = window.scrollY//滚动条的位置
@@ -39,7 +43,8 @@ let Release:React.FC<DispatchProps&StateProps&RouteComponentProps>=(props)=>{
     let goDetail=(e:React.MouseEvent<HTMLLIElement>)=>{
         //监听事件的元素
        let id = e.currentTarget.dataset.id;
-       props.history.push('/detail/id='+id)
+    //    console.log(id)
+       props.history.push('/detail/'+id)
     }
     return <>
     <div className={styles.releaseWrap}>

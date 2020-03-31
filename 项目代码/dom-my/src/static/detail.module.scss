@@ -1,0 +1,43 @@
+.detailHeader{
+    width:100%;
+    height: 1rem;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+}
+.detailImg{
+    width:100%;
+    img{
+        width:100%;
+    }
+}
+.detailText{
+    width:100%;
+    height:1rem;
+    font-size: 0.3rem;
+    line-height: 1rem;
+    letter-spacing: 0.02rem;
+    font-weight: 700;
+    text-align: center;
+}
+.relateItem{
+    width:355px;
+    background: #FFF;
+    margin:0.2rem auto;
+    img{
+        width:335px;
+        height: 200px;
+        margin:10px 10px;
+    }
+    .relatedText{
+        width:100%;
+        height:0.8rem;
+        font-size: 0.3rem;
+        align-items: center;
+        letter-spacing: 0.02rem;
+        font-weight: 700;
+        text-align: center;
+        background: #FFF;
+    }
+}

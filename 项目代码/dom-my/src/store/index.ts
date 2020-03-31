@@ -7,12 +7,14 @@ import ReduxThunk from 'redux-thunk'
 import home from './reducers/home'
 import login from './reducers/login'
 import release from './reducers/release'
+import classNav   from './reducers/classNav'
 
 // 连接子reducer
 let reducers = combineReducers({
     home,
     login,
-    release
+    release,
+    classNav
 })
 
 let store = createStore(reducers, applyMiddleware(ReduxThunk, ReduxLogger))

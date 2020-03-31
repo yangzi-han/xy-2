@@ -1,7 +1,9 @@
 import {ActionType} from '../../utils/interface'
 
 const initVal = {
-    release:[]
+    release:[],
+    detail:{},
+    related:[]
 }
 
 function ReleaseReducer(state: any, action: ActionType){
@@ -13,6 +15,10 @@ function ReleaseReducer(state: any, action: ActionType){
                 state.release=state.release.connect(action.payload)
             }
             return {...state}
+        case 'GET_DETAIL':
+            return {...state,detail:action.payload}
+        case 'GET_DETAIL_RELATED':
+            return {...state,related:action.payload}
         default:
             return state;
     }
