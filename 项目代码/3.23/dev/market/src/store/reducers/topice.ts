@@ -5,7 +5,7 @@ const initVal={
 function TopiceReducer(state:any,action:ActionType){
     switch (action.type){
         case 'TOPICE':
-        if(action.page==1){
+        if(action.page===1){
             state.data=action.payload
         }else{
             state.data.data=state.data.concat(action.payload.data)

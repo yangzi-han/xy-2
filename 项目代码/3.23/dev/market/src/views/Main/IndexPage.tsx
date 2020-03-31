@@ -193,14 +193,16 @@ let IndexPage: React.FC<StateType & DispatchType & RouteComponentProps> = props 
                             item.goodsList.map(item => {
                                 return <div className={styles.categoryListcenteritem} key={item.id}>
                                     <div className={styles.categoryListimg}><img src={item.list_pic_url} alt="" /></div>
-                                    <div>{item.name}</div>
-                                    <div>{item.retail_price}</div>
+                                    <div className={styles.centercenter}>{item.name}</div>
+                                    <div className={styles.centerbuttom}>￥ {item.retail_price}</div>
                                     </div>
                                 
                             })
 
                         }
+                        <div className={styles.end}>更多{item.name}好物</div>
                         </div>
+                    
                     </div>
                 })
             }

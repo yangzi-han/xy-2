@@ -44,7 +44,7 @@ let config={
             component: GoodsDetail
         },
         {
-            path:"/topicDetail",
+            path:"/topicDetail/:id",
             component: TopicDetail
         },
         {

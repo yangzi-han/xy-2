@@ -2,6 +2,7 @@ import React,{useEffect,useState} from 'react'
 import {connect} from 'react-redux'
 import {TopiceAction} from '../../store/actions/topice';
 import styles from '../../scss/topice.module.scss'
+import { RouteComponentProps } from 'react-router'
 interface StateType{
     data:Array<{
         id:string,
@@ -11,18 +12,17 @@ interface StateType{
     }>
 }
 interface SCROLL{
-    scrollButton:Function
+    scrollButton:Function,
 }
 interface DispatchTypes{
     topice:Function
 }
-let TopicDetailPage: React.FC<DispatchTypes&StateType&SCROLL>= props=>{
+let TopicDetailPage: React.FC<DispatchTypes&StateType&SCROLL&RouteComponentProps>= props=>{
     let [page,setPage]=useState(1)
     useEffect(() => {
         props.topice(page);
         console.log(props.data)
         window.addEventListener('scroll',scrollButton)//添加滚动事件
-        props.data.concat(props.data)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     const scrollButton =()=>{
@@ -37,11 +37,14 @@ let TopicDetailPage: React.FC<DispatchTypes&StateType&SCROLL>= props=>{
             }
         }
     }
+    const getDetail=(id:any)=>{
+        props.history.push(`/topicDetail/${id}`)
+    }
     
     return <>
     {
-       props.data? props.data.map(item=>{
-            return <div key={item.id} className={styles.topice}>
+       props.data.map(item=>{
+            return <div key={item.id} className={styles.topice} onClick={()=>getDetail(item.id)}>
                 <div className={styles.topiceimg}>
                     <img src={item.scene_pic_url} alt=""/>
                 </div>
@@ -55,7 +58,7 @@ let TopicDetailPage: React.FC<DispatchTypes&StateType&SCROLL>= props=>{
                     {item.price_info}元起
                 </div>
             </div>
-        }):""
+        })
     }
     </>;
 }
