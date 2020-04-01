@@ -1,14 +1,15 @@
 import {ActionType} from '../../utils/interface'
 const initVal = {
-    typeData: {}
+    categoryList: [],
+    currentCategory:{}
 }
 
 function typeReudcer(state: any, action: ActionType){
     switch (action.type) {
         case 'GET_TYPEDATA':
-            state.typeData = action.payload
-            return {...state}
-    
+            return {...state,...action.payload}
+        case 'GET_CLACCIFY':
+            return {...state,...action.payload}
         default:
             return state;
     }

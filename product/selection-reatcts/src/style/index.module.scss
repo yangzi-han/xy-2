@@ -356,3 +356,51 @@
         }
     }
 }
+.categogContet{
+    margin-top: .42rem;
+    margin-left: 1.01rem;
+    overflow: hidden;
+    margin-bottom: 0.50rem;
+    .categoryTitle, .categoryWrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.categoryWrap{
+    height: 100px;
+    background: #fff;
+    background-size:100% 100%;
+    background-repeat:no-repeat ;
+    color: #fff;
+    font-size: .15rem;
+}
+.categoryTitle{
+    background: #fff;
+    padding: .1rem;
+    font-size: .15rem;
+    color: #2196f3;
+}
+.subCategory{
+    background: #fff;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0 .1rem .1rem;
+    .subCategoryItem{
+        width: 50%;
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
+    .subCategoryItemName{
+        margin: 0;
+        font-size: .15rem;
+        text-align: center;
+        padding: .02rem 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
