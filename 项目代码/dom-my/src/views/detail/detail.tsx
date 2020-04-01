@@ -22,6 +22,7 @@ let Detail:React.FC<RouteComponentProps&DispatchProps>=props=>{
   useEffect(()=>{
       props.getDetailList(id)
       props.getDetailRelated(id)
+     // eslint-disable-next-line react-hooks/exhaustive-deps  
   },[])
   let goBack=()=>{
     props.history.push('/index/release')

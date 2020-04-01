@@ -1,0 +1,82 @@
+.header{
+   width:100%;
+   height:40px;
+   background: #fff;
+   display: flex;
+   justify-content: space-around;
+   input{
+       width:337px;
+       height: 28px;
+       text-align:center;
+       margin:auto 0;
+       border:none;
+       background: #ccc;
+   }
+}
+.tabList{
+  width:100%;
+  display: flex;
+  .leftNav{
+      flex:1.1;
+      background: #fff;
+      p{
+         width:100%;
+         height:1rem;
+         text-align:center;
+         line-height: 1rem;
+      }
+      .active{
+          border-left:2px solid skyblue;
+      }
+  }
+  .rightList{
+      flex:3;
+      background: #fff;
+      .currentWrap{
+          width:100%;
+          img{
+            width: 100%;
+          }
+          .currentName{
+            padding: 0.2rem;
+            font-size: 0.28rem;
+            color: #2196f3;
+          }
+          .currentName,.currentImg{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          .currentImg{
+              position: relative;
+          }
+          .currentText{
+             position: absolute;
+             top:1.5rem;
+             color:#fff;
+             right:1.5rem;
+          }
+      }
+      .currentItem{
+         width:100%;
+         display: flex;
+         flex-wrap: wrap;
+         .subItem{
+             width:50%;
+             img{
+                width: 100%;
+              
+                height: auto;
+             }
+             .subName{
+                font-size: .28rem;
+                text-align: center;
+                padding: .02rem 0;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+             }
+         }
+      }
+  }
+}

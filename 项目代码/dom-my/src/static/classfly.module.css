@@ -1,0 +1,97 @@
+.header {
+  width: 100%;
+  height: 40px;
+  background: #fff;
+  display: flex;
+  justify-content: space-around;
+}
+
+.header input {
+  width: 337px;
+  height: 28px;
+  text-align: center;
+  margin: auto 0;
+  border: none;
+  background: #ccc;
+}
+
+.tabList {
+  width: 100%;
+  display: flex;
+}
+
+.tabList .leftNav {
+  flex: 1.1;
+  background: #fff;
+}
+
+.tabList .leftNav p {
+  width: 100%;
+  height: 1rem;
+  text-align: center;
+  line-height: 1rem;
+}
+
+.tabList .leftNav .active {
+  border-left: 2px solid skyblue;
+}
+
+.tabList .rightList {
+  flex: 3;
+  background: #fff;
+}
+
+.tabList .rightList .currentWrap {
+  width: 100%;
+}
+
+.tabList .rightList .currentWrap img {
+  width: 100%;
+}
+
+.tabList .rightList .currentWrap .currentName {
+  padding: 0.2rem;
+  font-size: 0.28rem;
+  color: #2196f3;
+}
+
+.tabList .rightList .currentWrap .currentName, .tabList .rightList .currentWrap .currentImg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tabList .rightList .currentWrap .currentImg {
+  position: relative;
+}
+
+.tabList .rightList .currentWrap .currentText {
+  position: absolute;
+  top: 1.5rem;
+  color: #fff;
+  right: 1.5rem;
+}
+
+.tabList .rightList .currentItem {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tabList .rightList .currentItem .subItem {
+  width: 50%;
+}
+
+.tabList .rightList .currentItem .subItem img {
+  width: 100%;
+  height: auto;
+}
+
+.tabList .rightList .currentItem .subItem .subName {
+  font-size: .28rem;
+  text-align: center;
+  padding: .02rem 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
