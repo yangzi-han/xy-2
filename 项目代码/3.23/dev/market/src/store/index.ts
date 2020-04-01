@@ -8,6 +8,8 @@ import login from './reducers/login'
 import topice from './reducers/topice'
 import type from './reducers/type'
 import topicedetail from './reducers/topicedetail'
+import topicedetailid from './reducers/topicedetailid'
+import typeright from './reducers/typeright'
 
 // 连接子reducer
 let reducers = combineReducers({
@@ -15,7 +17,10 @@ let reducers = combineReducers({
     login,
     topice,
     type,
-    topicedetail
+    topicedetail,
+    topicedetailid,
+    typeright
+
 })
 
 let store = createStore(reducers, applyMiddleware(ReduxThunk, ReduxLogger))
