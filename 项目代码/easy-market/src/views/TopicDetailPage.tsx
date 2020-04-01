@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import {connect} from 'react-redux'
-import {TopicDetailAction,TopicRelatedAction} from '../store/actions/topic'
+import {TopicDetailAction,TopicRelatedAction,TopicCommentAction} from '../store/actions/topic'
 import {RouteComponentProps} from 'react-router-dom'
 import styles from '../style/index.module.scss'
 interface StateType{
@@ -11,11 +11,22 @@ interface StateType{
     TopicRelated: Array<{
         scene_pic_url:string,
         [name:string]: string|number
-    }>
+    }>,
+    commentList: Array<{
+        id:string,
+        content:string,
+        username:string,
+        add_time:string,
+        scene_pic_url:string,
+        user_info:{
+            username:string
+        }
+    }>,
 }
 interface DispatchType{
     getTopicDetail:Function,
-    getTopicRelated:Function
+    getTopicRelated:Function,
+    getTopicComment:Function
 }
 let TopicDetailPage: React.FC<DispatchType&StateType&RouteComponentProps> = props=>{
     console.log(props)
@@ -23,10 +34,11 @@ let TopicDetailPage: React.FC<DispatchType&StateType&RouteComponentProps> = prop
     useEffect(()=>{
         props.getTopicDetail(id)
         props.getTopicRelated(id)
+        props.getTopicComment(id)
     },[])
     let goDetail=(e: React.MouseEvent<HTMLDivElement, MouseEvent>)=>{
         let id=e.currentTarget.dataset.id
-        props.history.replace('/topicDetail/'+id)
+        // props.history.replace('/topicDetail/'+id)
     }
     return <div>
         <div className={styles.header}>
@@ -35,6 +47,21 @@ let TopicDetailPage: React.FC<DispatchType&StateType&RouteComponentProps> = prop
             <p></p>
         </div>
         <div className={styles.topicDetailImg} dangerouslySetInnerHTML = {{ __html:props.TopicDetailList.content }}></div>
+        <div className={styles.commentWrap}>
+            <div className={styles.titleLine}>精选留言</div>
+            <div className={styles.commentList}>
+                {
+                    props.commentList.length?props.commentList.map(item=>{
+                        return <div className={styles.commentItem} key={item.id}>
+                            <p className={styles.userInfo}><span className={styles.userInfospan}>{item.user_info.username?item.user_info.username:"匿名用户"}</span><span>{item.add_time}</span> </p>
+                            <p>{item.content}</p>
+                        </div>
+                    }):'等你来留言'
+                }
+                
+            </div>
+            
+        </div>
         <div className={styles.relateTopic}>
             <p className={styles.relateTopicTitle}>推荐专题</p>
             {
@@ -61,6 +88,9 @@ const mapDisptachToProps = (dispatch: Function)=>{
         },
         getTopicRelated:(id:any)=>{
             dispatch(TopicRelatedAction(id.id))
+        },
+        getTopicComment:(valueId:any)=>{
+            dispatch(TopicCommentAction(valueId.id))
         }
     }
 }

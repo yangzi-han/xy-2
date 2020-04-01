@@ -17,3 +17,13 @@ export let getTopicRelated=(id:string)=>{
         }
     })
 }
+export let getTopicComment=(valueId:string)=>{
+    return axios.get('/comment/list',{
+        params:{
+            valueId,
+            typeId:1,
+            page:1,
+            size:5
+        }
+    })
+}

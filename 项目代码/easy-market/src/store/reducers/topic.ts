@@ -2,7 +2,8 @@ import {ActionType} from '../../untils/interface'
 const initVal={
     TopList:[],
     TopicDetailList:{},
-    TopicRelated:[]
+    TopicRelated:[],
+    commentList:[],
 }
 function topicReducer(state:any,action:ActionType){
     switch (action.type){
@@ -18,6 +19,8 @@ function topicReducer(state:any,action:ActionType){
             return {...state,TopicDetailList:action.payload}
         case 'GET_TOPIC_RELATED':
             return {...state,TopicRelated:action.payload}
+        case 'GET_TOPIC_COMMENT':
+            return {...state,commentList:action.payload}
         default:
             return state
     }

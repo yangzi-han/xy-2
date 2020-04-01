@@ -1,4 +1,4 @@
-import {getTopicList,getTopicDetail,getTopicRelated} from '../../api'
+import {getTopicList,getTopicDetail,getTopicRelated,getTopicComment} from '../../api'
 
 export let TopicAction = (page:number)=>{
     return async (dispatch:Function)=>{
@@ -30,6 +30,16 @@ export let TopicRelatedAction=(id:string)=>{
         dispatch({
             type: 'GET_TOPIC_RELATED',
             payload: data
+        })
+    }
+}
+export let TopicCommentAction=(valueId:string)=>{
+    return async (dispatch:Function)=>{
+        let data=await getTopicComment(valueId);
+        // console.log('TopicCommentAction...', data)
+        dispatch({
+            type: 'GET_TOPIC_COMMENT',
+            payload: data.data
         })
     }
 }
