@@ -7,6 +7,8 @@ import Login from '../views/login'
 import Regst from '../views/regest'
 import Zhuan from '../views/children/zhuan'
 import Detail from '../views/detail/detail'
+import Search from '../views/search/search'
+import TypeDetail from '../views/detail/detailType'
 export default {
     routes:[{
         path:'/index',
@@ -39,5 +41,11 @@ export default {
     },{
         path:'/detail/:id',
         component:Detail
+    },{
+        path:'/search',
+        component:Search
+    },{
+        path:'/typeDetail',
+        component:TypeDetail
     }]
 }

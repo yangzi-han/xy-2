@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 import RouterView from '../router/routerViews'
 import '../static/home.css'
-import '../static/foot/font_y0v5zzz4arj/iconfont.css'
+import '../static/foot/fonts/iconfont.css'
 class Home extends Component<any> {
     state={
           currentIndex:0
@@ -34,7 +34,7 @@ class Home extends Component<any> {
                       <span className="mess1">购物车</span> 
                     </Link>
                     <Link to="/index/zhuan" onClick={() => {this.setState({currentIndex : 4})}} className={ this.check_tittle_index(4)}>
-                      <p className="iconfont icon-ziyuan"></p>  
+                      <p className="iconfont icon-wode"></p>  
                       <span className="mess1">我的</span> 
                     </Link>
                 </div>

@@ -12,7 +12,8 @@
   text-align: center;
   margin: auto 0;
   border: none;
-  background: #ccc;
+  background: #f8f8f8;
+  border-radius: 5px;
 }
 
 .tabList {

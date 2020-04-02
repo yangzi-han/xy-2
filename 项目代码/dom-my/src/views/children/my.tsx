@@ -1,11 +1,7 @@
-import React, { Component } from 'react';
-import '../../static/foot/font_u3qmegalvjp/iconfont.css'
-class Home extends Component {
-    render() {
-        return <>
-           <div>123</div>
-        </>
-    }
+import React from 'react';
+let ShopCar:React.FC=props=>{
+   return <>
+     这是购物车
+   </>
 }
-
-export default Home;
+export default ShopCar

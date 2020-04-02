@@ -43,10 +43,20 @@ let Classfly:React.FC<DispatchProps&RouteComponentProps>=(props)=>{
         setFlag(flag=index)
         props.getCurrent(id)
     }
+    let goSearch=()=>{
+        props.history.push('/search')
+    }
+    let goTypeDetail=(e:React.MouseEvent<HTMLDivElement>)=>{
+        //监听事件的元素
+    //    let id = e.currentTarget.dataset.id;
+    // //    console.log(id)
+       props.history.push('/typeDetail')
+       
+    }
     return <>
      <div>
        <div className={styles.header}>
-         <input type="text" placeholder="搜索商品,共239个好物"/>
+         <input type="text" placeholder="搜索商品,共239个好物" onClick={goSearch}/>
        </div>
        <div className={styles.tabList}>
         <div className={styles.leftNav}>
@@ -69,7 +79,7 @@ let Classfly:React.FC<DispatchProps&RouteComponentProps>=(props)=>{
                  <div className={styles.currentItem}>
                    {
                        props.currentCategory&&props.currentCategory.subCategoryList.map(item=>{
-                           return <div key={item.id} className={styles.subItem}>
+                           return <div key={item.id} className={styles.subItem} onClick={goTypeDetail} data-id={item.id}>
                                <img src={item.wap_banner_url} alt="" className={styles.subImg}/>
                                <div className={styles.subName}>{item.name}</div>
                            </div>
