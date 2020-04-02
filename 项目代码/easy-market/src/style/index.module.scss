@@ -198,9 +198,22 @@ button,input{
     min-height: 100%;
     padding-bottom:0.50rem;
 }
+// .cateGoryBox{
+//     height: auto;  
+// }
+.categorywary{
+    display: flex;
+    flex-wrap: wrap; 
+}
+.cateGoryName {
+    width: 100%;
+    height: 0.4rem;
+    text-align: center;
+    line-height: 0.4rem;
+}
+
 //专题页
-.topicItem {
-    
+.topicItem { 
     margin-top: .1rem;
     background: #fff;
     display: block;
@@ -240,19 +253,22 @@ button,input{
     line-height: .2rem;
     height: .2rem;
 }
-.header {
+//专题详情
+.header ,.classifyheader{
     position:fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 0.5rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     background: #fff;
-    box-shadow: 0 0.04rem 0.08rem 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
+    padding: 0 0.1rem;
     z-index: 10;
 }
-//专题详情
+.header{
+    box-shadow: 0 0.04rem 0.08rem 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
+}
 .topicDetailImg{
     padding-top:0.5rem;
     img{
@@ -390,5 +406,40 @@ button,input{
         }
     }
 }
-
+//奇趣分类
+.tabWrap{
+    height: 0.4rem;
+    margin-top: 0.5rem;
+    line-height: 0.4rem;
+    display: flex;
+    white-space: nowrap;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    background: #fff;
+    border-top: 0.01rem solid #eee;
+    &::-webkit-scrollbar{
+        display: none;
+    }
+    li{
+        width:0.7rem;
+        list-style: none;
+        text-align: center;
+        padding:0 0.1rem;
+    }
+    .active{
+        color: skyblue;
+        border-bottom:0.02rem solid skyblue;
+    }
+}
+.categoryDetail {
+    padding: .05rem 0;
+    p {
+        height: 0.1rem;
+        line-height: 0.1rem;
+        text-align: center;
+    }
+    p:nth-child(2) {
+        color: grey;
+    }
+}
 

@@ -110,7 +110,19 @@ let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = 
             <div className={styles.topGoodsTitle}>专题精选</div>
             <SwiperCarousel topicList={props.topicList}/>
         </div>
-        <CateGoryBox categoryList={props.categoryList}/>
+        <div className={styles.cateGoryBox}>
+        {
+            props.categoryList.map((item,index)=>{
+                return <div key={index} className={styles.categorywary}>
+                    <div className={styles.cateGoryName}>{item.name}</div>
+                    <CateGoryBox goodsList={item.goodsList} name={item.name}/>
+                    
+                </div>    
+            })
+        }
+        
+    </div>
+        
     </div>;
 }
 

@@ -10,3 +10,13 @@ export let getClassifyCurrent=(id:string)=>{
         }
     })
 }
+export let getClassifyCategory=(id:string)=>{
+    return axios.get('/goods/category',{
+        params:{
+            id
+        }
+    })
+}
+export let getClassifyGoodList=(id:string)=>{
+    return axios.get(`/goods/list?categoryId=${id}&page=1&size=10`)
+}

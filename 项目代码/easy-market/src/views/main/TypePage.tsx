@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import {RouteComponentProps} from 'react-router-dom'
-import {GetClassifyAction,getClassifyCurrentAction} from '../../store/actions/classify'
+import {GetClassifyAction,getClassifyCurrentAction,getClassifyCategoryAction,getClassifyGoodListAction} from '../../store/actions/classify'
 import {connect} from 'react-redux'
 import TabsBox from '../../component/tab/index'
 import styles from '../../style/index.module.scss'
@@ -21,12 +21,17 @@ interface StateTypes{
 }
 interface DispatchType{
     getClassifyList:Function,
-    getClassifyCurrent:Function
+    getClassifyCurrent:Function,
 }
 let TypePage: React.FC<DispatchType&StateTypes&RouteComponentProps> = props=>{
     useEffect(()=>{
         props.getClassifyList()
     },[])
+    
+    let category=(id:any)=>{
+        console.log(id)
+        props.history.push('/categorys/'+id)
+    }
     return <div>
         <div className={styles.searchWrap}>
             <div className={styles.searchInput}>
@@ -41,7 +46,7 @@ let TypePage: React.FC<DispatchType&StateTypes&RouteComponentProps> = props=>{
                 <div className={styles.subCategory}>
                     {
                         props.currentCategory.subCategoryList?props.currentCategory.subCategoryList.map(item=>{
-                            return <div key={item.id} className={styles.subCategoryItem}>
+                            return <div key={item.id}  onClick={()=>{category(item.id)}} className={styles.subCategoryItem}>
                                 <img src={item.wap_banner_url} alt=""/>
                                 <p className={styles.subCategoryItemName}>{item.name}</p>
                             </div>

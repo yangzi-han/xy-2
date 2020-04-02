@@ -28,9 +28,9 @@ interface DispatchType{
     getTopicRelated:Function,
     getTopicComment:Function
 }
-let TopicDetailPage: React.FC<DispatchType&StateType&RouteComponentProps> = props=>{
+let TopicDetailPage: React.FC<DispatchType&StateType&RouteComponentProps<{id:string}>> = props=>{
     console.log(props)
-    let [id]=useState(props.match.params)
+    let [id]=useState(props.match.params.id)
     useEffect(()=>{
         props.getTopicDetail(id)
         props.getTopicRelated(id)
@@ -58,9 +58,7 @@ let TopicDetailPage: React.FC<DispatchType&StateType&RouteComponentProps> = prop
                         </div>
                     }):'等你来留言'
                 }
-                
-            </div>
-            
+            </div>  
         </div>
         <div className={styles.relateTopic}>
             <p className={styles.relateTopicTitle}>推荐专题</p>
@@ -72,7 +70,6 @@ let TopicDetailPage: React.FC<DispatchType&StateType&RouteComponentProps> = prop
                     </div>
                 })
             }
-            
         </div>
     </div>
 }
@@ -84,13 +81,13 @@ const mapStateToProps = (state: any)=>{
 const mapDisptachToProps = (dispatch: Function)=>{
     return {
         getTopicDetail: (id:any)=>{
-            dispatch(TopicDetailAction(id.id))
+            dispatch(TopicDetailAction(id))
         },
         getTopicRelated:(id:any)=>{
-            dispatch(TopicRelatedAction(id.id))
+            dispatch(TopicRelatedAction(id))
         },
         getTopicComment:(valueId:any)=>{
-            dispatch(TopicCommentAction(valueId.id))
+            dispatch(TopicCommentAction(valueId))
         }
     }
 }
