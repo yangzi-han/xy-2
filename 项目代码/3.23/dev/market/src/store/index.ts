@@ -10,6 +10,8 @@ import type from './reducers/type'
 import topicedetail from './reducers/topicedetail'
 import topicedetailid from './reducers/topicedetailid'
 import typeright from './reducers/typeright'
+import typedetail from './reducers/typedetail'
+import typedetailfooter from './reducers/typedetailfooter'
 
 // 连接子reducer
 let reducers = combineReducers({
@@ -19,7 +21,9 @@ let reducers = combineReducers({
     type,
     topicedetail,
     topicedetailid,
-    typeright
+    typeright,
+    typedetail,
+    typedetailfooter
 
 })
 

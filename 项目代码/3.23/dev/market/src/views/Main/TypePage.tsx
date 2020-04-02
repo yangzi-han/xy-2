@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { TypeAction } from "../../store/actions/type"
 import styles from '../../scss/type.module.scss'
 import {TypeRightAction} from '../../store/actions/typeright'
+import {RouteComponentProps} from 'react-router'
 interface DispatchTypes {
     getType: Function,
     getTypeRight:Function
@@ -23,7 +24,7 @@ interface StateType{
    
 }
 interface subCategoryList{
-    id:number,
+    id:string,
     name:string,
     wap_banner_url:string
 }
@@ -44,7 +45,7 @@ interface subCategoryLists{
     wap_banner_url:string
 }
 
-let TypePage: React.FC<DispatchTypes&StateType> = props => {
+let TypePage: React.FC<DispatchTypes&StateType&RouteComponentProps> = props => {
      let [newindex,setnewindex]=useState(0)
     useEffect(() => {
         props.getType()
@@ -54,6 +55,9 @@ let TypePage: React.FC<DispatchTypes&StateType> = props => {
     let getindex=(index:any,id:number)=>{
         setnewindex(newindex=index)
         props.getTypeRight(id)
+    }
+    let Typedetail=(id:string)=>{
+        props.history.push(`/typedetail/${id}`)
     }
     return <>
         <div className={styles.typeinput} ><input type="text" placeholder="搜索商品，共239款好物" /></div>
@@ -78,7 +82,7 @@ let TypePage: React.FC<DispatchTypes&StateType> = props => {
                         <div className={styles.typefooter}>
                             {
                                 props.typeright&&props.typeright.subCategoryList.map((item)=>{
-                                return <div className={styles.footer} key={item.id}>
+                                return <div className={styles.footer} key={item.id} onClick={()=>Typedetail(item.id)}>
                                     <img src={item.wap_banner_url} alt=""/>
                                 <div className={styles.footertitle}>{item.name}</div>
                                 </div>

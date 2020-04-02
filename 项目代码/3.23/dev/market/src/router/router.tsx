@@ -11,6 +11,7 @@ import GoodsDetail from '../views/GoodsDetail'
 import MainPage from '../views/MainPage'
 import TopicDetail from '../views/TopicDetail'
 import classifyPage from '../views/classifyPage'
+import TypeDetail from '../views/Typedetail'
 
 
 //引入二级路由
@@ -50,6 +51,11 @@ let config={
         {
             path:"/classify",
             component: classifyPage
+        },
+        
+        {
+            path:"/typedetail/:id",
+            component:TypeDetail
         },
         {
             path:"/main",
