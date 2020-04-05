@@ -58,6 +58,18 @@ let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = 
         props.getCategoryList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+    let goDetail=(e:React.MouseEvent<HTMLDivElement>)=>{
+      //监听事件的元素
+       let id = e.currentTarget.dataset.id;
+  //    console.log(id)
+       props.history.push('/homeDetail/'+id)
+    }
+    let goGoodsDetail=(e:React.MouseEvent<HTMLDivElement>)=>{
+      //监听事件的元素
+       let id = e.currentTarget.dataset.id;
+  //    console.log(id)
+       props.history.push('/goodsDetail/'+id)
+    }
     return <><div>
         <WingBlank style={{margin:0}}>
         <Carousel
@@ -103,7 +115,7 @@ let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = 
           <div className={styles.ListItem}>
             {
                props.brandList.map(item=>{
-                   return <div key={item.id} className={styles.brandItem}>
+                   return <div key={item.id} className={styles.brandItem} onClick={goDetail} data-id={item.id}>
                       <div className={styles.brandName}>{item.name}</div>
                       <div className={styles.brandPrice}>
                         {item.floor_price}
@@ -122,7 +134,7 @@ let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = 
           <div className={styles.goodsItem}>
             {
                 props.newGoodsList.map(item=>{
-                    return <div key={item.id} className={styles.goodsTitle}>
+                    return <div key={item.id} className={styles.goodsTitle} onClick={goGoodsDetail} data-id={item.id}>
                       <img src={item.list_pic_url} alt=""/>
                       <div className={styles.goodsName}>{item.name}</div>
                       <div className={styles.goodsPrice}>
@@ -139,7 +151,7 @@ let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = 
           <div className={styles.hotItem}>
             {
               props.hotGoodsList.map(item=>{
-                 return <div key={item.id} className={styles.hotTitle}>
+                 return <div key={item.id} className={styles.hotTitle} onClick={goGoodsDetail} data-id={item.id}>
                     <img src={item.list_pic_url} alt=""/>
                     <div className={styles.hotRight}>
                       <div className={styles.hotName}>{item.name}</div>

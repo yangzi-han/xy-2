@@ -8,13 +8,21 @@ import home from './reducers/home'
 import login from './reducers/login'
 import release from './reducers/release'
 import type from './reducers/type'
+import detail from './reducers/detail'
+import address from './reducers/address'
+import search from './reducers/search'
+import collect from './reducers/collect'
 
 // 连接子reducer
 let reducers = combineReducers({
     home,
     login,
     release,
-    type
+    type,
+    detail,
+    address,
+    search,
+    collect
 })
 
 let store = createStore(reducers, applyMiddleware(ReduxThunk, ReduxLogger))

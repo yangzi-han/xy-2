@@ -9,6 +9,11 @@ import Zhuan from '../views/children/zhuan'
 import Detail from '../views/detail/detail'
 import Search from '../views/search/search'
 import TypeDetail from '../views/detail/detailType'
+import HomeDetail from '../views/detail/homeDetail'
+import GoodsDetail from '../views/detail/detailGoods'
+import Address from '../views/address/address'
+import Add from '../views/address/add'
+import Collect from '../views/collect/collect'
 export default {
     routes:[{
         path:'/index',
@@ -45,7 +50,22 @@ export default {
         path:'/search',
         component:Search
     },{
-        path:'/typeDetail',
+        path:'/typeDetail/:id',
         component:TypeDetail
+    },{
+        path:'/homeDetail/:id',
+        component:HomeDetail
+    },{
+        path:'/goodsDetail/:id',
+        component:GoodsDetail
+    },{
+        path:'/address',
+        component:Address
+    },{
+        path:'/add',
+        component:Add
+    },{
+        path:'/collect',
+        component:Collect
     }]
 }

@@ -27,7 +27,7 @@ interface ItemType{
 }
 
 let Classfly:React.FC<DispatchProps&RouteComponentProps>=(props)=>{
-    console.log(props)
+    // console.log(props)
     let [flag,setFlag]=useState(0)
     useEffect(()=>{
       props.getType()
@@ -48,10 +48,9 @@ let Classfly:React.FC<DispatchProps&RouteComponentProps>=(props)=>{
     }
     let goTypeDetail=(e:React.MouseEvent<HTMLDivElement>)=>{
         //监听事件的元素
-    //    let id = e.currentTarget.dataset.id;
-    // //    console.log(id)
-       props.history.push('/typeDetail')
-       
+       let id = e.currentTarget.dataset.id;
+    //    console.log(id)
+       props.history.push('/typeDetail/'+id)
     }
     return <>
      <div>
@@ -78,7 +77,7 @@ let Classfly:React.FC<DispatchProps&RouteComponentProps>=(props)=>{
                  <div className={styles.currentName}>{props.currentCategory&&props.currentCategory.name}</div>
                  <div className={styles.currentItem}>
                    {
-                       props.currentCategory&&props.currentCategory.subCategoryList.map(item=>{
+                       props.currentCategory&&props.currentCategory.subCategoryList.map((item,index)=>{
                            return <div key={item.id} className={styles.subItem} onClick={goTypeDetail} data-id={item.id}>
                                <img src={item.wap_banner_url} alt="" className={styles.subImg}/>
                                <div className={styles.subName}>{item.name}</div>

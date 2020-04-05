@@ -2,7 +2,9 @@ import {ActionType} from '../../utils/interface'
 
 const initVal = {
    type:{},
-   curren:[]
+   curren:[],
+   list:[],
+   nav:[],
 }
 
 function typeReducer(state: any, action: ActionType){
@@ -13,6 +15,12 @@ function typeReducer(state: any, action: ActionType){
             return {...state}
         case 'GET_CURRENT':
             state.curren=action.payload
+            return {...state}
+        case 'GET_LIST':
+            state.list=action.payload
+            return {...state}
+        case 'GET_NAV':
+            state.nav=action.payload
             return {...state}
         default:
             return state;
