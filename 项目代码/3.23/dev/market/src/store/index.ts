@@ -12,6 +12,11 @@ import topicedetailid from './reducers/topicedetailid'
 import typeright from './reducers/typeright'
 import typedetail from './reducers/typedetail'
 import typedetailfooter from './reducers/typedetailfooter'
+import search from './reducers/search'
+import searchhot from './reducers/searchhot'
+import channeldetail from './reducers/channel'
+import manufacturer from './reducers/manufacturer'
+import goodsdetail from './reducers/goodsdetail'
 
 // 连接子reducer
 let reducers = combineReducers({
@@ -23,7 +28,12 @@ let reducers = combineReducers({
     topicedetailid,
     typeright,
     typedetail,
-    typedetailfooter
+    typedetailfooter,
+    search,
+    searchhot,
+    channeldetail,
+    manufacturer,
+    goodsdetail
 
 })
 

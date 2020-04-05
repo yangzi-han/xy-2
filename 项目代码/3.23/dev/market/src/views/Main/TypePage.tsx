@@ -59,8 +59,11 @@ let TypePage: React.FC<DispatchTypes&StateType&RouteComponentProps> = props => {
     let Typedetail=(id:string)=>{
         props.history.push(`/typedetail/${id}`)
     }
+    let search=()=>{
+        props.history.push("/search")
+    }
     return <>
-        <div className={styles.typeinput} ><input type="text" placeholder="搜索商品，共239款好物" /></div>
+        <div className={styles.typeinput} ><input type="text" placeholder="搜索商品，共239款好物" onClick={()=>search()}/></div>
         <div className={styles.typecenter}>
         <div className={styles.typeleft}>{
             

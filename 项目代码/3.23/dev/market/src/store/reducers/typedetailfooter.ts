@@ -1,10 +1,16 @@
 import {ActionType} from '../../utils/interface'
 let initVal={
+    datas:[]
 }
 function TypeDetailFooterReducer(state:any,action:ActionType){
     switch(action.type){
         case 'TYPE_DETAIL_FOOTER':
-            return {...action.payload}
+            if(action.page===1){
+                state.datas=action.payload.data
+            }else{
+                state.datas=state.datas.concat(action.payload.data)
+            }
+            return {...state,...action.payload}
         default:
             return state
     }

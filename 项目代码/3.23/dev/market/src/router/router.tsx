@@ -12,8 +12,10 @@ import MainPage from '../views/MainPage'
 import TopicDetail from '../views/TopicDetail'
 import classifyPage from '../views/classifyPage'
 import TypeDetail from '../views/Typedetail'
-
-
+import Search from '../views/search'
+import ChannerDetail from '../views/channeldetail'
+import Manufacturer from '../views/manufacturer'
+import Gooddetail from '../views/GoodsDetail'
 //引入二级路由
 
 import IndexPage from '../views/Main/IndexPage'
@@ -56,6 +58,22 @@ let config={
         {
             path:"/typedetail/:id",
             component:TypeDetail
+        },
+        {
+            path:"/search",
+            component:Search
+        },
+        {
+            path:"/channeldetail/id=:id&index=:index",
+            component:ChannerDetail
+        },
+        {
+            path:"/manufacturer/:id",
+            component:Manufacturer
+        },
+        {
+            path:"/goodsdetail/:id",
+            component:Gooddetail
         },
         {
             path:"/main",

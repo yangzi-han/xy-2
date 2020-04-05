@@ -1,0 +1,28 @@
+.top {
+  width: 100%;
+  height: 1rem;
+  text-align: center;
+  line-height: 1rem;
+  font-size: .4rem;
+}
+
+.left {
+  position: fixed;
+  top: 0;
+  left: .2rem;
+  font-size: .6rem;
+}
+
+.center {
+  width: 100%;
+}
+
+.center img {
+  width: 100%;
+}
+
+.footer {
+  padding-left: .3rem;
+  padding-top: .3rem;
+  color: grey;
+}

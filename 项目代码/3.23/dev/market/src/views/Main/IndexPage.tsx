@@ -61,11 +61,22 @@ let IndexPage: React.FC<StateType & DispatchType & RouteComponentProps> = props 
 
     useEffect(() => {
         props.getBanner();
-
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    return <>
+    },[]);
+   let fenlie=(id:any,index:any)=>{
+    props.history.push(`/channeldetail/id=${id}&index=${index}`)
+   }
+   let Manufacturer=(id:string)=>{
+    props.history.push(`/manufacturer/${id}`)
+   }
+   let topicedetail=(id:string)=>{
+    props.history.push(`/topicDetail/${id}`)
+   }
+   let gooddetail=(id:string)=>{
+       console.log(id)
+    props.history.push(`/goodsdetail/${id}`)
+   }
+    return <div>
         <WingBlank style={{ margin: 0 }}>
             <Carousel
                 autoplay={true}
@@ -94,8 +105,8 @@ let IndexPage: React.FC<StateType & DispatchType & RouteComponentProps> = props 
         </WingBlank>
         <div className={styles.channel}>
             {
-                props.channel.map(item => {
-                    return <div key={item.id}>
+                props.channel.map((item,index) => {
+                    return <div key={item.id} onClick={()=>fenlie(item.id,index)}>
                         <i><img src={item.icon_url} alt="" className={styles.icon} /></i>
                         <p>{item.name}</p>
                     </div>
@@ -107,7 +118,7 @@ let IndexPage: React.FC<StateType & DispatchType & RouteComponentProps> = props 
             <div className={styles.wrap}>
                 {
                     props.brandList.map(item => {
-                        return <div key={item.id} className={styles.brandcenter}>
+                        return <div key={item.id} className={styles.brandcenter} onClick={()=>Manufacturer(`${item.id}`)}>
                             <img src={item.new_pic_url} alt="" />
                             <div className={styles.brandwithin}>
                                 <p>{item.name}</p>
@@ -122,7 +133,7 @@ let IndexPage: React.FC<StateType & DispatchType & RouteComponentProps> = props 
             <div className={styles.new}>
                 {
                     props.newGoodsList.map(item => {
-                        return <div key={item.id} className={styles.newgoodscenter} >
+                        return <div key={item.id} className={styles.newgoodscenter} onClick={()=>gooddetail(`${item.id}`)} >
                             <img src={item.list_pic_url} alt="" />
                             <p>{item.name}</p>
                             <p>￥{item.retail_price}</p>
@@ -136,7 +147,7 @@ let IndexPage: React.FC<StateType & DispatchType & RouteComponentProps> = props 
             <div className={styles.hotcenter}>
                 {
                     props.hotGoodsList.map(item => {
-                        return <div className={styles.hotGood} key={item.id}>
+                        return <div className={styles.hotGood} key={item.id}  onClick={()=>gooddetail(`${item.id}`)}>
                             <div className={styles.left}>
                                 <img src={item.list_pic_url} alt="" />
                             </div>
@@ -163,7 +174,7 @@ let IndexPage: React.FC<StateType & DispatchType & RouteComponentProps> = props 
                     {
 
                         props.topicList.map((item) => {
-                            return <div className={styles.topicListcentertop} key={item.id}>
+                            return <div className={styles.topicListcentertop} key={item.id} onClick={()=>topicedetail(`${item.id}`)}>
                                 <div className={styles.topicimg}>
                                     <img src={item.item_pic_url} alt=""
                                         style={{ width: '100%', verticalAlign: 'top' }}
@@ -191,7 +202,7 @@ let IndexPage: React.FC<StateType & DispatchType & RouteComponentProps> = props 
                         <div className={styles.categoryListcenter}>
                         {
                             item.goodsList.map(item => {
-                                return <div className={styles.categoryListcenteritem} key={item.id}>
+                                return <div className={styles.categoryListcenteritem} key={item.id}  onClick={()=>gooddetail(`${item.id}`)}>
                                     <div className={styles.categoryListimg}><img src={item.list_pic_url} alt="" /></div>
                                     <div className={styles.centercenter}>{item.name}</div>
                                     <div className={styles.centerbuttom}>￥ {item.retail_price}</div>
@@ -207,7 +218,7 @@ let IndexPage: React.FC<StateType & DispatchType & RouteComponentProps> = props 
                 })
             }
         </div>
-    </>;
+    </div>;
 }
 
 const mapStateToProps = (state: any) => {

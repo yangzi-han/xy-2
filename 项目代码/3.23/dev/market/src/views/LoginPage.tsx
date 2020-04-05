@@ -16,9 +16,7 @@ interface DisPatchTypes{
 let LoginPage: React.FC<DisPatchTypes & StateType & RouteComponentProps> = props=>{
     if(props.isLogin){
         //返回第一次或者上一次的页面
-        console.log(props.location.search.slice(1).split("=")[1])
         let redirect=props.location.search.slice(1).split('=')[1]
-         console.log(redirect)
         props.history.replace(redirect?decodeURIComponent(redirect):"/")
     }
     let [mobile,SetMobile]= useState<string>("15323807318")
