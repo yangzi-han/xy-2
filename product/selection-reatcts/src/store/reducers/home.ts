@@ -1,6 +1,7 @@
 import {ActionType} from '../../utils/interface'
 const initVal = {
-    banner: []
+    banner: [],
+    topicList:[]
 }
 
 function homeReudcer(state: any, action: ActionType){

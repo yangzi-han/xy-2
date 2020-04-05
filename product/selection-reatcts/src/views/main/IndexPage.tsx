@@ -4,10 +4,16 @@ import {bannerAction} from '../../store/actions/home'
 import {RouteComponentProps} from 'react-router'
 import styles from '../../style/index.module.scss'
 import Banner from '../../components/Banner/banner'
+import Swipercecae from '../../components/SwiperCon/swiper'
+import CateGoryBox from '../../components/Contributor/contributor'
 
 interface StateType{
     banner: Array<{
         image_url: string,
+        [name:string]: string|number
+    }>,
+    topicList: Array<{
+        item_pic_url:string
         [name:string]: string|number
     }>,
     channel: Array<{
@@ -26,11 +32,12 @@ interface StateType{
         new_pic_url:string
         [name:string]: string|number
     }>,
-    topicList: Array<{
-        [name:string]: string|number
-    }>,
     categoryList: Array<{
-        [name:string]: string|number
+        goodsList:Array<{
+            list_pic_url:string,
+            [name:string]: string|number
+        }>,
+        [name:string]: string|number|Array<{}>
     }>
 }
 
@@ -42,7 +49,7 @@ let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = 
     useEffect(()=>{
         props.getBanner()
     }, []);
-
+    console.log(props.banner,props.topicList)
     return <>
         <Banner banner = {props.banner} />
         <div className={styles.channelWrap}>
@@ -101,11 +108,27 @@ let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = 
                 }
             </div>
         </div>
+        <div className={styles.topGoodsBox}>
+            <div className={styles.topGoodsTitle}>专题精选</div>
+            <Swipercecae topicList = {props.topicList} />
+        </div>
+        <div className={styles.cateGoryBox}>
+        {
+            props.categoryList?props.categoryList.map((item,index)=>{
+                return <div key={index} className={styles.categorywary}>
+                    <div className={styles.cateGoryName}>{item.name}</div>
+                    <CateGoryBox goodsList={item.goodsList} name={item.name}/>
+                    
+                </div>    
+            }):''
+        }
+        
+    </div>
     </>;
 }
 
 const mapStateToProps = (state: any)=>{
-    console.log(state.home,"1111111111111111111111111")
+    console.log("首页",state.home)
     return state.home
 }
 const mapDisptachToProps = (dispatch: Function)=>{

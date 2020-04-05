@@ -3,6 +3,7 @@ import styles from '../../style/index.module.scss'
 import {connect} from 'react-redux'
 import {typePage,typeClassifyActions} from '../../store/actions/type'
 import TabsBox from '../../components/Tab/index'
+import {RouteComponentProps} from 'react-router'
 interface DispatchProps{
     getTypeData:Function,
     categoryList:Array<{
@@ -11,6 +12,7 @@ interface DispatchProps{
     currentCategory:{
         subCategoryList:Array<{
             wap_banner_url:string
+            id:number
             [name:string]:string|number
         }>,
         front_name:string,
@@ -20,10 +22,13 @@ interface DispatchProps{
     getClassifyContent:Function,
 }
 
-const TypePage: React.FC<DispatchProps> = props =>{
+const TypePage: React.FC<DispatchProps & RouteComponentProps> = props =>{
     useEffect(()=>{
         props.getTypeData()
     },[])
+    let addClassIfy = (id:number) => {
+        props.history.push('/gategorys/'+id)
+    }
     return <div className={styles.tabPageContent}>
         <div className={styles.searchWrap}>
             <div className={styles.searchInput}>
@@ -38,7 +43,7 @@ const TypePage: React.FC<DispatchProps> = props =>{
             <div className={styles.subCategory}>
                     {
                         props.currentCategory.subCategoryList?props.currentCategory.subCategoryList.map(item=>{
-                            return <div key={item.id} className={styles.subCategoryItem}>
+                            return <div key={item.id} className={styles.subCategoryItem}  onClick={()=>addClassIfy(item.id)}>
                                 <img src={item.wap_banner_url} alt=""/>
                                 <p className={styles.subCategoryItemName}>{item.name}</p>
                             </div>

@@ -404,3 +404,50 @@
         text-overflow: ellipsis;
     }
 }
+.topGoodsBox{
+    margin-top: .1rem;
+    background: #fff;
+    .topGoodsTitle{
+        height: .5rem;
+        background: #fff;
+        text-align: center;
+        font-size: .15rem;
+        line-height: .5rem;
+        letter-spacing: .01rem;
+        font-weight: 700;
+    }
+}
+.cateGoryBox{
+    height: auto;
+    .cateGoryName {
+        height: .5rem;
+        text-align: center;
+        line-height: .5rem;
+    }
+}
+.noTabPageContent{
+    padding-top: 0.52rem;
+    min-height: 100%;
+    .header{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: .5rem;
+        background: #fff;
+        box-shadow: 0 0.04rem 0.08rem 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
+        z-index: 10;
+        .left{
+            width: .3rem;
+        }
+        .title{
+            font-size: .16rem;
+        }
+    }
+    .tabWrap{
+        
+    }
+}

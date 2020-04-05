@@ -8,7 +8,7 @@ interface PropsType{
     }>,
 }
 
-class Swiper extends React.Component<PropsType> {
+class Banner extends React.Component<PropsType> {
   state = {
     data: [],
     imgHeight: 176,
@@ -55,4 +55,4 @@ class Swiper extends React.Component<PropsType> {
   }
 }
 
-export default Swiper
+export default Banner

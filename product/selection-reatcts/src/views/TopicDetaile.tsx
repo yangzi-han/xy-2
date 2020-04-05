@@ -29,7 +29,6 @@ let GoodsDetailPage: React.FC<RouteComponentProps & DetaileState & StateProps> =
     let [id] = useState(props.match.params)
     useEffect(()=>{
         props.getdetaileData(id)
-        console.log()        
     },[])
     let goBack=()=>{
         props.history.push('/main/topic')
