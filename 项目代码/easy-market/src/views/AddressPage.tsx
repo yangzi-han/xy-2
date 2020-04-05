@@ -1,7 +1,7 @@
 import React from 'react'
 
-let TopicDetailPage: React.FC = props=>{
-    return null;
+let AddressPage: React.FC = props=>{
+    return <div>地址</div>;
 }
 
-export default TopicDetailPage;
+export default AddressPage;

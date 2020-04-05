@@ -20,3 +20,19 @@ export let getClassifyCategory=(id:string)=>{
 export let getClassifyGoodList=(id:string)=>{
     return axios.get(`/goods/list?categoryId=${id}&page=1&size=10`)
 }
+export let GoodsDetailList=(id:string)=>{
+    return axios.get(`/goods/detail?id=${id}`)
+}
+export let getGoodsRelated=(id:string)=>{
+    return axios.get('/goods/related',{
+        params:{
+            id
+        }
+    })
+}
+export let addCollectList=(valueId:string)=>{
+    return axios.post('/collect/addordelete',{
+        valueId,
+        typeId:0
+    })
+}

@@ -36,13 +36,9 @@ let TopicDetailPage: React.FC<DispatchType&StateType&RouteComponentProps<{id:str
         props.getTopicRelated(id)
         props.getTopicComment(id)
     },[])
-    let goDetail=(e: React.MouseEvent<HTMLDivElement, MouseEvent>)=>{
-        let id=e.currentTarget.dataset.id
-        // props.history.replace('/topicDetail/'+id)
-    }
     return <div>
         <div className={styles.header}>
-            <p onClick={props.history.goBack}>返回</p>
+            <p onClick={props.history.goBack}><i className="iconfont icon-icon-test"></i></p>
             <p>{props.TopicDetailList.title}</p>
             <p></p>
         </div>
@@ -64,7 +60,7 @@ let TopicDetailPage: React.FC<DispatchType&StateType&RouteComponentProps<{id:str
             <p className={styles.relateTopicTitle}>推荐专题</p>
             {
                 props.TopicRelated.map(item=>{
-                    return <div className={styles.relateTopicItem} key={item.id} data-id={item.id} onClick={goDetail}>
+                    return <div className={styles.relateTopicItem} key={item.id} data-id={item.id}>
                         <img src={item.scene_pic_url} alt=""/>
                         <p>{item.title}</p>
                     </div>

@@ -13,7 +13,7 @@ let MainPage: React.FC<PropType> = props=>{
             <NavLink className={styles.menulink} activeClassName={styles.active} to="/main/topic"><i className="iconfont icon-zhuantifuwu"></i>专题</NavLink>
             <NavLink className={styles.menulink} activeClassName={styles.active} to="/main/type"><i className="iconfont icon-fenlei"></i>分类</NavLink>
             <NavLink className={styles.menulink} activeClassName={styles.active} to="/main/cart"><i className="iconfont icon-gouwuche"></i>购物车</NavLink>
-            <NavLink className={styles.menulink} activeClassName={styles.active} to="/main/my"><i className="iconfont icon-ziyuan"></i>我的</NavLink>
+            <NavLink className={styles.menulink} activeClassName={styles.active} to="/main/my"><i className="iconfont icon-wode"></i>我的</NavLink>
         </footer>
     </>
 }

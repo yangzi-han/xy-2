@@ -13,7 +13,7 @@ import {Provider} from 'react-redux'
 import 'antd-mobile/dist/antd-mobile.css'
 
 //引入icon图标
-import './style/font_y0v5zzz4arj/iconfont.css'
+import './style/font_hr48v5umwc/iconfont.css'
 
 ReactDOM.render(
   <Provider store={store}>

@@ -74,7 +74,7 @@ button,input{
     color: #000;
     i{
         display: inline-block;
-        font-size: 0.16rem;
+        font-size: 0.15rem;
         // margin-top:0.03rem;
     }
 }
@@ -173,7 +173,7 @@ button,input{
         height: 100%;
     }
 }
-.hotGoodsItem>div.hotGoodsInfos {
+.hotGoodsItem>div.hotGoodsInfos{
     flex: 1;
     padding: .2rem 0;
     p{
@@ -182,14 +182,14 @@ button,input{
         align-items: center;
         margin: 0;
     }
-    .hotGoodsName {
+    .hotGoodsName{
         font-size: .16rem;
     }
     .hotGoodsInfo {
         color: #a9a9a9;
         font-size: .13rem;
     }
-    .hotGoodsPrice {
+    .hotGoodsPrice{
         color: #8b0000;
         font-size: .17rem;
     }
@@ -273,8 +273,11 @@ button,input{
     padding-top:0.5rem;
     img{
        width: 100%;
-        height: auto;
+        height: 100%;
         display: block; 
+    }
+    p{
+        margin: 0;
     }
 }
 //精选留言
@@ -441,4 +444,358 @@ button,input{
         color: grey;
     }
 }
-
+//模糊搜索
+.searchPage{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    box-shadow: 0 0.04rem 0.08rem 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
+}
+.searchInputWrap {
+    width: 100%;
+    height: 0.4rem;
+    padding: 0.05rem 0;
+    background: #fff;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .goback{
+        padding: 0 .1rem;
+        i{
+            font-size: 0.2rem;
+        }
+    }
+    .icon {
+        background: #f5f5f9;
+        width: .32rem;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: grey;
+        font-size: .64rem;
+        margin: 0;
+    }
+    .searchInput {
+        flex: 1;
+        height: 100%;
+        background: #f5f5f9;
+        border: none;
+        font-size: .15rem;
+        border-radius: 0;
+        padding: 0;
+    }
+    .cancelSearch{
+        padding: 0 .1rem;
+    }
+}
+.searchItemWrap:last-child {
+    margin-top: 0.1rem;
+}
+.searchItemWrap {
+    height: auto;
+    margin-top: 0.51rem;
+    padding: 0 .1rem .1rem;
+    background: #fff;
+    .title {
+        width: 100%;
+        height: .3rem;
+        font-size: .16rem;
+        line-height: .3rem;
+        i {
+            font-size: .2rem;
+            float: right;
+        }
+    }
+}
+.listWrap {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    .listItem {
+        display: inline-block;
+        // white-space: nowrap;//规定段落中的文本不进行换行：
+        //cursor：pointer;//设定鼠标的形状为一只伸出食指的手，这也是绝大多数浏览器里面鼠标停留在网页链接上方时候
+        background-color: #fff;
+        border: 1px solid #dcdfe6;
+        color: #606266;
+        text-align: center;
+        box-sizing: border-box;
+        outline: none;
+        font-weight: 500;
+        padding: 0.06rem;
+        font-size: .15rem;
+        border-radius: .08rem;
+        margin: .03rem;
+    }
+}
+//我的页面
+.minePage{
+    padding-bottom: 0.5rem;
+}
+.minePage .userMsgWrap {
+    height: 1rem;
+    background:peachpuff;
+    background-size: 100%;
+    padding: .3rem .2rem;
+    display: flex;
+    .userLogo {
+        width: 0.8rem;
+        background:peru;
+        background-size: 100%;
+        height: 0.8rem;
+        border-radius: 50%;
+    }
+    .userMsgs {
+        flex: 1;
+        padding: 0 .1rem;
+        height: 100%;
+        p{
+            height:40%;
+            display: flex;
+            align-items: center;
+            color: #fff;
+            margin: 0;
+        }
+    }
+}
+.minePage .userPower {
+    display: flex;
+    flex-wrap: wrap;
+    div {
+        width: 33.05%;
+        height: 1.5rem;
+        background: #fff;
+        border: .5px solid #dcdcdc;
+        i {
+            display: block;
+            padding-top: .3rem;
+            padding-bottom: .1rem;
+            text-align: center;
+            font-size: .3rem;
+            color: #9e9e9e;
+        }
+        p{
+            text-align: center;
+            font-size: .16rem;
+        }
+        
+    }
+    .myactive{
+        color: rgb(33, 150, 243);
+        i{
+            color: rgb(33, 150, 243);
+        }
+    }
+}
+.minePage .loginOut {
+    height: 0.5rem;
+    width: 100%;
+    margin: .1rem 0;
+    background: #fff;
+    text-align: center;
+    line-height: 0.5rem;
+}
+//收藏页面
+.CollectGoodsWrap{
+    width: 95%;
+    margin: auto;
+    min-height: 100%;
+    margin-top: 0.5rem;
+}
+.CollectGoodsItem{
+    height: 1rem;
+    position: relative;
+    padding: .08rem 0;
+    display: flex;
+    .CollectGoodsImgs{
+        width: auto;
+        height: 100%;
+    }
+}
+.CollectGoodsItem>div.CollectGoodsInfos {
+    flex: 1;
+    padding: .2rem 0;
+    p{
+        height:30%;
+        display: flex;
+        align-items: center;
+        margin: 0;
+    }
+    .CollectGoodsName {
+        font-size: .16rem;
+    }
+    .CollectGoodsInfo {
+        color: #a9a9a9;
+        font-size: .13rem;
+    }
+    .CollectGoodsPrice {
+        color: #8b0000;
+        font-size: .17rem;
+    }
+}
+.Swipreimg{
+    margin-top: .5rem;
+}
+//商品详情
+.serviceList {
+    height: .4rem;
+    background: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    li {
+        flex: 1 1;
+        color: #666;
+        font-size: .13rem;
+        text-align: center;
+        span {
+            color: red;
+            margin-right: .1rem;
+            font-size: .2rem;
+        }
+    }
+}
+.goodsMsgWrap {
+    padding: .05rem;
+    background: #fff;
+    .goodsNameTitle {
+        font-size: .2rem;
+        text-align: center;
+        padding-bottom: .1rem;
+    }
+    .goodsNameSubTitle {
+        font-size: .17rem;
+        color: #444;
+        text-align: center;
+        padding-bottom: .05rem;
+    }
+    .goodsPriceTitle {
+        font-size: .2rem;
+        color: red;
+        text-align: center;
+        line-height: .5rem;
+    }
+}
+//商品参数
+.goodsAttribute {
+    margin-top: .1rem;
+    padding:.1rem;
+    background: #fff;
+}
+.goodsAttributeLine {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #2196f3;
+    padding: .1rem 0;
+}
+.goodsAttributeList{
+    .goodsAttributeItem {
+        display: flex;
+        align-items: center;
+        line-height: .4rem;
+        background: #dcdfe6;
+        margin-top: .05rem;
+        .attributeLabel {
+            width: 1rem;
+            color: grey;
+            padding: 0 .1rem;
+            font-size: .18rem;
+            text-align: center;
+        }
+        .attributeContent {
+            flex: 1;
+            font-size: .15rem;
+            line-height: .3rem;
+            padding: 0 .05rem;
+        }
+    }
+}
+//常见问题
+.goodsAttribute {
+    margin-top: .1rem;
+    padding: .1rem;
+    background: #fff;
+    .goodsAttributeLine {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #2196f3;
+        padding: .1rem 0;
+    }
+    .problemWrap {
+        margin-bottom: .1rem;
+        .problemLabel {
+            font-size: .15rem;
+            line-height: .3rem;
+            span {
+                color: red;
+                margin-right: .1rem;
+            }
+        }
+        .problemContent {
+            font-size: .13rem;
+            line-height: .2rem;
+            color: grey;
+        }
+    }
+}
+//底部
+.goodsPageDo {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: .5rem;
+    background: #fff;
+    box-shadow: 0 -3px 10px 0 rgba(0,0,0,.2);
+    display: flex;
+}
+.isLike,.Like {
+    width: 20%;
+    height: 100%;
+    line-height: .5rem;
+    font-size: .3rem;
+    text-align: center;
+    font-weight: bolder;
+}
+.Like{
+    color: yellow;
+}
+.cartNum {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #2196f3;
+    i {
+        font-size: .3rem;
+        position: relative;
+    }
+    span {
+        position: absolute;
+        font-size: .16rem;
+        right: -.05rem;
+        top: -.01rem;
+        color: red;
+        font-weight: bolder;
+    }
+}
+.addCart,.payGoods {
+    width: 30%;
+    height: 100%;
+    line-height: .5rem;
+    text-align: center;
+    font-size: .17rem;
+    color: #fff;
+}
+.addCart {
+    background: linear-gradient(90deg,#ff9500,#ff5e3a);
+}
+.payGoods {
+    background: linear-gradient(90deg,#1d62f0,#19d5fd);
+}

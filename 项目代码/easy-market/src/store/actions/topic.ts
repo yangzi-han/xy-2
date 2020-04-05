@@ -26,7 +26,7 @@ export let TopicDetailAction = (id:string)=>{
 export let TopicRelatedAction=(id:string)=>{
     return async (dispatch:Function)=>{
         let data = await getTopicRelated(id);
-        console.log('TopicRelatedAction...', data);
+        // console.log('TopicRelatedAction...', data);
         dispatch({
             type: 'GET_TOPIC_RELATED',
             payload: data

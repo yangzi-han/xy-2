@@ -7,6 +7,9 @@ import MainPage from '../views/MainPage'
 import GoodsDetailPage from '../views/GoodsDetailPage'
 import TopicDetailPage from '../views/TopicDetailPage'
 import ClassifyGoods from '../views/ClassifyPage'
+import SearchPage from '../views/SearchPage'
+import CollectPage from '../views/FavorPage'
+import AddressPage from '../views/AddressPage'
 
 // 引入二级路由
 import IndexPage from '../views/main/IndexPage'
@@ -23,7 +26,7 @@ let config = {
         path: '/favor',
         component: FavorPage
     }, {
-        path: '/goodsDetail',
+        path: '/goodsDetail/:id',
         component: GoodsDetailPage
     },{
         path:'/topicDetail/:id',
@@ -31,6 +34,15 @@ let config = {
     },{
         path:'/categorys/:id',
         component:ClassifyGoods
+    },{
+        path:'/goodsSearch',
+        component:SearchPage
+    },{
+        path:'/collect',
+        component:CollectPage
+    },{
+        path:'/address',
+        component:AddressPage
     },{
         path: '/main',
         component: MainPage,

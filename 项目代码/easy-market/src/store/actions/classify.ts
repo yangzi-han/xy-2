@@ -1,4 +1,6 @@
-import {getClassifyList,getClassifyCurrent,getClassifyCategory,getClassifyGoodList} from '../../api'
+import {getClassifyList,getClassifyCurrent,
+    getClassifyCategory,getClassifyGoodList,
+    GoodsDetailList,getGoodsRelated,addCollectList} from '../../api'
 
 export let GetClassifyAction = ()=>{
     return async (dispatch:Function)=>{
@@ -42,5 +44,31 @@ export let getClassifyGoodListAction=(id:string)=>{
             type: 'GET_CLASSIFY_GOODSLIST',
             payload: data.data
         })
+    }
+}
+export let GoodsDetailListAction=(id:string)=>{
+    return async (dispatch:Function)=>{
+        let data=await GoodsDetailList(id)
+        // console.log('GoodsDetailListAction...',data)
+        dispatch({
+            type:'GET_GOODSDETAIL_LIST',
+            payload:data
+        })
+    }
+}
+export let GoodsRelatedAction=(id:string)=>{
+    return async (dispatch:Function)=>{
+        let data = await getGoodsRelated(id);
+        console.log('GoodsRelatedAction...', data);
+        dispatch({
+            type: 'GET_GOODS_RELATED',
+            payload: data
+        })
+    }
+}
+export let AddCollectListAction=(valueId:string)=>{
+    return async (dispatch:Function)=>{
+        let data=await addCollectList(valueId)
+        console.log('DeleteCollectListAction...', data);
     }
 }

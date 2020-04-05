@@ -20,7 +20,7 @@ interface StateTypes{
 }
 interface DispatchType{
     getClassifyCategory:Function,
-    getClassifyGoodList:Function
+    getClassifyGoodList:Function, 
 }
 let TypeGoodsPage: React.FC<RouteComponentProps<{id:string}>&DispatchType&StateTypes> = props=>{
     let [id]=useState(props.match.params.id)
@@ -34,10 +34,11 @@ let TypeGoodsPage: React.FC<RouteComponentProps<{id:string}>&DispatchType&StateT
         props.getClassifyGoodList(activeIndex)
         props.getClassifyCategory(activeIndex)
     }
+    
     return <div className={styles.classifyboxs}>
         <div className={styles.classifypageheader}>
             <div className={styles.classifyheader}>
-                <p onClick={props.history.goBack}>返回</p>
+                <p onClick={props.history.goBack}><i className="iconfont icon-icon-test"></i></p>
                 <p>奇趣分类</p>
                 <p></p>
             </div>
@@ -54,7 +55,9 @@ let TypeGoodsPage: React.FC<RouteComponentProps<{id:string}>&DispatchType&StateT
             <p>{props.currentCategorylist.name}</p>
             <p>{props.currentCategorylist.front_name}</p>
         </div>
-        <CateGoryBox goodsList={props.ClassifyGoodList} name={props.currentCategorylist.name}/>
+        <CateGoryBox goodsList={props.ClassifyGoodList} 
+        name={props.currentCategorylist.name} 
+        />
     </div>;
 }
 

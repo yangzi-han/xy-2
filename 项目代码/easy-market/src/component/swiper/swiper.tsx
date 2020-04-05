@@ -3,6 +3,7 @@ import { Carousel, WingBlank } from 'antd-mobile';
 interface PropsType{
     banner: Array<{
         image_url: string,
+        img_url:string,
         [name:string]: string|number
     }>,
 }
@@ -10,7 +11,7 @@ interface PropsType{
 class Swiper extends React.Component<PropsType> {
   state = {
     data: [],
-    imgHeight: 176,
+    imgHeight:'100%',
   }
 //   componentDidMount() {
 //     // simulate img loading
@@ -36,7 +37,7 @@ class Swiper extends React.Component<PropsType> {
               style={{ display: 'inline-block', width: '100%', height: this.state.imgHeight }}
             >
               <img
-                src={item.image_url}
+                src={item.image_url?item.image_url:item.img_url}
                 alt=""
                 style={{ width: '100%', verticalAlign: 'top' }}
                 onLoad={() => {

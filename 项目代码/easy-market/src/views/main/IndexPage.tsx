@@ -9,6 +9,7 @@ import CateGoryBox from '../../component/cateGoryBox/index'
 interface StateType{
     banner: Array<{
         image_url: string,
+        img_url: string,
         [name:string]: string|number
     }>,
     channel: Array<{
@@ -37,10 +38,11 @@ interface StateType{
             [name:string]: string|number
         }>,
         [name:string]: string|number|Array<{}>
-    }>
+    }>,
+    
 }
 interface DispatchType{
-    getBanner: Function
+    getBanner: Function,
 }
 
 let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = props=>{
@@ -48,13 +50,19 @@ let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = 
     useEffect(()=>{
         props.getBanner();
     }, []);
-
+    let goclassify=(id:any)=>{
+        // console.log(id)
+        props.history.push('/categorys/'+id)
+    }
+    
     return <div className={styles.homewrap}>
         <Swiper banner={props.banner}/>
         <div className={styles.channelWrap}>
             {
                 props.channel.map((item)=>{
-                    return <div key={item.id} className={styles.channelItem}>
+                    return <div key={item.id} onClick={()=>{
+                        goclassify(item.id)
+                    }} className={styles.channelItem}>
                         <img src={item.icon_url} alt=""/>
                         <p>{item.name}</p>
                     </div>
@@ -115,7 +123,9 @@ let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = 
             props.categoryList.map((item,index)=>{
                 return <div key={index} className={styles.categorywary}>
                     <div className={styles.cateGoryName}>{item.name}</div>
-                    <CateGoryBox goodsList={item.goodsList} name={item.name}/>
+                    <CateGoryBox goodsList={item.goodsList} 
+                    name={item.name}
+                   />
                     
                 </div>    
             })

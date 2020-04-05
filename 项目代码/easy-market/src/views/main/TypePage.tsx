@@ -32,9 +32,12 @@ let TypePage: React.FC<DispatchType&StateTypes&RouteComponentProps> = props=>{
         console.log(id)
         props.history.push('/categorys/'+id)
     }
+    let GoSearch=()=>{
+        props.history.push('/goodsSearch')
+    }
     return <div>
         <div className={styles.searchWrap}>
-            <div className={styles.searchInput}>
+            <div className={styles.searchInput} onClick={()=>{GoSearch()}}>
                 搜索商品，共239款好物
             </div>
         </div>
