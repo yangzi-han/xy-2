@@ -14,7 +14,8 @@ const initVal={
         {name:'客服咨询',icon:'icon-kefu',flage:false},
         {name:'账户安全',icon:'icon-decryption',flage:false}
     ],
-    CollectList:[]
+    CollectList:[],
+    AddressList:[]
 }
 function SearchReducer(state:any,action:ActionType){
     switch (action.type){
@@ -22,6 +23,8 @@ function SearchReducer(state:any,action:ActionType){
             return {...state}
         case 'GET_COLLECT_LIST':
             return {...state,CollectList:action.payload}
+        case 'GET_ADDRESS_LIST':
+            return {...state,AddressList:action.payload}
         default:
             return state
     }

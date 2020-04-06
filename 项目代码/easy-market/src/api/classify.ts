@@ -36,3 +36,4 @@ export let addCollectList=(valueId:string)=>{
         typeId:0
     })
 }
+

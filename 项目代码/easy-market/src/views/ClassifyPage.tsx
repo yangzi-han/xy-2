@@ -30,7 +30,9 @@ let TypeGoodsPage: React.FC<RouteComponentProps<{id:string}>&DispatchType&StateT
         props.getClassifyGoodList(activeIndex)
     },[])
     let changeindex=(index:any)=>{
+        
         setactiveIndex(activeIndex=index)
+        console.log(activeIndex,index)
         props.getClassifyGoodList(activeIndex)
         props.getClassifyCategory(activeIndex)
     }

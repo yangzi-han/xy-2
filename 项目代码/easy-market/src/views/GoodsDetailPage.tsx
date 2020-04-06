@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {RouteComponentProps} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {Toast} from 'antd-mobile'
-import {GoodsDetailListAction,GoodsRelatedAction,AddCollectListAction} from '../store/actions/classify'
+import {GoodsDetailListAction,GoodsRelatedAction,AddCollectListAction,DeleteCollectListAction} from '../store/actions/classify'
 import styles from '../style/index.module.scss'
 import Swiper from '../component/swiper/swiper'
 import CateGoryBox from '../component/cateGoryBox/index'
@@ -33,7 +33,8 @@ interface StateTypes{
 interface DispatchType{
     GoodsDetailList:Function,
     GoodsRelated:Function,
-    AddCollectList:Function
+    AddCollectList:Function,
+    DeleteCollectList:Function
 }
 let GoodsDetailPage: React.FC<DispatchType&StateTypes&RouteComponentProps<{id:string}>> = props=>{
     let [isFlage,setisFlage]=useState(false)
@@ -42,9 +43,18 @@ let GoodsDetailPage: React.FC<DispatchType&StateTypes&RouteComponentProps<{id:st
         props.GoodsRelated(props.match.params.id)
     },[])
     let addfover=()=>{
-        props.AddCollectList(props.match.params.id)
-        setisFlage(isFlage=true)
-        Toast.success('收藏成功', 1);
+       
+        
+        if(isFlage===false){
+            setisFlage(isFlage=!isFlage)
+            props.AddCollectList(props.match.params.id)
+            Toast.success('收藏成功', 1);
+        }else if(isFlage===true){
+            setisFlage(isFlage=!isFlage)
+            props.DeleteCollectList(+props.match.params.id)
+            Toast.success('取消收藏', 1);
+        }
+        
     }
     return <div className={styles.goodsdetail}>
          <div className={styles.header}>
@@ -98,7 +108,7 @@ let GoodsDetailPage: React.FC<DispatchType&StateTypes&RouteComponentProps<{id:st
             />
         </div>
         <div className={styles.goodsPageDo}>
-            <div className={isFlage||props.userHasCollect?styles.Like:styles.isLike} onClick={()=>{addfover()}}>★</div>
+            <div className={isFlage||props.userHasCollect?styles.Like:styles.isLike}onClick={()=>{addfover()}}>★</div>
         <div className={styles.cartNum}><i className="iconfont icon-gouwuche"><span>{props.comment.count}</span></i></div>
             <div className={styles.addCart}>加入购物车</div><div className={styles.payGoods}>立即购买</div>
         </div>
@@ -118,6 +128,9 @@ const mapDisptachToProps = (dispatch: Function)=>{
         },
         AddCollectList:(valueId:string)=>{
             dispatch(AddCollectListAction(valueId))
+        },
+        DeleteCollectList:(valueId:number)=>{
+            dispatch(DeleteCollectListAction(valueId))
         }
     }
 }

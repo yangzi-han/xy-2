@@ -27,7 +27,6 @@ let TypePage: React.FC<DispatchType&StateTypes&RouteComponentProps> = props=>{
     useEffect(()=>{
         props.getClassifyList()
     },[])
-    
     let category=(id:any)=>{
         console.log(id)
         props.history.push('/categorys/'+id)

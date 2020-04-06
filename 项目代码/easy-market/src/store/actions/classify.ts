@@ -1,6 +1,6 @@
 import {getClassifyList,getClassifyCurrent,
     getClassifyCategory,getClassifyGoodList,
-    GoodsDetailList,getGoodsRelated,addCollectList} from '../../api'
+    GoodsDetailList,getGoodsRelated,addCollectList,DeleteCollectList} from '../../api'
 
 export let GetClassifyAction = ()=>{
     return async (dispatch:Function)=>{
@@ -69,6 +69,12 @@ export let GoodsRelatedAction=(id:string)=>{
 export let AddCollectListAction=(valueId:string)=>{
     return async (dispatch:Function)=>{
         let data=await addCollectList(valueId)
+        // console.log('DeleteCollectListAction...', data);
+    }
+}
+export let DeleteCollectListAction=(valueId:number)=>{
+    return async (dispatch:Function)=>{
+        let data=await DeleteCollectList(valueId)
         console.log('DeleteCollectListAction...', data);
     }
 }
