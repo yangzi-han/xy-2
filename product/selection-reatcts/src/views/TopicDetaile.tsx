@@ -36,7 +36,7 @@ let GoodsDetailPage: React.FC<RouteComponentProps & DetaileState & StateProps> =
     return <div className={styles.noTabPageContent}>
         <div className={styles.topicDetail}>
             <div className={styles.header}>
-                <div className={styles.left} onClick={goBack}>返回</div>
+                <div className={styles.left} onClick={goBack}>{'<'}</div>
                 <div className={styles.title}>{props.DetaileData.title}</div>
                 <div></div>
             </div>

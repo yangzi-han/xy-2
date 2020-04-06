@@ -8,12 +8,14 @@ import GoodsDetailPage from '../views/GoodsDetailPage'
 import MainPage from '../views/MainPage'
 import TopicDetaile from '../views/TopicDetaile'
 import Categorys from '../views/Categorys'
+import CollectPage from '../views/CollectPage'
 //二级
 import IndexPage from '../views/main/IndexPage'
 import TypePage from '../views/main/TypePage'
 import MyPage from '../views/main/MyPage'
 import CartPage from '../views/main/CartPage'
 import TopicPage from '../views/main/TopicPage'
+
 
 const config = {
     routes :[
@@ -27,8 +29,11 @@ const config = {
             path:'/favor',
             component:Favorpage
         },{
-            path:'/goodsDetail',
+            path:'/goodsDetail/:id',
             component:GoodsDetailPage
+        },{
+            path:'/collectpage',
+            component:CollectPage
         },{
             path:'/topicDetaile/:id',
             component:TopicDetaile

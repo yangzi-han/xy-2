@@ -438,16 +438,433 @@
         width: 100%;
         height: .5rem;
         background: #fff;
-        box-shadow: 0 0.04rem 0.08rem 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
         z-index: 10;
+        border-bottom: none;
         .left{
             width: .3rem;
+            font-size: .20rem;
         }
         .title{
             font-size: .16rem;
         }
     }
     .tabWrap{
+       height: .4rem;
+       line-height: .4rem;
+       white-space: nowrap;
+       overflow-y: hidden;
+       overflow-x: scroll;
+       display: flex;
+       border-top: 0.01rem solid #eee;
+       text-align: center;
+       background: #fff;
+    }
+    ::-webkit-scrollbar{display: none;}//去掉滚动条
+    li{
+        text-align: center;
+        padding: 0 0.1rem;
+    }
+    .active{
+        color: skyblue;
+        border-bottom:0.02rem solid skyblue ;
+    }
+    .categoryDetail{
+        padding: .1rem 0;
+        margin-top: .04rem;
+        .title{
+            height: .3rem;
+            line-height: .3rem;
+            text-align: center;
+            font-size: .16rem;
+        }
+        .front_name{
+            color: grey;
+            height: .25rem;
+            line-height: .25rem;
+            font-size: .14rem;
+            text-align: center;
+        }
+    }
+}
+//三级分类详情
+.noTabPageContent {
+    padding-top: .502rem;
+    min-height: 100%;
+    .goodsPage {
+        padding-bottom: .5rem;
+    }
+    .header, .header>div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .header {
+        display: flex;
+        justify-content: space-between;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: .5rem;
+        background: #fff;
+        box-shadow: 0 0.02rem 0.04rem 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
+        z-index: 10;
+    }
+    .serviceList{
+        height: .35rem;
+        background: #f4f4f4;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        list-style: none;
+        p {
+            color: #666;
+            font-size: .12rem;
+            text-align: center;
+            span {
+                color: red;
+                font-size: .15rem;
+            }
+        }
+    }
+    .goodsMsgWrap {
+        padding: .2rem;
+        background: #fff;
+        .goodsNameTitle{
+            font-size: .2rem;
+            text-align: center;
+            padding-bottom: .1rem;
+        }
+        .goodsNameSubTitle{
+            font-size: .15rem;
+            color: #444;
+            text-align: center;
+            padding-bottom: .1rem;
+        }
+        .goodsPriceTitle{
+            font-size: .2rem;
+            color: red;
+            text-align: center;
+            line-height: .5rem;
+        }
+    }
+    .goodsSize{
+        margin-top: .01rem;
+        height: .5rem;
+        padding: 0 .2rem;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .sha{
+            flex: 1 1;
+            text-align: left;
+            color: #2196f3;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        .money{
+            width: auto;
+            padding: 0 .1rem;
+            text-align: right;
+            color: red;
+            font-weight: bolder;
+        }
+        .cla{
+            width: auto;
+            padding: 0 .1rem;
+            text-align: right;
+        }
+    }
+    .goodsAttribute{
+        margin-top: .1rem;
+        padding: .2rem;
+        background: #fff;
+        .goodsAttributeLine{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #2196f3;
+            padding: .05rem 0;
+        }
+        .goodsAttributeList{
+            .goodsAttributeItem{
+                display: flex;
+                align-items: center;
+                line-height: .4rem;
+                background: #dcdfe6;
+                margin-top: .05rem;
+                .attributeLabel{
+                    width: 1rem;
+                    color: grey;
+                    padding: 0 .05rem;
+                    font-size: .16rem;
+                    text-align: center;
+                }
+                .attributeContent{
+                    flex: 1 1;
+                    font-size: .15rem;
+                    line-height: .3rem;
+                    padding: 0 .05rem;
+                }
+            }
+        }
+    }
+    .topicDetailImg{
+        p {
+            display: block;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    }
+    .goodsAttribute{
+        margin-top: .1rem;
+        padding: .2rem;
+        background: #fff;
+        .goodsAttributeLine {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #2196f3;
+            padding: .05rem 0;
+        }
+        .problemWrap {
+            margin-bottom: .1rem;
+            .problemLabel {
+                span {
+                    color: red;
+                    margin-right: .1rem;
+                }
+                font-size: .16rem;
+                line-height: .3rem;
+            }
+            .problemContent {
+                font-size: .15rem;
+                line-height: .25rem;
+                color: grey;
+            }
+        }
         
+    }
+    .goodsAttribute{
+        margin-top: .1rem;
+        padding: .1rem;
+        background: #fff;
+        .goodsAttributeLine {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #2196f3;
+            padding: .1rem 0;
+        }
+    }
+    .goodsList{
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        .goodsItem{
+            width: 48%;
+            background: #fff;
+            height: auto;
+            padding: .037rem;
+            position: relative;
+            .goodsItemImg{
+                width: 100%;
+                min-height: 1rem;
+                height: auto;
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+            .goodsItemName{
+                text-align: center;
+                font-size: .14rem;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            .goodsItemPrice{
+                text-align: center;
+                font-size: .14rem;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                color: red;
+            }
+        }
+    }
+    .goodsPageDo{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: .49rem;
+        background: #fff;
+        box-shadow: 0 -3px 10px 0 rgba(0,0,0,.2);
+        display: flex;
+        .isLike {
+            width: 20%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #2196f3;
+            i{
+                font-size: .2rem;
+            }
+        }
+        .cartNum {
+            width: 20%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #2196f3;
+            i{
+                font-size: .2rem;
+            }
+        }
+        .addCart{
+            width: 30%;
+            height: 100%;
+            line-height: .49rem;
+            text-align: center;
+            font-size: .15rem;
+            color: #fff;
+            background: linear-gradient(90deg,#ff9500,#ff5e3a);
+        }
+        .payGoods{
+            width: 30%;
+            height: 100%;
+            line-height: .49rem;
+            text-align: center;
+            font-size: .15rem;
+            color: #fff;
+            background: linear-gradient(90deg,#1d62f0,#19d5fd);
+        }    
+    }
+}
+
+//我的页面
+.mineHeader{
+    width:100%;
+    height: 150px;
+    background: #ceb582;
+    display: flex;
+    .mineLeft{
+       flex:2;
+       .mine_img{
+          width: 80px;
+          height: 80px;
+          border-radius: 50px;
+          margin:auto;
+          margin-top: 0.7rem;
+          background: #ccc;
+          img{
+              width:100%;
+              height: 100%;
+              border-radius: 50px;
+          }
+       }
+    }
+    .mineRight{
+        flex:5;
+        .mineRight_num{
+            margin-top: 1rem;
+        }
+        .mineRight_name{
+            margin-top: 0.2rem;
+        }
+     }
+}
+.mineMain{
+    width:100%;
+    display: flex;
+    flex-wrap: wrap;
+    div{
+        width:1.23rem;
+        height: 1.19rem;
+        border:0.01rem solid #ccc;
+        text-align: center;
+        .mine_Img{
+         span{
+             font-size: 0.38rem;
+             color:skyblue;
+         }
+         margin-top: 0.28rem;
+        }
+        .mine_clooect{
+            color:skyblue;
+            margin-top: 0.2rem;
+        }
+    }
+}
+.mineFooter{
+    width:100%;
+    height:1rem;
+    margin:0.2rem 0;
+    background: #fff;
+    text-align: center;
+    line-height: 1rem;
+}
+.btn{
+    border: 1px solid #000;
+    display: block;
+    width: 80px;
+    height: 80px;
+    left: 17px;
+    border-radius: 50px;
+    opacity: 0;
+    position: absolute;
+    top: 65px;
+    z-index: 9999;
+}
+//收藏页面
+.collect_header{
+    width:100%;
+    height: .5rem;
+    background: #fff;
+    text-align: center;
+    line-height: .5rem;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: .02rem solid #ccc;
+}
+.collect_context{
+    width:100%;
+    .collect_context_item{
+        width:100%;
+        height: 1.25rem;
+        background: #fff;
+        display: flex;
+        .collect_context_img{
+            flex:3;
+            img{
+                width:100%;
+                height: 1.25rem;
+            }
+        }
+        .collect_context_text{
+            flex:5;
+            p{
+                width:100%;
+                height: 0.35rem;
+                line-height: 0.35rem;
+                margin-top: 0.5rem;
+            }
+            .collect_context_price{
+                color:red;
+            }
+        }
     }
 }

@@ -4,14 +4,14 @@ import {getToken} from './index'
 
 const axios = Axios.create({
     baseURL: 'http://127.0.0.1:8888',
-    timeout: 1000
+    timeout: 2000
 });
 
 // 添加一个请求拦截器
 axios.interceptors.request.use(function (config) {
     // 在发送请求之前携带headers头
     if(getToken()){
-        config.headers['token'] = getToken()
+        config.headers['x-nideshop-token'] = getToken()
     }
     return config;
 }, function (error) {

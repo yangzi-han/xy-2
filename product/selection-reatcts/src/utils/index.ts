@@ -1,6 +1,6 @@
 import Cookie from 'js-cookie'
 
-const key = 'token';
+const key = 'x-nideshop-token';
 export let setToken = (val:string)=>{
     Cookie.set(key, val)
 }

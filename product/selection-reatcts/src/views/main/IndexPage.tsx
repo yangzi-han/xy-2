@@ -10,6 +10,7 @@ import CateGoryBox from '../../components/Contributor/contributor'
 interface StateType{
     banner: Array<{
         image_url: string,
+        img_url:string,
         [name:string]: string|number
     }>,
     topicList: Array<{
@@ -49,7 +50,6 @@ let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = 
     useEffect(()=>{
         props.getBanner()
     }, []);
-    console.log(props.banner,props.topicList)
     return <>
         <Banner banner = {props.banner} />
         <div className={styles.channelWrap}>
@@ -118,7 +118,6 @@ let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = 
                 return <div key={index} className={styles.categorywary}>
                     <div className={styles.cateGoryName}>{item.name}</div>
                     <CateGoryBox goodsList={item.goodsList} name={item.name}/>
-                    
                 </div>    
             }):''
         }

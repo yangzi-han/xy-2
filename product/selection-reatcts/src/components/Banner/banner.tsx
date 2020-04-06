@@ -1,9 +1,9 @@
 import React from 'react';
 import { Carousel, WingBlank } from 'antd-mobile';
-import styles from './index.module.scss'
 interface PropsType{
     banner: Array<{
         image_url: string,
+        img_url: string,
         [name:string]: string|number,
     }>,
 }
@@ -37,7 +37,7 @@ class Banner extends React.Component<PropsType> {
               style={{ display: 'inline-block', width: '100%', height: this.state.imgHeight }}
             >
               <img
-                src={item.image_url}
+                src={item.image_url?item.image_url:item.img_url}
                 alt=""
                 style={{ width: '100%', verticalAlign: 'top' }}
                 onLoad={() => {

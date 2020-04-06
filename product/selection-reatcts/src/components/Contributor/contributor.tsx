@@ -1,27 +1,29 @@
 import React from 'react'
-import {RouteComponentProps} from 'react-router'
 import styles from './index.module.scss'
+import {RouteComponentProps,withRouter} from 'react-router'
 interface PropsType{  
         goodsList:Array<{
             list_pic_url:string,
             [name:string]: string|number
         }>,
-        [name:string]: string|number|Array<{}>
+        [name:string]: string|number|Array<{}>,
+        
 }
 
-
-class CateGroyBox extends React.Component<PropsType> {
+class CateGroyBox extends React.Component<PropsType & RouteComponentProps> {
+    toDetaile = (id:any) =>{
+        this.props.history.push(`/goodsDetail/${id}`)
+    }
     render() {
     return <div className={styles.cateGoryGoodsWrap}>
                 {
                     this.props.goodsList.map(item=>{
-                        return <div className={styles.goodsItem} key={item.id}>
+                        return <div className={styles.goodsItem} key={item.id} onClick={()=>this.toDetaile(item.id)}>
                             <img src={item.list_pic_url} alt=""/>
                             <div className={styles.goodsItemName}>{item.name}</div>
                             <div className={styles.goodsItemPrice}>￥{item.retail_price}</div>
                         </div>
                     })
-                   
                 }
                 {
                     this.props.goodsList.length!=0?<div className={styles.categoryMoreGoods}>
@@ -35,4 +37,4 @@ class CateGroyBox extends React.Component<PropsType> {
 }
 
 
-export default CateGroyBox
+export default withRouter(CateGroyBox) 
