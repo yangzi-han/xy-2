@@ -1,12 +1,16 @@
 //商品详情
-import React,{useEffect} from 'react'
+import React,{useEffect,useState} from 'react'
 import {connect} from 'react-redux'
 import {RouteComponentProps} from 'react-router'
 import {GoodsDetailAction} from '../store/actions/goodsdetail'
 import { Carousel, WingBlank } from 'antd-mobile';
+import {DeteltAction} from '../store/actions/delect'
 import styles from '../scss/detail.module.scss'
+import { Toast } from 'antd-mobile';
+
 interface DispatchType{
     goodlist:Function
+    deletes:Function
 }
 interface ActionTYPE{
     goodsdetaillist:{
@@ -47,6 +51,7 @@ interface ActionTYPE{
 }
 let GoodsDetail: React.FC<RouteComponentProps<{id:string}>&DispatchType&ActionTYPE> = props=>{
    let id=props.history.location.pathname.split("/")[2]
+   let [flag,setFlag]=useState(false)
     useEffect(()=>{
         props.goodlist(id)
         window.scrollTo(0,0)
@@ -54,6 +59,15 @@ let GoodsDetail: React.FC<RouteComponentProps<{id:string}>&DispatchType&ActionTY
     },[])
     let back=()=>{
         props.history.go(-1)
+    }
+    let collect=(id:string)=>{
+        setFlag(!flag?true:false)
+        if(!flag){
+            props.deletes("0",id)
+            Toast.info("收藏成功")
+        }else{
+            props.deletes("",id)
+        }
     }
     return <div className={styles.goodsDetailPage}>
     <div className={styles.goodHeader}>
@@ -132,7 +146,7 @@ let GoodsDetail: React.FC<RouteComponentProps<{id:string}>&DispatchType&ActionTY
     </div>
 
     <div className={styles.goodsPageDo}>
-        <div className={styles.isLike}>☆</div>
+        <div className={[`${styles.isLike}`,`${flag?styles.active:""}`].join(" ")} onClick={()=>collect(`${props.goodsdetaillist.info.id}`)}>☆</div>
         <div className={styles.cartNum}> <i className="iconfont icon-gouwuche" /> </div>
         <div className={styles.addCart}>加入购物车</div>
         <div className={styles.payGoods}>立即购买</div>
@@ -150,6 +164,9 @@ let mapDispatchToProps=(dispatch:Function)=>{
     return {
         goodlist:(id:string)=>{
             dispatch(GoodsDetailAction(id))
+        },
+        deletes:(id:string,valueid:string)=>{
+            dispatch(DeteltAction(id,valueid))
         }
     }
 

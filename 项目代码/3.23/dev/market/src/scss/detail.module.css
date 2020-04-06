@@ -193,3 +193,7 @@
   position: fixed;
   left: .2rem;
 }
+
+.active {
+  color: red;
+}

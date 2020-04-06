@@ -57,6 +57,7 @@
     ]
   },
   "devDependencies": {
-    "node-sass": "^4.13.1"
+    "node-sass": "^4.13.1",
+    "rc-form": "^2.4.11"
   }
 }

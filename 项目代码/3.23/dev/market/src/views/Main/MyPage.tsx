@@ -7,16 +7,22 @@ let MyPage: React.FC<RouteComponentProps> = props => {
         removeToken()
         props.history.go(0)
     }
+    let collect = ()=>{
+        props.history.push("/collect")
+    }
+    let address = ()=>{
+        props.history.push("/address")
+    }
     return <>
         <div className={styles.mytop}></div>
         <div className={styles.mycenter}>
-            <div className={[`${styles.mycenteritem}`,`${styles.active}`].join(' ')}>
+            <div className={[`${styles.mycenteritem}`,`${styles.active}`].join(' ')} onClick={()=>collect()}>
                 <div className={styles.icon}>
                     <span className='iconfont icon-wodeshoucang_l'></span>
                 </div>
                 <p>我的收藏</p>
             </div>
-            <div className={[`${styles.mycenteritem}`,`${styles.active}`].join(' ')}>
+            <div className={[`${styles.mycenteritem}`,`${styles.active}`].join(' ')}  onClick={()=>address()}>
                 <div className={styles.icon}>
                     <span className='iconfont icon-dizhiguanli'></span>
                 </div>

@@ -16,6 +16,9 @@ import Search from '../views/search'
 import ChannerDetail from '../views/channeldetail'
 import Manufacturer from '../views/manufacturer'
 import Gooddetail from '../views/GoodsDetail'
+import Collect from '../views/collect'
+import Address from '../views/AddressPage'
+import ADDaddress from '../views/ADDaddress'
 //引入二级路由
 
 import IndexPage from '../views/Main/IndexPage'
@@ -74,6 +77,18 @@ let config={
         {
             path:"/goodsdetail/:id",
             component:Gooddetail
+        },
+        {
+            path:"/collect",
+            component:Collect
+        },
+        {
+            path:"/address",
+            component:Address
+        },
+        {
+            path:"/ADDaddress",
+            component:ADDaddress
         },
         {
             path:"/main",

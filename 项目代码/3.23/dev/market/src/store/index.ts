@@ -17,6 +17,10 @@ import searchhot from './reducers/searchhot'
 import channeldetail from './reducers/channel'
 import manufacturer from './reducers/manufacturer'
 import goodsdetail from './reducers/goodsdetail'
+import collect from './reducers/collect'
+import deletes from './reducers/detelet'
+import address from './reducers/address'
+import ADDaddress from './reducers/ADDaddress'
 
 // 连接子reducer
 let reducers = combineReducers({
@@ -33,7 +37,11 @@ let reducers = combineReducers({
     searchhot,
     channeldetail,
     manufacturer,
-    goodsdetail
+    goodsdetail,
+    collect,
+    deletes,
+    address,
+    ADDaddress
 
 })
 
