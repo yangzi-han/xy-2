@@ -25,7 +25,7 @@ let TypeDetail:React.FC<DispathProps&RouteComponentProps>=props=>{
   let [id]=useState(props.match.params)
   let [flag,setFlag]=useState(0)
   useEffect(()=>{
-     props.getList()
+    
      props.getNav(id)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
@@ -35,6 +35,7 @@ let TypeDetail:React.FC<DispathProps&RouteComponentProps>=props=>{
  }
  let Index=(index:any,id:number)=>{
    setFlag(flag=index)
+   props.getList(id)
 }
   return <>
       <div className={styles.headerBig}>
@@ -95,8 +96,8 @@ const mapStateToProps=(state:any)=>{
 }
 const mapDispatchToProps=(dispatch:Function)=>{
   return {
-      getList:()=>{
-         dispatch(listAction());
+      getList:(categoryId:any)=>{
+         dispatch(listAction(categoryId));
       },
       getNav:(id:any)=>{
          dispatch(navAction(id.id))

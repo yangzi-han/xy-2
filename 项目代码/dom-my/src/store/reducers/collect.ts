@@ -1,6 +1,6 @@
 import {ActionType} from '../../utils/interface'
 const initVal = {
-   
+   collectData:[]
 }
 
 function collectReducer(state: any, action: ActionType){
@@ -9,8 +9,10 @@ function collectReducer(state: any, action: ActionType){
             // state.homeDetail=action.payload
             return {...state,...action.payload}
         case 'GET_COLLECTLIST':
-            // state.goodsDetail=action.payload
+            state.collectData=action.payload
             return {...state,...action.payload}
+        case 'GET_COLLECTDELET':
+            return {...state,...action.payload}    
         default:
             return state;
     }

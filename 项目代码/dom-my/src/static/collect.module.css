@@ -6,4 +6,40 @@
   line-height: 1rem;
   display: flex;
   justify-content: space-around;
+  border-bottom: 2px solid #ccc;
+}
+
+.collect_context {
+  width: 100%;
+}
+
+.collect_context .collect_context_item {
+  width: 100%;
+  height: 125px;
+  background: #fff;
+  display: flex;
+}
+
+.collect_context .collect_context_item .collect_context_img {
+  flex: 3;
+}
+
+.collect_context .collect_context_item .collect_context_img img {
+  width: 100%;
+  height: 125px;
+}
+
+.collect_context .collect_context_item .collect_context_text {
+  flex: 5;
+}
+
+.collect_context .collect_context_item .collect_context_text p {
+  width: 100%;
+  height: 35px;
+  line-height: 35px;
+  margin-top: 5px;
+}
+
+.collect_context .collect_context_item .collect_context_text .collect_context_price {
+  color: red;
 }

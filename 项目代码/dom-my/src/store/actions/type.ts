@@ -29,9 +29,9 @@ export let navAction = (id:string)=>{
             })
     }
 }
-export let listAction = ()=>{
+export let listAction = (categoryId:string)=>{
     return async (dispatch:Function)=>{
-        let data = await getList();
+        let data = await getList(categoryId);
             console.log('type...', data);
             dispatch({
                 type: 'GET_LIST',

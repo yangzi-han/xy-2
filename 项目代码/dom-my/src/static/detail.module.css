@@ -304,6 +304,14 @@
   margin-left: 0.4rem;
 }
 
+.goods_detail_num .num_Img {
+  width: 100%;
+}
+
+.goods_detail_num .num_Img img {
+  width: 100%;
+}
+
 .goods_detail_prom {
   background: #fff;
   margin-top: 0.2rem;

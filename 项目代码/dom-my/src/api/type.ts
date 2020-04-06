@@ -13,6 +13,10 @@ export let getNav=(id:string)=>{
         }
     })
 }
-export let getList=()=>{
-    return axios.get('/goods/list')
+export let getList=(categoryId:string)=>{
+    return axios.get('/goods/list',{
+        params:{
+            categoryId
+        }
+    })
 }

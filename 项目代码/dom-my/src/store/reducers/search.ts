@@ -1,6 +1,6 @@
 import {ActionType} from '../../utils/interface'
 const initVal = {
-   
+    data:[]
 }
 
 function searchReducer(state: any, action: ActionType){
@@ -12,7 +12,7 @@ function searchReducer(state: any, action: ActionType){
             // state.goodsDetail=action.payload
             return {...state,...action.payload}
         case 'GET_SEARCHHELPER':
-            // state.goodsRelated=action.payload
+            state.data=action.payload
             return {...state,...action.payload}
         default:
             return state;
