@@ -28,6 +28,9 @@ let ADDaddress: React.FC<RouteComponentProps&DispatchType> = props => {
         props.ADDaddress(data1,data2,data3,data4)
         props.history.push("/address")
     }
+    let qx=()=>{
+        
+    }
     return <>
     <div className={styles.top}>新增地址</div>
     <div className={styles.center}>
@@ -37,7 +40,7 @@ let ADDaddress: React.FC<RouteComponentProps&DispatchType> = props => {
         <input type="text" placeholder="详细地址" onChange={()=>change4(event)}  value={data4}/>
     </div>
     <div className={styles.bottom}>
-        <span className={styles.qx}>取消</span>
+        <span className={styles.qx} onClick={()=>qx()}>取消</span>
         <span className={styles.bc} onClick={()=>save()} >保存</span>
     </div>
     </>;

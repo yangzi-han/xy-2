@@ -21,6 +21,10 @@ import collect from './reducers/collect'
 import deletes from './reducers/detelet'
 import address from './reducers/address'
 import ADDaddress from './reducers/ADDaddress'
+import Cartlist from './reducers/cartlist'
+import addcart from './reducers/addcart'
+import getuseinfo from './reducers/getuserinfo'
+import updata from './reducers/changeimg'
 
 // 连接子reducer
 let reducers = combineReducers({
@@ -41,7 +45,11 @@ let reducers = combineReducers({
     collect,
     deletes,
     address,
-    ADDaddress
+    ADDaddress,
+    Cartlist,
+    addcart,
+    getuseinfo,
+    updata
 
 })
 

@@ -2,7 +2,15 @@ import React from 'react'
 import {Switch,Redirect,Route} from 'react-router-dom'
 import {PropType} from '../utils/interface'
 import { getToken } from '../utils/index'
-let RouterView:React.FC<PropType>=props=>{
+import {connect} from 'react-redux'
+import {GetuserinfoAction} from '../store/actions/getuserinfo'
+interface StateType{
+    info:{}
+}
+interface DispatchType{
+    getuserinfo:Function
+}
+let RouterView:React.FC<PropType&StateType&DispatchType>=props=>{
 
         return <Switch>
             {
@@ -17,6 +25,9 @@ let RouterView:React.FC<PropType>=props=>{
                         if(path!=='/login'&&path!=="/main"&&!getToken()){
                             return <Redirect to={`/login?redirect=${encodeURIComponent(path)}`}/>
                         }
+                        if(getToken()&& !Object.keys(props.info).length){
+                            props.getuserinfo()
+                        }
                         if (item.children){
                             return <item.component routes={item.children} {...renderProps}/>
                         }else{
@@ -27,4 +38,17 @@ let RouterView:React.FC<PropType>=props=>{
             }
         </Switch>
 }
-export default RouterView
+let mapStateToProps=(state:any)=>{
+    return {
+        info:state.getuseinfo.info
+    }
+}
+let mapDispatchToProps=(dispatch:Function)=>{
+    return {
+        getuserinfo:()=>{
+            dispatch(GetuserinfoAction())
+        }
+    }
+
+}
+export default connect(mapStateToProps,mapDispatchToProps)(RouterView)

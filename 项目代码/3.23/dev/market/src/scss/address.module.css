@@ -25,3 +25,9 @@
   text-align: center;
   border: solid 1px #ccc;
 }
+
+.left {
+  position: fixed;
+  left: .2rem;
+  font-size: .3rem;
+}

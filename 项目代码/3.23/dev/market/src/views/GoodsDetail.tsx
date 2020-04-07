@@ -7,16 +7,18 @@ import { Carousel, WingBlank } from 'antd-mobile';
 import {DeteltAction} from '../store/actions/delect'
 import styles from '../scss/detail.module.scss'
 import { Toast } from 'antd-mobile';
-
+import { ADDcartAction } from '../store/actions/addcart'
 interface DispatchType{
     goodlist:Function
     deletes:Function
+    add:Function
 }
 interface ActionTYPE{
     goodsdetaillist:{
         info: {
             [name: string]: string | number
             goods_brief: string,
+            primary_product_id:string
         },
         gallery: Array<{
             img_url: string,
@@ -44,6 +46,7 @@ interface ActionTYPE{
             }>
         }>,
         productList: Array<{
+            id:string
             goods_number: number,
             retail_price: number
         }>
@@ -68,6 +71,9 @@ let GoodsDetail: React.FC<RouteComponentProps<{id:string}>&DispatchType&ActionTY
         }else{
             props.deletes("",id)
         }
+    }
+    let addcart=(goodsid:string,number:string,proid:string)=>{
+        props.add(goodsid,number,proid)
     }
     return <div className={styles.goodsDetailPage}>
     <div className={styles.goodHeader}>
@@ -148,7 +154,7 @@ let GoodsDetail: React.FC<RouteComponentProps<{id:string}>&DispatchType&ActionTY
     <div className={styles.goodsPageDo}>
         <div className={[`${styles.isLike}`,`${flag?styles.active:""}`].join(" ")} onClick={()=>collect(`${props.goodsdetaillist.info.id}`)}>☆</div>
         <div className={styles.cartNum}> <i className="iconfont icon-gouwuche" /> </div>
-        <div className={styles.addCart}>加入购物车</div>
+        <div className={styles.addCart} onClick={()=>addcart(`${props.goodsdetaillist.info.id}`,"1",`${props.goodsdetaillist.productList[0].id}`)}>加入购物车</div>
         <div className={styles.payGoods}>立即购买</div>
     </div>
 </div>;
@@ -167,6 +173,9 @@ let mapDispatchToProps=(dispatch:Function)=>{
         },
         deletes:(id:string,valueid:string)=>{
             dispatch(DeteltAction(id,valueid))
+        },
+        add:(goodid:string,number:string,pro:string)=>{
+            dispatch(ADDcartAction(goodid,number,pro))
         }
     }
 

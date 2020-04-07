@@ -1,28 +1,87 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { RouteComponentProps } from 'react-router'
 import styles from "../../scss/my.module.scss"
 import { removeToken } from '../../utils/index'
-let MyPage: React.FC<RouteComponentProps> = props => {
+import { GetuserinfoAction } from '../../store/actions/getuserinfo'
+import { connect } from 'react-redux'
+import {ChangeimgAction} from '../../store/actions/changeimg'
+import { UpdataAction } from "../../store/actions/updata";
+interface DispatchType {
+    Getuserinfo: Function
+    changimg:(form:FormData)=>void
+    updatas:Function
+}
+interface ActionType {
+    userinfo: {
+        name: string,
+        avatar: string,
+        mobile: string
+    },
+    updata:{
+        data:data[]
+    }
+}
+interface data{
+    path:string
+}
+let MyPage: React.FC<RouteComponentProps & DispatchType & ActionType> = props => {
+    let [flag,Setflag]=useState(false)
+    useEffect(() => {
+        props.Getuserinfo()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
     let out = () => {
         removeToken()
         props.history.go(0)
     }
-    let collect = ()=>{
+    let collect = () => {
         props.history.push("/collect")
     }
-    let address = ()=>{
+    let address = () => {
         props.history.push("/address")
     }
+    let change=(event: React.ChangeEvent<HTMLInputElement>) =>{
+        let file=event.target.files?event.target.files[0]:null
+       
+        if(file){
+            
+            let form=new FormData();
+            console.log(form.append)
+            form.append(file.name,file);
+            console.log(form)
+            props.changimg(form)
+        }
+    }
+    let mask=()=>{
+        Setflag(flag=true)
+    }
+    let mask2=(img:string)=>{
+        Setflag(flag=false)
+        props.updatas(img)
+    }
     return <>
-        <div className={styles.mytop}></div>
+
+        <div className={styles.mytop}>
+            <div className={styles.topimg}>
+                <img src={props.updata.data?props.updata.data[0].path:props.userinfo.avatar} alt="" onClick={mask} />
+                <div className={flag?styles.actives:styles.actives2}>
+                <input type="file" onChange={change}/>
+                <div onClick={()=>mask2(props.updata.data[0].path)}>确定</div>
+                </div>
+               
+            </div>
+            <div className={styles.mytext}>
+                <p>{props.userinfo.mobile}</p>
+            </div>
+        </div>
         <div className={styles.mycenter}>
-            <div className={[`${styles.mycenteritem}`,`${styles.active}`].join(' ')} onClick={()=>collect()}>
+            <div className={[`${styles.mycenteritem}`, `${styles.active}`].join(' ')} onClick={() => collect()}>
                 <div className={styles.icon}>
                     <span className='iconfont icon-wodeshoucang_l'></span>
                 </div>
                 <p>我的收藏</p>
             </div>
-            <div className={[`${styles.mycenteritem}`,`${styles.active}`].join(' ')}  onClick={()=>address()}>
+            <div className={[`${styles.mycenteritem}`, `${styles.active}`].join(' ')} onClick={() => address()}>
                 <div className={styles.icon}>
                     <span className='iconfont icon-dizhiguanli'></span>
                 </div>
@@ -94,4 +153,24 @@ let MyPage: React.FC<RouteComponentProps> = props => {
     </>
 }
 
-export default MyPage;
+let mapStateToProps = (state: any) => {
+    return {
+        userinfo: state.getuseinfo,
+        updata:state.updata
+    }
+
+}
+let mapDispatch = (dispatch: Function) => {
+    return {
+        Getuserinfo: () => {
+            dispatch(GetuserinfoAction())
+        },
+        changimg:(img:FormData)=>{
+            dispatch(ChangeimgAction(img))
+        },
+        updatas:(img:string)=>{
+            dispatch(UpdataAction(img))
+        }
+    }
+}
+export default connect(mapStateToProps, mapDispatch)(MyPage);
