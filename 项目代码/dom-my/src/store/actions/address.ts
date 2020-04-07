@@ -23,9 +23,9 @@ export let addRessDeletAction = (id:string)=>{
         }
     }
 }
-export let addRessAddAction = (id:string)=>{
+export let addRessAddAction = (name:string,mobile:string,address:string,is_default:boolean,id:number)=>{
     return async (dispatch:Function)=>{
-        let data = await getAddRessAdd(id);
+        let data = await getAddRessAdd(name,mobile,address,is_default,id);
         if (data){
             console.log('data...', data);
             dispatch({

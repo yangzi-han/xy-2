@@ -15,6 +15,7 @@
   border-radius: 50px;
   margin: auto;
   margin-top: 0.7rem;
+  background: #ccc;
 }
 
 .mineHeader .mineLeft .mine_img img {
@@ -69,4 +70,17 @@
   background: #fff;
   text-align: center;
   line-height: 1rem;
+}
+
+.btn {
+  border: 1px solid #000;
+  display: block;
+  width: 80px;
+  height: 80px;
+  left: 17px;
+  border-radius: 50px;
+  opacity: 0;
+  position: absolute;
+  top: 65px;
+  z-index: 9999;
 }

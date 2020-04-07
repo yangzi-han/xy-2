@@ -7,8 +7,27 @@ export let getAddRessDelet=(id:string)=>{
        id
     })
 }
-export let getAddRessAdd=(id:string)=>{
+export let getAddRessAdd=(name:string,mobile:string,address:string,is_default:boolean,id:number)=>{
+    if(id){
+        return axios.post('/address/save',{
+            name,
+            mobile,
+            province_id:2,
+            city_id:37,
+            district_id:410,
+            address,
+            is_default,
+            id
+        })
+    }
     return axios.post('/address/save',{
-       id
+        name,
+        mobile,
+        province_id:2,
+        city_id:37,
+        district_id:410,
+        address,
+        is_default,
+        id
     })
 }

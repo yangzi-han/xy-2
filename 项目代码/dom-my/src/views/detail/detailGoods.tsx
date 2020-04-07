@@ -5,7 +5,8 @@ import {collectAddAction} from '../../store/actions/collect';
 import {RouteComponentProps} from 'react-router'
 import styles from '../../static/detail.module.scss'
 import '../../static/foot/font_mahgalwz6ys/iconfont.css'
-import { Carousel, WingBlank,Toast} from 'antd-mobile';
+// import { Carousel, WingBlank,Toast} from 'antd-mobile';
+import {Toast} from 'antd-mobile'
 // import { getCollectAdd } from '../../api/collect';
 interface DispathProps{
    getGoodsDetail:Function,
@@ -55,7 +56,7 @@ let DetailGoods:React.FC<DispathProps&RouteComponentProps<{id:string}>>=props=>{
    let goCollect=()=>{
      console.log(props.match.params)
      props.getCollectAdd(props.match.params.id)
-     Toast.info('收藏成功')
+     Toast.success('收藏成功',1)
    }
    return <>
      <div className={styles.goods_detail_header}>

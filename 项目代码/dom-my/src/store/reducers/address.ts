@@ -1,12 +1,12 @@
 import {ActionType} from '../../utils/interface'
 const initVal = {
-   
+   addressList:[]
 }
 
 function addRessReducer(state: any, action: ActionType){
     switch (action.type) {
         case 'GET_ADDRESSLIST':
-            // state.homeDetail=action.payload
+            state.addressList=action.payload
             return {...state,...action.payload}
         case 'GET_ADDRESSDELET':
             // state.goodsDetail=action.payload

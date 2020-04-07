@@ -30,12 +30,19 @@ let Search:React.FC<RouteComponentProps&DispathProps>=props=>{
          </p>
          <p>取消</p>
        </div>
+       <div className={styles.historyList}>
+         <p className={styles.historyWrap}>
+          <span className={styles.history_text}>历史记录</span>
+          <span className="iconfont icon-shanchu"></span>
+         </p>
+       </div>
        <div className={styles.context}>
+          <p className={styles.Text}>热门搜索</p>
           {
             props.data&&props.data.map((item,index)=>{
-                return <p key={index}>
+                return <button key={index} className={styles.ItemSearch}>
                    {item}
-                </p>
+                </button>
             })
           }
        </div>

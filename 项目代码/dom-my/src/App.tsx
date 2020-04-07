@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
 // import Home from './views/Home';
-import {BrowserRouter as Router} from 'react-router-dom'
-import routes from './router/routerConfig'
+// import {BrowserRouter as Router} from 'react-router-dom'
+import {HashRouter} from 'react-router-dom'
+import config from './router/routerConfig'
 import RouterView from './router/routerViews'
 import {Provider} from 'react-redux'
 import store from './store'
@@ -11,9 +12,9 @@ const App: React.FC = () => {
   return (
     <div className="App">
      <Provider store={store}>
-        <Router>
-          <RouterView routes={routes.routes} />      
-        </Router>
+       <HashRouter>
+        <RouterView routes={config.routes}/>
+       </HashRouter>
       </Provider>
     </div>
   );

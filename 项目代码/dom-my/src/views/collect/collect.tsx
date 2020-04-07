@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react'
+import React,{useEffect} from 'react'
 import styles from '../../static/collect.module.scss'
 import {RouteComponentProps} from 'react-router'
 import {connect} from 'react-redux'
@@ -14,7 +14,8 @@ interface DispathProps{
      goods_brief:string,
      list_pic_url:string,
      retail_price:number,
-     value_id:number
+     value_id:number,
+     splice:Function
   }>
 }
 let Collect:React.FC<RouteComponentProps&DispathProps>=props=>{
@@ -25,11 +26,15 @@ let Collect:React.FC<RouteComponentProps&DispathProps>=props=>{
  let goBack=()=>{
     props.history.push('/index/zhuan')
   }
-  let goDelet=(id: number)=>{
-    // console.log(props.match.params)
-     props.getCollectDelet(id)
-     Toast.success("删除成功");
-  }
+  // let goDelet=(id: number,index: number)=>{
+  //   // console.log(props.match.params)
+    
+  //    props.getCollectList()
+  //    props.collect&&props.collect.splice(index,1)
+  //    props.getCollectDelet(id)
+     
+  //    Toast.success("删除成功");
+  // }
   return <>
     <div className={styles.collect_header}>
       <span>
@@ -40,14 +45,18 @@ let Collect:React.FC<RouteComponentProps&DispathProps>=props=>{
     </div>
     <div className={styles.collect_context}>
       {
-        props.collect&&props.collect.map((item)=>{
+        props.collect&&props.collect.map((item,index)=>{
            return   <List  key={item.id} >
            <SwipeAction style={{ backgroundColor: 'gray' }} autoClose
              right={[
                  {
                     text: '删除',
                     style: { backgroundColor: 'red', color: 'white',width:'60px'},
-                    onPress: () => goDelet(item.value_id),
+                    onPress: () => {
+                        props.getCollectDelet(item.value_id)
+                        props.getCollectList()
+                        Toast.success("删除成功",1);
+                    },
                  },
               ]}>
              <List.Item onClick={e => console.log(e)}>

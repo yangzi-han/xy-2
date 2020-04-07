@@ -36,3 +36,55 @@
         color:#fff;
     }
 }
+.sure{
+    width:100%;
+    height: 1rem;
+    background: #fff;
+    line-height: 1rem;
+    text-align: center;
+    input{
+        width:0.4rem;
+        height: 0.4rem;
+        border-radius: 50px;
+        border:none;
+        margin-left: 0.2rem;
+    }
+}
+.add_context{
+    p{
+        width:96%;
+        height: 1rem;
+        background: #fff;
+        border-bottom: 1px solid #ccc;
+        input{
+            width: 100%;
+            height: 100%;
+            border:none;
+            padding-left: 0.3rem;
+        }
+    }
+}
+.listItem{
+    width:100%;
+    height:80px;
+    background: #fff;
+    border-bottom:1px solid #ccc;
+    display: flex;
+    .listName{
+        flex:1;
+        line-height: 80px;
+        text-align: center;
+        color:orange;
+    }
+    .listAdd{
+        flex:4;
+        p{
+            margin-top: 0.2rem;
+        }
+    }
+    .listDelet{
+        line-height: 80px;
+        text-align: center;
+        flex:1;
+    }
+}

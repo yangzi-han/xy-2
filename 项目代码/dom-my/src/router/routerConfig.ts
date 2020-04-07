@@ -1,4 +1,5 @@
 import Home from "../views/Home";
+import {PropType} from '../utils/interface'
 import MyHome from '../views/children/Myhome';
 import Release from '../views/children/release';
 import Massage from '../views/children/message';
@@ -14,8 +15,11 @@ import GoodsDetail from '../views/detail/detailGoods'
 import Address from '../views/address/address'
 import Add from '../views/address/add'
 import Collect from '../views/collect/collect'
-export default {
+let config = {
     routes:[{
+        path:'/',
+        redirect:'/index/home'
+       },{
         path:'/index',
         component:Home,
         children:[{
@@ -34,9 +38,6 @@ export default {
             path:'/index/zhuan',
             component:Zhuan
         }]
-    },{
-        path:'/',
-        redirect:'/index/home'
     },{
         path:'/login',
         component:Login
@@ -69,3 +70,4 @@ export default {
         component:Collect
     }]
 }
+export default config as PropType

@@ -37,6 +37,12 @@ let TypeDetail:React.FC<DispathProps&RouteComponentProps>=props=>{
    setFlag(flag=index)
    props.getList(id)
 }
+let goGoodsDetail=(e:React.MouseEvent<HTMLDivElement>)=>{
+   //监听事件的元素
+    let id = e.currentTarget.dataset.id;
+//    console.log(id)
+    props.history.push('/goodsDetail/'+id)
+ }
   return <>
       <div className={styles.headerBig}>
         <div className={styles.brandHeader}>
@@ -71,7 +77,7 @@ let TypeDetail:React.FC<DispathProps&RouteComponentProps>=props=>{
       <div className={styles.brandMain}>
          {
             props.data&&props.data.map((item)=>{
-               return <div className={styles.dataItem} key={item.id}>
+               return <div className={styles.dataItem} key={item.id} onClick={goGoodsDetail} data-id={item.id}>
                   <div className={styles.dataImg}>
                      <img src={item.list_pic_url} alt=""/>
                   </div>
