@@ -4,15 +4,15 @@ import {getToken} from './index'
 
 const axios = Axios.create({
     baseURL: 'http://127.0.0.1:8888',
-    timeout: 2000
+    timeout: 5000
 });
 
 // 添加一个请求拦截器
 axios.interceptors.request.use(function (config) {
     // 在发送请求之前携带headers头
-    if(getToken()){
-        config.headers['x-nideshop-token'] = getToken()
-    }
+    if (getToken() && config.url !== 'http://123.206.55.50:11000/upload'){
+        config.headers['x-nideshop-token'] = getToken();
+      }
     return config;
 }, function (error) {
     // 处理请求错误

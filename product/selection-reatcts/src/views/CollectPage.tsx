@@ -4,7 +4,7 @@ import {RouteComponentProps} from 'react-router'
 import {connect} from 'react-redux'
 import {RemoteActions,GetcollectActions} from '../store/actions/type'
 import { SwipeAction, List ,Toast} from 'antd-mobile';
-// import { getCollectDelet } from '../../api/collect';
+
 interface DispathProps{
   getCollectList:Function,
   getCollectDelet:Function
@@ -22,29 +22,28 @@ let Collect:React.FC<RouteComponentProps&DispathProps>=props=>{
       props.getCollectList()
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
-  let goDelet=(id: number)=>{
+  
+  let goDelet=(id: number,key: number)=>{
     // console.log(props.match.params)
      props.getCollectDelet(id)
      Toast.success("删除成功");
   }
   return <>
-    <div className={styles.collect_header}>
-      <span>
-        <p className="iconfont icon-fanhui" onClick={props.history.goBack}></p> 
-      </span>
-      <span>easyLikeGoods</span>
-      <span></span>
+    <div className={styles.header}>
+        <div className={styles.left} onClick={props.history.goBack}>{'<'}</div>
+        <div className={styles.title}>easyLikeGoods</div>
+        <div className={styles.right}></div>
     </div>
     <div className={styles.collect_context}>
       {
-        props.collectList&&props.collectList.map((item)=>{
+        props.collectList&&props.collectList.map((item,key)=>{
            return   <List  key={item.id} >
            <SwipeAction style={{ backgroundColor: 'gray' }} autoClose
              right={[
                  {
                     text: '删除',
                     style: { backgroundColor: 'red', color: 'white',width:'60px'},
-                    onPress: () => goDelet(item.value_id),
+                    onPress: () => goDelet(item.value_id,key),
                  },
               ]}>
              <List.Item onClick={e => console.log(e)}>
@@ -82,9 +81,9 @@ const mapDisptachToProps = (dispatch: Function)=>{
      getCollectList:()=>{
         dispatch(GetcollectActions())
      },
-    //  getCollectDelet:(valueId:any)=>{
-    //     dispatch(collectDeletAction(valueId))
-    //  }
+     getCollectDelet:(valueId:any)=>{
+        dispatch(RemoteActions(valueId))
+     }
   }
 }
 export default connect(mapStateToProps, mapDisptachToProps)(Collect)

@@ -75,11 +75,11 @@ export let AddcollectActions = (id:string)=>{
 export let RemoteActions = (id:number)=>{
     return async (dispatch:Function)=>{
         let data = await remcollect(id);
-        console.log(data)        
-        // dispatch({
-        //     type: 'GET_DETLATE',
-        //     payload: data
-        // })
+        console.log(data,'删除')
+        dispatch({
+            type: 'GET_REMCOLLECT',
+            payload: data
+        })
     }
 }
 //获取收藏列表

@@ -25,7 +25,7 @@ let LoginPage: React.FC <StateType & DispatchType & RouteComponentProps> = props
     let changePassword = (e:React.ChangeEvent<HTMLInputElement>) =>{
         setPassword(e.target.value)
     }
-    let login = () =>{
+    let loginBtn = () =>{
         if(!mobileReg.test(mobile!)){
             Toast.info('请输入正确的手机号');
              return
@@ -49,8 +49,8 @@ let LoginPage: React.FC <StateType & DispatchType & RouteComponentProps> = props
                 <dd>密码：</dd>
                 <dt><input type="password" value={password} placeholder="请输入登录密码" onChange={changePassword}/></dt>
             </dl>
-            <div className={styles.btn}>
-                <button onClick={login}>登录</button>
+            <div className={styles.loginBtn}>
+                <button onClick={loginBtn}>登录</button>
             </div>
             
         </div>

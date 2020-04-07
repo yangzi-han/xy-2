@@ -31,6 +31,8 @@ function typeReudcer(state: any, action: ActionType){
             return {...state,...action.payload}
         case 'GET_COLLECT':
             return {...state,collectList:action.payload}
+        case 'GET_REMCOLLECT':
+            return {...state,...action.payload}
         default:
             return state;
     }

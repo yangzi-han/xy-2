@@ -55,10 +55,8 @@ export let collect = (valueId:string) =>{
 //删除
 export let remcollect = (valueId:number) =>{
     return axios.post('/collect/addordelete',{
-        params:{
-            valueId,
-            typeId:0
-        }
+        valueId,
+        typeId:0
     })
 }
 //获取收藏列表 

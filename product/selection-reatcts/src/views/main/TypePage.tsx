@@ -29,9 +29,12 @@ const TypePage: React.FC<DispatchProps & RouteComponentProps> = props =>{
     let addClassIfy = (id:number) => {
         props.history.push('/gategorys/'+id)
     }
+    let addseach = () =>{
+        props.history.push('/seachPage')
+    }
     return <div className={styles.tabPageContent}>
         <div className={styles.searchWrap}>
-            <div className={styles.searchInput}>
+            <div className={styles.searchInput} onClick={addseach}>
                 <i className={styles.search}></i>
                 <span>搜索商品，共239款好物</span>
             </div>
