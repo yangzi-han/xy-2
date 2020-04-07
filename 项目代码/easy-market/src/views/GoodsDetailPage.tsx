@@ -2,13 +2,19 @@ import React, { useEffect, useState } from 'react'
 import {RouteComponentProps} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {Toast} from 'antd-mobile'
-import {GoodsDetailListAction,GoodsRelatedAction,AddCollectListAction,DeleteCollectListAction} from '../store/actions/classify'
+import {GoodsDetailListAction,GoodsRelatedAction,AddCollectListAction,DeleteCollectListAction,isCartflageAction} from '../store/actions/classify'
+import {AddcartAction} from '../store/actions/cart'
 import styles from '../style/index.module.scss'
 import Swiper from '../component/swiper/swiper'
 import CateGoryBox from '../component/cateGoryBox/index'
+import CartPageView from '../component/cartPage/index'
 interface StateTypes{
     info:{
+        retail_price:number,
+        list_pic_url:string,
+        goods_number:number,
         goods_desc:string,
+        id:number,
         [name:string]:string|number
     },//商品详情
     gallery:Array<{
@@ -28,13 +34,19 @@ interface StateTypes{
     GoodsRelatedList:Array<{
         [name:string]:string|number
     }>,//相关商品
+    productList:Array<{
+        [name:string]:string|number
+    }>,
     userHasCollect:number,//是否收藏
+    isCartFlages:boolean
 }
 interface DispatchType{
     GoodsDetailList:Function,
     GoodsRelated:Function,
     AddCollectList:Function,
-    DeleteCollectList:Function
+    DeleteCollectList:Function,
+    isCartflage:Function,
+    Addcart:Function
 }
 let GoodsDetailPage: React.FC<DispatchType&StateTypes&RouteComponentProps<{id:string}>> = props=>{
     let [isFlage,setisFlage]=useState(false)
@@ -43,8 +55,6 @@ let GoodsDetailPage: React.FC<DispatchType&StateTypes&RouteComponentProps<{id:st
         props.GoodsRelated(props.match.params.id)
     },[])
     let addfover=()=>{
-       
-        
         if(isFlage===false){
             setisFlage(isFlage=!isFlage)
             props.AddCollectList(props.match.params.id)
@@ -54,7 +64,9 @@ let GoodsDetailPage: React.FC<DispatchType&StateTypes&RouteComponentProps<{id:st
             props.DeleteCollectList(+props.match.params.id)
             Toast.success('取消收藏', 1);
         }
-        
+    }
+    let addCart=()=>{
+        props.isCartflage()
     }
     return <div className={styles.goodsdetail}>
          <div className={styles.header}>
@@ -108,14 +120,18 @@ let GoodsDetailPage: React.FC<DispatchType&StateTypes&RouteComponentProps<{id:st
             />
         </div>
         <div className={styles.goodsPageDo}>
-            <div className={isFlage||props.userHasCollect?styles.Like:styles.isLike}onClick={()=>{addfover()}}>★</div>
-        <div className={styles.cartNum}><i className="iconfont icon-gouwuche"><span>{props.comment.count}</span></i></div>
-            <div className={styles.addCart}>加入购物车</div><div className={styles.payGoods}>立即购买</div>
+            <div className={isFlage||props.userHasCollect?styles.Like:styles.isLike} onClick={()=>{addfover()}}>★</div>
+            <div className={styles.cartNum} onClick={()=>{props.history.replace('/main/cart')}}><i className="iconfont icon-gouwuche"><span>{props.comment.count}</span></i></div>
+            <div className={styles.addCart} onClick={()=>{addCart()}}>加入购物车</div><div className={styles.payGoods}>立即购买</div>
         </div>
+        <div style={{display:props.isCartFlages?'':'none'}}>
+            <CartPageView info={props.info} productList={props.productList} isCartflage={props.isCartflage} Addcart={props.Addcart}/>
+        </div>
+        
     </div>;
 }
 const mapStateToProps = (state: any)=>{
-    console.log('state.classify...', state.classify)
+    // console.log('state.classify...', state.classify)
     return {...state.classify}
 }
 const mapDisptachToProps = (dispatch: Function)=>{
@@ -131,6 +147,12 @@ const mapDisptachToProps = (dispatch: Function)=>{
         },
         DeleteCollectList:(valueId:number)=>{
             dispatch(DeleteCollectListAction(valueId))
+        },
+        isCartflage:()=>{
+            dispatch(isCartflageAction())
+        },
+        Addcart:(goodsId:number,number:number,productId:number)=>{
+            dispatch(AddcartAction(goodsId,number,productId))
         }
     }
 }

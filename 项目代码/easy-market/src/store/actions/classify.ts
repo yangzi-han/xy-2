@@ -49,7 +49,7 @@ export let getClassifyGoodListAction=(id:string)=>{
 export let GoodsDetailListAction=(id:string)=>{
     return async (dispatch:Function)=>{
         let data=await GoodsDetailList(id)
-        // console.log('GoodsDetailListAction...',data)
+        console.log('GoodsDetailListAction...',data)
         dispatch({
             type:'GET_GOODSDETAIL_LIST',
             payload:data
@@ -59,7 +59,7 @@ export let GoodsDetailListAction=(id:string)=>{
 export let GoodsRelatedAction=(id:string)=>{
     return async (dispatch:Function)=>{
         let data = await getGoodsRelated(id);
-        console.log('GoodsRelatedAction...', data);
+        // console.log('GoodsRelatedAction...', data);
         dispatch({
             type: 'GET_GOODS_RELATED',
             payload: data
@@ -75,6 +75,12 @@ export let AddCollectListAction=(valueId:string)=>{
 export let DeleteCollectListAction=(valueId:number)=>{
     return async (dispatch:Function)=>{
         let data=await DeleteCollectList(valueId)
-        console.log('DeleteCollectListAction...', data);
+        // console.log('DeleteCollectListAction...', data);
     }
+}
+
+export let isCartflageAction = ()=>{
+    return ({
+        type: 'IS_CART_FLAGE'
+    })
 }

@@ -173,6 +173,15 @@ button,input{
         height: 100%;
     }
 }
+.defaultimg{
+    width: 0.3rem;
+    text-align: center;
+    img{
+       width: 0.2rem;
+       height:0.2rem;
+       margin-top: 0.3rem;
+    }
+}
 .hotGoodsItem>div.hotGoodsInfos{
     flex: 1;
     padding: .2rem 0;
@@ -535,18 +544,51 @@ button,input{
 .minePage{
     padding-bottom: 0.5rem;
 }
+.changeFile{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    .wrapper {
+        width: 2rem;
+        height:2rem;
+        position: absolute;
+        background: #fff;
+        transform: translate(-50%,-50%);
+        left: 50%;
+        top:40%;
+    }
+}
+
 .minePage .userMsgWrap {
     height: 1rem;
-    background:peachpuff;
+    background:rgb(228, 134, 40);
     background-size: 100%;
     padding: .3rem .2rem;
     display: flex;
+    
     .userLogo {
         width: 0.8rem;
-        background:peru;
         background-size: 100%;
         height: 0.8rem;
         border-radius: 50%;
+        overflow: hidden;
+        position: relative;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+        input{
+            position: absolute;
+            top:0;
+            left:0;
+            width: 100%;
+            height: 100%;
+            border:1px solid #ccc;
+        }
     }
     .userMsgs {
         flex: 1;

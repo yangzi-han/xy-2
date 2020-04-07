@@ -10,7 +10,8 @@ const initVal={
     attribute:[],//商品规格
     issue:[],//快递评论
     comment:{},//商品数量
-    GoodsRelatedList:[],//相关商品
+    GoodsRelatedList:[],//相关商品,
+    isCartFlages:false
 }
 function ClassifyReducer(state:any,action:ActionType){
     switch (action.type){
@@ -25,7 +26,9 @@ function ClassifyReducer(state:any,action:ActionType){
         case 'GET_GOODSDETAIL_LIST':
             return {...state,...action.payload}
         case 'GET_GOODS_RELATED':
-                return {...state,GoodsRelatedList:action.payload.goodsList}
+            return {...state,GoodsRelatedList:action.payload.goodsList}
+        case 'IS_CART_FLAGE':
+            return {...state,isCartFlages:!state.isCartFlages}
         default:
             return state
     }

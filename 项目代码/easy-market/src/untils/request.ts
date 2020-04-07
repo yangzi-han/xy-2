@@ -10,7 +10,7 @@ const axios = Axios.create({//拦截器
 ///request是请求拦截
 axios.interceptors.request.use(function (config) {
     // 在发出请求前做点什么
-    if(getToken()){
+    if(getToken()&& config.url !== 'http://123.206.55.50:11000/upload'){
       config.headers['x-nideshop-token']=getToken()
     }
     return config;
@@ -24,12 +24,16 @@ axios.interceptors.request.use(function (config) {
 axios.interceptors.response.use(function (response) {
     // 2xx范围内的任何状态代码都会触发此函数
     //处理响应数据
-    if (response.status != 200 || response.data.errno != 0){
+    // console.log('response....',response.data)
+    if (response.status != 200 || (response.data.errno && response.data.errno !== 0) || (response.data.code && response.data.code !== 1)){
       // 做个错误提示，抛出Promise.resolve
       Toast.info(response.data.errmsg)
       return Promise.resolve()
-    }else{
-      return response.data.data;
+    }else if(response.data.data){
+        return response.data.data;
+    }
+    else{
+      return response.data
     }
   }, function (error) {
     // 任何超出2xx范围的状态代码都会触发此功能

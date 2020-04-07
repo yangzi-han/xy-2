@@ -4,6 +4,7 @@ import {connect} from 'react-redux'//
 import {AddressListAction,AddressAction,DeleteAddressListAction} from '../store/actions/my'
 import {Toast} from 'antd-mobile'
 import styles from '../style/index.module.scss'
+import Province from '../component/province/index'
 interface StateTpes{
     AddressList:Array<{
         [name:string]:string|number
@@ -21,6 +22,7 @@ let AddressPage: React.FC<RouteComponentProps&DispatchType&StateTpes> = props=>{
     let [addresss,setaddress]=useState('')
     let [is_default,setis_default]=useState(false)
     let [id,setid]=useState()
+    let [is_show,setis_show]=useState(false)
     useEffect(()=>{
         props.getAddressList()
     },[])
@@ -100,7 +102,9 @@ let AddressPage: React.FC<RouteComponentProps&DispatchType&StateTpes> = props=>{
                 <div className={styles.addressHeader}>新增地址</div>
                 <div className={styles.onePx_bottom}><input className={styles.addressInput} placeholder="姓名" value={name} onChange={(e)=>setname(name=e.target.value)}/></div>
                 <div className={styles.onePx_bottom}><input className={styles.addressInput} placeholder="电话号码" value={mobile} onChange={(e)=>setmobile(mobile=e.target.value)}/></div>
-                <div className={styles.onePx_bottom}><div className={styles.chooseAddress}>北京/北京市/东城区</div></div>
+                <div className={styles.onePx_bottom}><div className={styles.chooseAddress} onClick={()=>{
+                    setis_show(is_show=true)
+                }}>北京/北京市/东城区</div></div>
                 <div className={styles.onePx_bottom}><input className={styles.addressInput} placeholder="详细地址" value={addresss} onChange={(e)=>setaddress(addresss=e.target.value)}/></div>
                 <div className={styles.onePx_bottom}>
                     <div className={styles.isDefaultAddress} onClick={()=>setis_default(is_default=!is_default)}>设置默认地址
@@ -144,6 +148,9 @@ let AddressPage: React.FC<RouteComponentProps&DispatchType&StateTpes> = props=>{
                             <span>保 存</span>
                         </a>
                 </div>
+            </div>
+            <div style={{display:is_show?'':'none'}} >
+                <Province/>
             </div>
          </div>
     </div>

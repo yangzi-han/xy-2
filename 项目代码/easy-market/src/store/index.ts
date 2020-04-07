@@ -17,6 +17,7 @@ import topic from './reducers/topic'
 import classify from './reducers/classify'
 import search from './reducers/search'
 import my from './reducers/my'
+import cart from './reducers/cart'
 //连接子reducer
 let reducers=combineReducers({
     home,
@@ -24,7 +25,8 @@ let reducers=combineReducers({
     topic,
     classify,
     search,
-    my
+    my,
+    cart
 })
 //applyMiddleware方法的三个参数，就是三个中间件:applyMiddleware(thunk, promise, logger)
 //logger就一定要放在最后，否则输出结果会不正确。
