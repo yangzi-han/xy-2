@@ -2,22 +2,25 @@ import React, {useEffect,useState} from 'react'
 import {connect} from 'react-redux'
 import { goodsDetailAction, goodsRelatedAction} from '../../store/actions/detail';
 import {collectAddAction} from '../../store/actions/collect';
+import {cartAddAction} from '../../store/actions/shopCar'
 import {RouteComponentProps} from 'react-router'
 import styles from '../../static/detail.module.scss'
 import '../../static/foot/font_mahgalwz6ys/iconfont.css'
 // import { Carousel, WingBlank,Toast} from 'antd-mobile';
 import {Toast} from 'antd-mobile'
-// import { getCollectAdd } from '../../api/collect';
+import { getCartAdd } from '../../api/shopCar';
 interface DispathProps{
    getGoodsDetail:Function,
    getGoodsRelated:Function,
-   getCollectAdd:Function
+   getCollectAdd:Function,
+   getCartAdd:Function
    info:{
       name:string,
       goods_brief:string,
       id:number,
       retail_price:string,
-      goods_desc:string
+      goods_desc:string,
+      is_new:number
    },
    issue:Array<{
        name:string,
@@ -41,6 +44,9 @@ interface DispathProps{
        name:string,
        id:number
    }>
+   productList:Array<{
+    id:number
+}>
 }
 let DetailGoods:React.FC<DispathProps&RouteComponentProps<{id:string}>>=props=>{
   let [id]=useState(props.match.params)
@@ -57,6 +63,10 @@ let DetailGoods:React.FC<DispathProps&RouteComponentProps<{id:string}>>=props=>{
      console.log(props.match.params)
      props.getCollectAdd(props.match.params.id)
      Toast.success('收藏成功',1)
+   }
+   let goShopCar=()=>{
+      props.getCartAdd(props.info.id,props.info.is_new,props.productList[0].id)
+      Toast.success('添加成功',1)
    }
    return <>
      <div className={styles.goods_detail_header}>
@@ -183,20 +193,21 @@ let DetailGoods:React.FC<DispathProps&RouteComponentProps<{id:string}>>=props=>{
           <span className="iconfont icon-ziyuan"></span>
         </div>
         <div className={styles.goods_detail_footer_box2}>
-            <div className={styles.addShop}>加入购物车</div>
+            <div className={styles.addShop} onClick={goShopCar}>加入购物车</div>
             <div className={styles.addMai}>立即购买</div>
         </div>
      </div>
    </>
 }
 const mapStateToProps = (state: any)=>{
-    // console.log(state.detail.goodsDetail.attribute,'2222')
+    // console.log(state.detail.goodsDetail.productList,'2222')
     return {
         info:state.detail.goodsDetail.info,
         issue:state.detail.goodsDetail.issue,
         goodsList:state.detail.goodsRelated.goodsList,
         gallery:state.detail.goodsDetail.gallery,
-        attribute:state.detail.goodsDetail.attribute
+        attribute:state.detail.goodsDetail.attribute,
+        productList:state.detail.goodsDetail.productList
     }
 }
 const mapDisptachToProps = (dispatch: Function)=>{
@@ -210,6 +221,9 @@ const mapDisptachToProps = (dispatch: Function)=>{
         getCollectAdd:(valueId:any)=>{
           // console.log(valueid.id.valueid)
             dispatch(collectAddAction(valueId))
+        },
+        getCartAdd:(goodsId:string,number:string,productId:string)=>{
+           dispatch(cartAddAction(goodsId,number,productId))
         }
     }
 }

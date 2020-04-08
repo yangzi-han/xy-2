@@ -1,57 +1,160 @@
-.searchHeader{
-    width:100%;
-    height: 1rem;
-    background: #fff;
-    display: flex;
-    justify-content: space-around;
-    line-height: 1rem;
-    border-bottom: 2px solid #ccc;
-    input{
-        width:257px;
-        height: 40px;
-       background:#f5f5f9 ; 
-       border:none;
+.noTabPageContent {
+    padding-top: 1.04rem;
+    min-height: 100%;
+    .searchPage {
+        height: auto;
+        .searchFix {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 11;
+            box-shadow: 0 0.08rem 0.16rem 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
+            .Input{
+                .searchInputWrap{
+                    height: 1rem;
+                    line-height: 1rem;
+                    display: flex;
+                    justify-content: space-around;
+                    background: #fff;
+                    input{
+                        width: 5.6rem;
+                        height:.7rem;
+                        background:#f5f5f9;
+                        border: none;
+                        margin-top: 0.14rem;
+                    }
+                }
+            }
+        }
+        .searchGoods{
+            margin-top: .7rem;
+            .searchConditionWrap{
+                position: fixed;
+                top: 1rem;
+                width: 100%;
+                height: auto;
+                z-index: 10;
+                box-shadow: 0 0.08rem 0.16rem 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
+                .searchCondition{
+                    height: .7rem;
+                    background: #fff;
+                    display: flex;
+                    font-size: .28rem;
+                    .all{
+                        flex: 1 1;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                    .money{
+                        flex: 1 1;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                    .chooseCategory{
+                        flex: 1 1;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                    .activeSeach{
+                        color: red;
+                    }
+                }
+                .classifySeach{
+                    display: none;
+                }
+            }
+            .goodsList{
+                width: auto;
+                height: auto;
+                display: flex;
+                flex-wrap: wrap;
+                .goodsItem{
+                    width: 50%;
+                    background: #fff;
+                    height: auto;
+                    padding: .0rem;
+                    position: relative;
+                    .goodImg{
+                        width: 100%;
+                        min-height: 2rem;
+                        height: auto;
+                    }
+                    .goodsItemName{
+                        text-align: center;
+                        font-size: .28rem;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        padding-bottom: .3rem;
+                        padding-top: .1rem;
+                    }
+                    .goodsItemPrice{
+                        text-align: center;
+                        font-size: .28rem;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        color: red;
+                    }
+                }
+                
+            }
+        }
+        .searchMsg{
+            position: fixed;
+            top: 1rem;
+            .searchItemWrap {
+                width: 100%;
+                height: auto;
+                margin-top: .1rem;
+                padding: 0 .2rem .2rem;
+                background: #fff;
+                .title {
+                    width: 100%;
+                    height: .7rem;
+                    font-size: .3rem;
+                    line-height: .7rem;
+                    i {
+                        font-size: .4rem;
+                        float: right;
+                        margin-right: .4rem;
+                    }
+                }
+                .listWrap {
+                    display: flex;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    .listItem {
+                        display: inline-block;
+                        white-space: nowrap;
+                        cursor: pointer;
+                        background-color: #fff;
+                        border: 1px solid #dcdfe6;
+                        color: #606266;
+                        -webkit-appearance: none;
+                        -moz-appearance: none;
+                        appearance: none;
+                        text-align: center;
+                        box-sizing: border-box;
+                        outline: none;
+                        font-weight: 500;
+                        -webkit-user-select: none;
+                        -moz-user-select: none;
+                        -ms-user-select: none;
+                        user-select: none;
+                        padding: .16rem .024rem;
+                        font-size: .28rem;
+                        border-radius: .08rem;
+                        margin: .2rem;
+                    }
+                }
+            }
+            .searchItemWrap:first-child {
+                margin-top: 0;
+            }
+        }
     }
-   p:nth-child(2){
-       width:32px;
-       height: 40px; 
-       position: fixed;
-       left:52px;
-       text-align: center; 
-   } 
-}
-.context{
-    width:100%;
-    background: #fff;
-    // display: flex;
-    align-items: center;
-    // flex-wrap: wrap;
-    .ItemSearch{
-        border:0.01rem solid #ccc;
-        background: none;
-        padding:0.2rem;
-        margin-left:0.2rem;
-        margin-top:0.2rem;
-    }
-    .Text{
-        width:97%;
-        height:35px;
-        padding-left:0.2rem;
-        font-weight: 700;
-        padding-top:0.2rem;
-    }
-
-}
-.historyWrap{
-   width:100%;
-   height: 35px;
-   display: flex;
-   justify-content: space-between;
-   line-height: 35px;
-   span:nth-child(1){
-       margin-left: 0.2rem;
-   }
-   span:nth-child(2){
-    margin-right: 0.2rem;
-}
 }

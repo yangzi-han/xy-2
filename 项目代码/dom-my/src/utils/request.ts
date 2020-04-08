@@ -23,12 +23,16 @@ axios.interceptors.request.use(function (config) {
 axios.interceptors.response.use(function (response) {
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
+    console.log(response,'88888')
     if (response.status !== 200 || (response.data.errno && response.data.errno !== 0) || (response.data.code && response.data.code !== 1)){
       // 做个错误提示，抛出Promise.resolve
       Toast.info(response.data.errmsg);
       return Promise.resolve();
-    }else{
+    }else if(response.data.data){
       return response.data.data;
+    }else{
+      return response.data;
+
     }
   }, function (error) {
     // Any status codes that falls outside the range of 2xx cause this function to trigger

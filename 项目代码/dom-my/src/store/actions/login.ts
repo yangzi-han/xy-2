@@ -21,7 +21,7 @@ export let logoutAction = ()=>{
 export let userInfoAction = ()=>{
     return async (dispatch:Function)=>{
         let data = await getUserInfo();
-       
+         console.log(data)
         if (data){
             dispatch({
                 type: 'UPDATE_INFO',

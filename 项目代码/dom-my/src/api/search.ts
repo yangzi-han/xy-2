@@ -1,14 +1,10 @@
 import axios from '../utils/request'
-export let getSearchDelet=()=>{
-    return axios.get('/search/clearhistory')
+
+// 获取历史记录
+export let Seach = () =>{
+    return axios.get('search/index')
 }
-export let getSearchList=()=>{
-    return axios.get('/search/index')
-}
-export let getSearchHelper=(keyword:string)=>{
-    return axios.get('/search/helper',{
-        params:{
-            keyword
-        }
-    })
+// 添加历史记录
+export let getpaood = (keyword:string) =>{
+    return axios.get(`/goods/list?keyword=${keyword}&page=1&size=10&sort=id&order=default&categoryId=0`)
 }

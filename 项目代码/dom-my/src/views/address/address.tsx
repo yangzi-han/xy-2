@@ -12,7 +12,8 @@ interface DispatchProps{
       name:string,
       mobile:string,
       address:string,
-      id:number
+      id:number,
+      full_region:string
   }>
 }
 let Address:React.FC<RouteComponentProps&DispatchProps>=props=>{
@@ -26,12 +27,14 @@ let Address:React.FC<RouteComponentProps&DispatchProps>=props=>{
    let goAdd=()=>{
         props.history.push('/add')
    }
-   let btnDelet=(id: number)=>{
+   let btnDelet=(id: number,e: React.MouseEvent<HTMLParagraphElement, MouseEvent>)=>{
+      e.stopPropagation();
       props.getAddRessDelet(id)
       props.getAddRessList()
    }
-   let goListItem=()=>{
+   let goListItem=(id: number)=>{
       props.history.push('/add')
+      props.getAddRessAdd(id)
    }
   return <>
      <div className={styles.address_header}>
@@ -44,14 +47,15 @@ let Address:React.FC<RouteComponentProps&DispatchProps>=props=>{
      <div className={styles.address_context}>
        {
           props.addressList&&props.addressList.map((item)=>{
-              return <div key={item.id} className={styles.listItem} onClick={goListItem}>
+              return <div key={item.id} className={styles.listItem} onClick={()=>{goListItem(item.id)}}>
                   <div className={styles.listName}>{item.name}</div>
                   <div className={styles.listAdd}>
                      <p>{item.mobile}</p>
                      <p>{item.address}</p>
+                     <p>{item.full_region}</p>
                   </div>
                   <div className={styles.listDelet}>
-                     <p className="iconfont icon-shanchu" onClick={()=>{btnDelet(item.id)}}></p>
+                     <p className="iconfont icon-shanchu" onClick={(e)=>{btnDelet(item.id,e)}}></p>
                   </div>
               </div>
           })
@@ -75,6 +79,9 @@ const mapDispatchToProps=(dispatch:Function)=>{
       },
       getAddRessDelet:(id:any)=>{
         dispatch(addRessDeletAction(id))
+      },
+      getAddRessAdd:(name:string,mobile:string,address:string,is_default:boolean,id:number)=>{
+        dispatch(addRessAddAction(name,mobile,address,is_default,id))
       }
   }
 }

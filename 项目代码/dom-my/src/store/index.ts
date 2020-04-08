@@ -12,6 +12,7 @@ import detail from './reducers/detail'
 import address from './reducers/address'
 import search from './reducers/search'
 import collect from './reducers/collect'
+import shopCar from './reducers/shopCar'
 
 // 连接子reducer
 let reducers = combineReducers({
@@ -22,7 +23,8 @@ let reducers = combineReducers({
     detail,
     address,
     search,
-    collect
+    collect,
+    shopCar
 })
 
 let store = createStore(reducers, applyMiddleware(ReduxThunk, ReduxLogger))

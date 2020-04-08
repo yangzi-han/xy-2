@@ -112,6 +112,7 @@ let logout = ()=>{
   </>
 }
 const mapStateToProps = (state: any) => {
+  console.log(state.login,'111')
   return state.login
 }
 const mapDisptachToProps = (dispatch: Function) => {

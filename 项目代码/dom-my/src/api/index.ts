@@ -6,4 +6,5 @@ export * from './detail'
 export * from './search'
 export * from './address'
 export * from './collect'
+export * from './shopCar'
 

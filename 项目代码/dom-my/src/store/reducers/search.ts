@@ -1,22 +1,22 @@
 import {ActionType} from '../../utils/interface'
 const initVal = {
-    data:[]
+    defaultKeyword:{},
+    historyKeywordList:[],
+    hotKeywordList:[],
+    //查询回的数据
+    goodsList:[],
+    filterCategory:[]
 }
 
-function searchReducer(state: any, action: ActionType){
+function seachReudcer(state: any, action: ActionType){
     switch (action.type) {
-        case 'GET_SEARCHDELET':
-            // state.homeDetail=action.payload
+        case 'GET_INSTER':
             return {...state,...action.payload}
-        case 'GET_SEARCHLIST':
-            // state.goodsDetail=action.payload
-            return {...state,...action.payload}
-        case 'GET_SEARCHHELPER':
-            state.data=action.payload
+        case 'GET_GETSEACHDATA' :
             return {...state,...action.payload}
         default:
             return state;
     }
 }
 
-export default (state=initVal, action:ActionType)=>searchReducer(state, action)
+export default (state=initVal, action:ActionType)=>seachReudcer(state, action)

@@ -1,38 +1,26 @@
-import {getSearchDelet,getSearchList,getSearchHelper} from '../../api'
-export let searchDeletAction = ()=>{
-    return async (dispatch:Function)=>{
-        let data = await getSearchDelet();
-        if (data){
-            console.log('data...', data);
-            dispatch({
-                type: 'GET_SEARCHDELET',
-                payload: data
-            })
-        }
-    }
-}
-export let searchListAction = ()=>{
-    return async (dispatch:Function)=>{
-        let data = await getSearchList();
-        if (data){
-            console.log('data...', data);
-            dispatch({
-                type: 'GET_SEARCHLIST',
-                payload: data
-            })
-        }
-    }
-}
-export let searchHelperAction = (keyword:string)=>{
-    return async (dispatch:Function)=>{
-        let data = await getSearchHelper(keyword);
-        if (data){
-            console.log('data...', data);
-            dispatch({
-                type: 'GET_SEARCHHELPER',
-                payload: data
-            })
-        }
-    }
-}
+import {Seach, getpaood} from '../../api'
 
+// 获取历史记录
+export let SeachAction = ()=>{
+    return async (dispatch:Function)=>{
+        let data = await Seach();
+        if (data){
+            dispatch({
+                type: 'GET_INSTER',
+                payload: data
+            })
+        }
+    }
+}
+// 获取历史记录
+export let getpaoodAction = (keyword:string)=>{
+    return async (dispatch:Function)=>{
+        let data = await getpaood(keyword);
+        if (data){
+            dispatch({
+                type: 'GET_GETSEACHDATA',
+                payload: data
+            })
+        }
+    }
+}
