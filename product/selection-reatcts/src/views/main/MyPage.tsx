@@ -3,16 +3,15 @@ import styles from '../../style/index.module.scss'
 import '../../style/fonts/iconfont.css'
 import {RouteComponentProps} from 'react-router'
 import {connect} from 'react-redux'
-import {loginAction, UploderAction} from '../../store/actions/my'
+import { UploderAction} from '../../store/actions/my'
 
 interface StateProps{
-    // userinfo:Function,
     changeAvatar:Function
 }
 interface StateType {
     info: {
         avatar: string,
-        username: string
+        mobile: string
     },
     uploadAvatar: string
   }
@@ -24,9 +23,7 @@ interface StateType {
   }
 
 const MyPage: React.FC<RouteComponentProps & StateProps & StateType & DispatchType> = (props) =>{
-    useEffect(()=>{
-        // props.userinfo()
-    },[])
+    
     let goCollect = ()=> {
         props.history.push('/collectpage')
     }
@@ -45,12 +42,12 @@ const MyPage: React.FC<RouteComponentProps & StateProps & StateType & DispatchTy
         <div className={styles.mineHeader}>
             <div className={styles.userlog}>
                 <div className={styles.file}></div>
-                {/* <img src={} alt="" /> */}
+                <img src={props.uploadAvatar} alt="" />
                 <input type="file" onChange={fileChange} className={styles.btn}/>
             </div>
             <div className={styles.userMsgs}>
                 <div className={styles.userinfo}>
-                    <p>18611123775</p>
+                    <p>{props.info.mobile}</p>
                     <p>塑料用户</p>
                 </div>
                 
@@ -103,16 +100,13 @@ const MyPage: React.FC<RouteComponentProps & StateProps & StateType & DispatchTy
     </>
 }
 const mapStateToProps = (state: any)=>{
-    console.log(state.my)   
+    console.log(state.my)    
     return {
         ...state.my
     }
 }
 const mapDisptachToProps = (dispatch: Function)=>{
     return {
-        // userinfo(){
-        //     dispatch(loginAction())
-        // },
         changeAvatar(form: FormData){
             dispatch(UploderAction(form))
         }

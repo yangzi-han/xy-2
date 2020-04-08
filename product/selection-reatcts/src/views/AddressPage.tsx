@@ -1,35 +1,86 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import styles from '../style/index.module.scss'
-import {RouteComponentProps} from 'react-router'
-
-let AddressPage: React.FC<RouteComponentProps> = props=>{
-    return <div className={styles.noTabPageContent}>
-        <div className={styles.addressPage}>
-            <div className={styles.header}>
-                <div className={styles.left} onClick={props.history.goBack}>{'<'}</div>
-                <div className={styles.title}>地址管理</div>
-                <div className={styles.right}></div>
-            </div>
-            <div className={styles.addressList}>
-                <div className={styles.addressItem}>
-                    <div className={styles.addressMsg}>
-                        <div className={styles.concatName}>eee</div>
-                        <div className={styles.addressDetail}>
-                            <div className={styles.concatPhone}>13333469009</div>
-                            <div className={styles.concatAddress}>北京北京市东城区</div>
-                            <div className={styles.concatAddress}>飞洒发生飞洒发生发生</div>
-                        </div>
-                        <div className={styles.deleteAddress}>
-                            X
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className={styles.addAddress}>
-                <button>添加地址</button>
-            </div>
-        </div>
-    </div>
+import {RouteComponentProps} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {addRessListAction,addRessDeletAction,addRessAddAction} from '../store/actions/address'
+// import { getAddRessList, getAddRessDelet, getAddRessAdd } from '../../api/address';
+interface DispatchProps{
+  getAddRessList:Function,
+  getAddRessDelet:Function,
+  getAddRessAdd:Function
+  addressList:Array<{
+      name:string,
+      mobile:string,
+      address:string,
+      id:number,
+      full_region:string
+  }>
 }
-
-export default AddressPage;
+let Address:React.FC<RouteComponentProps&DispatchProps>=props=>{
+   useEffect(()=>{
+      props.getAddRessList()
+   // eslint-disable-next-line react-hooks/exhaustive-deps
+   },[])
+   let goBack=()=>{
+        props.history.push('/main/my')
+   }
+   let goAdd=()=>{
+        props.history.push('/add')
+   }
+   let btnDelet=(id: number,e: React.MouseEvent<HTMLParagraphElement, MouseEvent>)=>{
+      e.stopPropagation();
+      props.getAddRessDelet(id)
+      props.getAddRessList()
+   }
+   let goListItem=(id: number)=>{
+      props.history.push('/add')
+      props.getAddRessAdd(id)
+   }
+  return <>
+     <div className={styles.address_header}>
+        <span onClick={goBack}>{'<'}</span>   
+       <span>地址管理</span>
+       <span></span>
+     </div>
+     <div className={styles.address_context}>
+       {
+          props.addressList&&props.addressList.map((item)=>{
+              return <div key={item.id} className={styles.listItem} onClick={()=>{goListItem(item.id)}}>
+                  <div className={styles.listName}>{item.name}</div>
+                  <div className={styles.listAdd}>
+                     <p>{item.mobile}</p>
+                     <p>{item.address}</p>
+                     <p>{item.full_region}</p>
+                  </div>
+                  <div className={styles.listDelet}>
+                     <div className="iconfont icon-shanchu" onClick={(e)=>{btnDelet(item.id,e)}}></div>
+                  </div>
+              </div>
+          })
+       }
+     </div>
+     <div className={styles.address_footer} onClick={goAdd}>
+       新建地址  
+     </div>
+  </>
+}
+const mapStateToProps=(state:any)=>{
+  console.log(state.address.addressList)
+  return {
+    addressList:state.address.addressList
+  }
+}
+const mapDispatchToProps=(dispatch:Function)=>{
+  return {
+      getAddRessList:()=>{
+         dispatch(addRessListAction())
+      },
+      getAddRessDelet:(id:any)=>{
+        dispatch(addRessDeletAction(id))
+      },
+      getAddRessAdd:(name:string,mobile:string,address:string,is_default:boolean,id:number)=>{
+        dispatch(addRessAddAction(name,mobile,address,is_default,id))
+      }
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Address)

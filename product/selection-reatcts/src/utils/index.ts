@@ -12,3 +12,27 @@ export let getToken = ()=>{
 export let removeToken = ()=>{
     Cookie.remove(key);
 }
+//事件优化防抖
+export let debounce = (func: Function, delay=150) => {
+    let timer:number = 0;
+
+    return (...args: any[])=>{
+        clearTimeout(timer);
+        timer = setTimeout(()=>{
+            func(...args);
+        },delay) as unknown as number
+    }
+}
+
+//节流
+export let throttle = (func: Function, delay=150) =>{
+    let timer:number = 0;
+
+    return (...args: any[])=>{
+        let now:number = +new Date();
+        if(now - timer > delay){
+            func(...args);
+            timer = now;
+        }
+    }
+}

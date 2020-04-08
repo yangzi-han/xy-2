@@ -4,7 +4,6 @@ import {getUserinfo, uploadAvatar, updateAvatar} from '../../api'
 export let loginAction = ()=>{
     return async (dispatch:Function)=>{
         let data = await getUserinfo();
-        console.log(data)        
         dispatch({
             type: 'GET_USERINFO',
             payload: data
@@ -15,6 +14,7 @@ export let loginAction = ()=>{
 export let UploderAction = (form: FormData)=>{
     return async (dispatch:Function)=>{
         let data = await uploadAvatar(form);
+        // dispatch(updateAvatarAction(data.data[0].path))
         dispatch({
             type: 'UPLOAD_AVATAR',
             payload: data

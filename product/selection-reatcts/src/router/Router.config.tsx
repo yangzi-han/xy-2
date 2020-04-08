@@ -11,6 +11,7 @@ import Categorys from '../views/Categorys'
 import CollectPage from '../views/CollectPage'
 import AddressPage from '../views/AddressPage'
 import Seachpage from '../views/SeachPage'
+import Add from '../views/AddPage'
 //二级
 import IndexPage from '../views/main/IndexPage'
 import TypePage from '../views/main/TypePage'
@@ -30,6 +31,9 @@ const config = {
         },{
             path:'/favor',
             component:Favorpage
+        },{
+            path:'/add',
+            component:Add
         },{
             path:'/goodsDetail/:id',
             component:GoodsDetailPage

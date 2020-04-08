@@ -24,13 +24,16 @@ axios.interceptors.request.use(function (config) {
 axios.interceptors.response.use(function (response) {
     // 位于2xx范围内的任何状态代码都会触发此函数
     // 对响应数据做些什么
-    if (response.status != 200 || response.data.errno != 0){
+    console.log(response)
+    if (response.status != 200 || (response.data.errno && response.data.errno !== 0) || (response.data.code && response.data.code !== 1)){
         //做个错误提示抛出Promise.resolve
         Toast.info(response.data.errmsg)
         return Promise.resolve()
-      }else{
-        return response.data.data;
-      }
+      }else if(response.data.data){
+            return response.data.data
+        }else{
+            return response.data;
+        }
 }, function (error) {
     // 任何超出2xx范围的状态码都会触发此函数
     // 处理响应错误

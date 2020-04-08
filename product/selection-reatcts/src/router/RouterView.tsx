@@ -25,10 +25,9 @@ const RouterView:React.FC<StateType&DispatchType&PropType>=(props)=>{
                             return <Redirect to={`/login?redirect=${encodeURIComponent(path)}`}/>
                         }
                          // 如果已经登陆且没有用户信息，就去拉取用户信息
-                        // if (getToken() && !Object.keys(props.info).length){
-                        //       props.getUserinfo();
-                        // }
-
+                        if (getToken() && !Object.keys(props.info).length){
+                              props.getUserinfo();
+                        }
                         if(item.children){
                             return <item.component routes={item.children} {...renderProps} />
                         }else{

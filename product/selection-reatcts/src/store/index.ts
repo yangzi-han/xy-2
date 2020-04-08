@@ -9,6 +9,9 @@ import login from './reducers/login'
 import topic from './reducers/topic'
 import type from './reducers/type'
 import my from './reducers/my'
+import seach from './reducers/seach'
+import address from './reducers/address'
+import cart from './reducers/cart'
 
 // 连接子reducer
 let reducers = combineReducers({
@@ -16,7 +19,10 @@ let reducers = combineReducers({
     login,
     topic,
     type,
-    my
+    seach,
+    my,
+    address,
+    cart
 })
 
 let store = createStore(reducers, applyMiddleware(ReduxThunk, ReduxLogger))

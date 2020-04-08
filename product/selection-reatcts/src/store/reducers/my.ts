@@ -9,7 +9,7 @@ function loginReudcer(state: any, action: ActionType){
         case 'GET_USERINFO':
             return {...state,info:action.payload}
         case 'UPLOAD_AVATAR':
-            console.log(action.payload)            
+            console.log(action.payload,'............')            
             return {...state, uploadAvatar: action.payload[0].path}
         case 'UPDATE_AVATAR':
             return {...state, uploadAvatar: '', info: {...state.info, avatar: action.payload}}
