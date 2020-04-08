@@ -6,7 +6,7 @@ let initval={
 function changeimgReducer(state:any,action:ActionType){
     switch (action.type){
         case 'Changeimg':
-            return {...state,...action.payload}
+            return {...state,...action.payload[0]}
         default:
             return state
     }

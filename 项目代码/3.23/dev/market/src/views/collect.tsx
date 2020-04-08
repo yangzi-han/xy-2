@@ -48,8 +48,8 @@ let Collect: React.FC<DispatchType & RouteComponentProps & ActionType> = props =
                                 {
                                     text: '删除',
                                     onPress: () => {
-                                       props.deletes("1",item.value_id)
-                                       props.coloects()
+                                       props.deletes("",item.value_id)
+                                       props.history.go(0)
                                        
                                     },
                                     style: { backgroundColor: '#F4333C', color: 'white',width:'2rem' },

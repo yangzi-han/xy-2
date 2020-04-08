@@ -25,6 +25,9 @@ import Cartlist from './reducers/cartlist'
 import addcart from './reducers/addcart'
 import getuseinfo from './reducers/getuserinfo'
 import updata from './reducers/changeimg'
+import changeimg from "./reducers/updata"
+import DeletecartReducer from './reducers/deletecart'
+import Check from './reducers/deletecart'
 
 // 连接子reducer
 let reducers = combineReducers({
@@ -49,7 +52,10 @@ let reducers = combineReducers({
     Cartlist,
     addcart,
     getuseinfo,
-    updata
+    updata,
+    changeimg,
+    DeletecartReducer,
+    Check
 
 })
 

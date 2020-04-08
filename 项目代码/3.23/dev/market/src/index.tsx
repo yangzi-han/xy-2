@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {HashRouter} from 'react-router-dom'
+import {BrowserRouter} from 'react-router-dom'
 import config from './router/router'
 import RouterView from './router/RouterView'
 import store from './store'
@@ -14,8 +14,8 @@ import './static/font_bt4hdzaccew/iconfont.css'
 
 ReactDOM.render(
     <Provider store={store}>
-    <HashRouter>
+    <BrowserRouter>
         <RouterView routes={config.routes}></RouterView>
-    </HashRouter>
+    </BrowserRouter>
     </Provider>,document.getElementById('root')
 );

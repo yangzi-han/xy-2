@@ -62,7 +62,16 @@ b {
   margin-top: .2rem;
 }
 
-.centeritem img {
-  width: 1.8rem;
-  height: 100%;
+.img {
+  width: 1.8rem !important;
+  height: 100% !important;
+}
+
+.img img {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.name {
+  color: red;
 }

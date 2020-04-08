@@ -6,6 +6,7 @@ import { GetuserinfoAction } from '../../store/actions/getuserinfo'
 import { connect } from 'react-redux'
 import {ChangeimgAction} from '../../store/actions/changeimg'
 import { UpdataAction } from "../../store/actions/updata";
+
 interface DispatchType {
     Getuserinfo: Function
     changimg:(form:FormData)=>void
@@ -18,12 +19,10 @@ interface ActionType {
         mobile: string
     },
     updata:{
-        data:data[]
+        path:string
     }
 }
-interface data{
-    path:string
-}
+
 let MyPage: React.FC<RouteComponentProps & DispatchType & ActionType> = props => {
     let [flag,Setflag]=useState(false)
     useEffect(() => {
@@ -58,15 +57,16 @@ let MyPage: React.FC<RouteComponentProps & DispatchType & ActionType> = props =>
     let mask2=(img:string)=>{
         Setflag(flag=false)
         props.updatas(img)
+        
     }
     return <>
 
         <div className={styles.mytop}>
             <div className={styles.topimg}>
-                <img src={props.updata.data?props.updata.data[0].path:props.userinfo.avatar} alt="" onClick={mask} />
+                <img src={props.updata.path?props.updata.path:props.userinfo.avatar} alt="" onClick={mask} />
                 <div className={flag?styles.actives:styles.actives2}>
                 <input type="file" onChange={change}/>
-                <div onClick={()=>mask2(props.updata.data[0].path)}>确定</div>
+                <div onClick={()=>mask2(props.updata.path)}>确定</div>
                 </div>
                
             </div>
@@ -154,6 +154,7 @@ let MyPage: React.FC<RouteComponentProps & DispatchType & ActionType> = props =>
 }
 
 let mapStateToProps = (state: any) => {
+    console.log(state.getuseinfo)
     return {
         userinfo: state.getuseinfo,
         updata:state.updata

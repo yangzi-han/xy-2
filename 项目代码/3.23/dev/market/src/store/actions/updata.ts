@@ -7,7 +7,7 @@ export let UpdataAction=(img:string)=>{
         console.log(data)
         if(data){
             dispatch({
-                type:"TYPE_RIGHT",
+                type:"UP_DATA",
                 payload:data
             })
         }

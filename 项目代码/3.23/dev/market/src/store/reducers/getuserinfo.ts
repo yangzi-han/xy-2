@@ -4,7 +4,7 @@ let initval={
 }
 function ADDCARTReducer(state:any,action:ActionType){
     switch (action.type){
-        case 'Getuserinfo':
+        case 'Getuserinfoss':
             return {...state,...action.payload}
         default:
             return state
