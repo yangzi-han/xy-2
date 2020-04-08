@@ -28,7 +28,7 @@ let TypePage: React.FC<DispatchType&StateTypes&RouteComponentProps> = props=>{
         props.getClassifyList()
     },[])
     let category=(id:any)=>{
-        console.log(id)
+        // console.log(id)
         props.history.push('/categorys/'+id)
     }
     let GoSearch=()=>{
@@ -60,7 +60,7 @@ let TypePage: React.FC<DispatchType&StateTypes&RouteComponentProps> = props=>{
     </div>
 }
 const mapStateToProps = (state: any)=>{
-    console.log('state.classify...', state.classify)
+    // console.log('state.classify...', state.classify)
     return {...state.classify}
 }
 const mapDisptachToProps = (dispatch: Function)=>{

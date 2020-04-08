@@ -32,7 +32,7 @@ let TypeGoodsPage: React.FC<RouteComponentProps<{id:string}>&DispatchType&StateT
     let changeindex=(index:any)=>{
         
         setactiveIndex(activeIndex=index)
-        console.log(activeIndex,index)
+        // console.log(activeIndex,index)
         props.getClassifyGoodList(activeIndex)
         props.getClassifyCategory(activeIndex)
     }
@@ -64,7 +64,7 @@ let TypeGoodsPage: React.FC<RouteComponentProps<{id:string}>&DispatchType&StateT
 }
 
 const mapStateToProps = (state: any)=>{
-    console.log('state.classify...', state.classify)
+    // console.log('state.classify...', state.classify)
     return {...state.classify}
 }
 const mapDisptachToProps = (dispatch: Function)=>{

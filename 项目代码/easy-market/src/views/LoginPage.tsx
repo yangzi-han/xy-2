@@ -16,7 +16,7 @@ let LoginPage: React.FC<RouteComponentProps&DispatchType&StateType> = props=>{
     let [mobile,setMobile]=useState<string>('15323807318')
     let [password,setPassword]=useState<string>('123456')
     if(props.isFlage){
-        console.log('-----',props.location,decodeURIComponent)
+        // console.log('-----',props.location,decodeURIComponent)
         let redirect=props.location.search.slice(1).split('=')[1]
         props.history.replace(redirect?decodeURIComponent(redirect):'/')
         return null
@@ -51,7 +51,7 @@ let LoginPage: React.FC<RouteComponentProps&DispatchType&StateType> = props=>{
     </div>
 }
 const mapStateToProps = (state: any)=>{
-    console.log('state.login...', state)
+    // console.log('state.login...', state)
     return {
         isFlage:state.login.isFlage
     }

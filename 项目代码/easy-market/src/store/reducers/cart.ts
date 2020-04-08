@@ -7,6 +7,12 @@ function CartReducer(state:any,action:ActionType){
     switch (action.type){
         case 'GET_ADDCART_LIST':
             return {...state,...action.payload}
+        case 'GET_UPDATA_LIST':
+            return {...state,...action.payload}
+        case 'GET_CHECKED_LIST':
+            return {...state,...action.payload}
+        case 'GET_DELETE_LIST':
+            return {...state,...action.payload}
         default:
             return state
     }

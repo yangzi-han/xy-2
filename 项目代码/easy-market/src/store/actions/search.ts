@@ -10,9 +10,9 @@ export let SearchAction = ()=>{
         })
     }
 }
-export let SearchListAction=(keyword:string)=>{
+export let SearchListAction=(keyword:string,order:string,sort:string)=>{
     return async (dispatch:Function)=>{
-        let data=await getSearchList(keyword)
+        let data=await getSearchList(keyword,order,sort)
         console.log('SearchListAction...', data)
         dispatch({
             type:'GET_SEARCH_LIST',

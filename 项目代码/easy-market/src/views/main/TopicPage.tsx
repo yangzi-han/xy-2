@@ -28,7 +28,7 @@ let TopicPage: React.FC<StateType & DispatchType & RouteComponentProps> = props=
         if(Math.round(scrollY+viewHeight)===bodyHeight){
             // console.log('到底了')
             if(page<2){
-                console.log(page)
+                // console.log(page)
                 setPage(page+=1)
                 props.getTopicPage(page)
             }
@@ -54,7 +54,7 @@ let TopicPage: React.FC<StateType & DispatchType & RouteComponentProps> = props=
 }
 
 const mapStateToProps = (state: any)=>{
-    console.log('state.topic...', state.topic)
+    // console.log('state.topic...', state.topic)
     return {topicList:state.topic.TopList}
 }
 const mapDisptachToProps = (dispatch: Function)=>{

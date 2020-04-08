@@ -46,7 +46,7 @@ interface DispatchType{
 }
 
 let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = props=>{
-    console.log('props----',props)
+    // console.log('props----',props)
     useEffect(()=>{
         props.getBanner();
     }, []);
@@ -137,7 +137,7 @@ let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = 
 }
 
 const mapStateToProps = (state: any)=>{
-    console.log('state.home...', state.home)
+    // console.log('state.home...', state.home)
     return state.home
 }
 const mapDisptachToProps = (dispatch: Function)=>{

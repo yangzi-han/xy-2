@@ -49,17 +49,15 @@ let AddressPage: React.FC<RouteComponentProps&DispatchType&StateTpes> = props=>{
         // district_id: 410
         // address: "123"
         // is_default: false
-        console.log('---------',name,mobile,addresss,is_default)
+        // console.log('---------',name,mobile,addresss,is_default)
         if(name!==''){
             if(id){
                 props.getAddress(name,mobile,addresss,is_default,id)
-                props.getAddressList()
-                setifFlage(ifFlage=!ifFlage)
             }else{
                 props.getAddress(name,mobile,addresss,is_default)
-                props.getAddressList()
-                setifFlage(ifFlage=!ifFlage)
             }
+            setifFlage(ifFlage=!ifFlage)
+            props.getAddressList()
         }
         else{
             Toast.fail('请输入姓名!!!', 1);
@@ -158,7 +156,7 @@ let AddressPage: React.FC<RouteComponentProps&DispatchType&StateTpes> = props=>{
 
 
 const mapStateToProps = (state: any)=>{
-    console.log('state.my...',state.my)
+    // console.log('state.my...',state.my)
     return {
         ...state.my
     }

@@ -29,7 +29,7 @@ interface DispatchType{
     getTopicComment:Function
 }
 let TopicDetailPage: React.FC<DispatchType&StateType&RouteComponentProps<{id:string}>> = props=>{
-    console.log(props)
+    // console.log(props)
     let [id]=useState(props.match.params.id)
     useEffect(()=>{
         props.getTopicDetail(id)
@@ -71,7 +71,7 @@ let TopicDetailPage: React.FC<DispatchType&StateType&RouteComponentProps<{id:str
 }
 
 const mapStateToProps = (state: any)=>{
-    console.log('state.topic...', state.topic)
+    // console.log('state.topic...', state.topic)
     return state.topic
 }
 const mapDisptachToProps = (dispatch: Function)=>{

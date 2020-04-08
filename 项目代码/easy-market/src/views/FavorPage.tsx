@@ -67,7 +67,7 @@ let FavorPage: React.FC<Dispatch&StateTypes&RouteComponentProps> = props=>{
 }
 
 const mapStateToProps = (state: any)=>{
-    console.log('state.my...',state.my)
+    // console.log('state.my...',state.my)
     return {
         ...state.my
     }

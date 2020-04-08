@@ -40,10 +40,10 @@ let CartPageView:React.FC<PropsType & DispatchType &RouteComponentProps>=props=>
     let addcartlist=()=>{
         // console.log(num)
         if(num==0){
-            Toast.fail('请选择商品数量')
+            Toast.fail('请选择商品数量',1)
         }else{
             props.Addcart(props.info.id,num,props.productList[0].id)
-            Toast.success('添加成功')
+            Toast.success('添加成功',1)
         }
     }
     return <div className={styles.wrappopup}>

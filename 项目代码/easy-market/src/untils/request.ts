@@ -24,7 +24,7 @@ axios.interceptors.request.use(function (config) {
 axios.interceptors.response.use(function (response) {
     // 2xx范围内的任何状态代码都会触发此函数
     //处理响应数据
-    // console.log('response....',response.data)
+    // console.log('response....',response)
     if (response.status != 200 || (response.data.errno && response.data.errno !== 0) || (response.data.code && response.data.code !== 1)){
       // 做个错误提示，抛出Promise.resolve
       Toast.info(response.data.errmsg)

@@ -540,6 +540,33 @@ button,input{
         margin: .03rem;
     }
 }
+.searchConditionWrap {
+    position: fixed;
+    top: 0.5rem;
+    width: 100%;
+    height: auto;
+    z-index: 10;
+    box-shadow: 0 0.04rem 0.08rem 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
+}
+.searchCondition {
+    height: .3rem;
+    background: #fff;
+    display: flex;
+    font-size: .14rem;
+    div {
+        flex: 1 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }    
+    .active {
+        color: red;
+    }
+    .sortPrice {
+        margin-left: .1rem;
+        width: .1rem;
+    }
+}
 //我的页面
 .minePage{
     padding-bottom: 0.5rem;
@@ -960,4 +987,70 @@ button,input{
         flex: 1 1;
         line-height: 0.5rem;
     }
+}
+///购物车
+.countOp {
+    width: auto;
+    display: flex;
+    div{
+        text-align:center;
+        line-height: .25rem;
+    }
+    div:nth-child(3),div:nth-child(1){
+        width: .2rem;
+        height: .3rem;
+        border: 1px solid #dcdcdc;
+    }
+    div:nth-child(2) {
+        min-width: 0.3rem;
+        height: .3rem;
+        padding: 0 .1rem;
+        font-size: .15rem;
+        border: 1px solid #dcdcdc;
+        border-right: none;
+        border-left: none;
+    }
+    
+}
+.cartGoodsDo {
+    position: fixed;
+    bottom: 0.5rem;
+    height: 0.5rem;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    display: flex;
+    box-shadow: 0 -3px 10px 0 rgba(0,0,0,.2);
+    z-index: 1000;
+}
+.isCheckItem {
+    width: .3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        width: .18rem;
+        height: auto;
+    }
+}
+.cartGoodsDo div {
+    height: 100%;
+}
+.cartMsgAll {
+    flex: 1 1;
+    line-height: 0.5rem;
+    font-size: .16rem;
+}
+.cartAllDoButton {
+    width: auto;
+    padding: 0 .1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pay {
+    background: #ab2b2b;
+    color: #fff;
+    padding: 0;
+    width: 1.6rem;
 }
