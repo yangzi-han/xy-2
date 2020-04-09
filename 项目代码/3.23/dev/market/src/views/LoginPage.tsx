@@ -1,64 +1,67 @@
-//登入页面
-import React,{useState} from 'react'
-import styles from  '../scss/login.module.scss'
-import {Toast} from 'antd-mobile'
-import {mobileReg,passwordReg}from '../utils/regexp'
-import {loginAction} from '../store/actions/login'
+import React, { useEffect, useState } from 'react'
+import styles from '../style/index.module.scss'
 import {connect} from 'react-redux'
 import {RouteComponentProps} from 'react-router'
+import {mobileReg,passwordReg} from '../untils/regexp';
+import {loginAction} from '../store/actions/login'
+import { Toast } from 'antd-mobile';
 interface StateType{
-    isLogin:boolean
+    isFlage:boolean
 }
-interface DisPatchTypes{
+interface DispatchType{
     login:(mobile:string,password:string)=>void
 }
 
-let LoginPage: React.FC<DisPatchTypes & StateType & RouteComponentProps> = props=>{
-    if(props.isLogin){
-        //返回第一次或者上一次的页面
+let LoginPage: React.FC<RouteComponentProps&DispatchType&StateType> = props=>{
+    let [mobile,setMobile]=useState<string>('15323807318')
+    let [password,setPassword]=useState<string>('123456')
+    if(props.isFlage){
+        // console.log('-----',props.location,decodeURIComponent)
         let redirect=props.location.search.slice(1).split('=')[1]
-        props.history.replace(redirect?decodeURIComponent(redirect):"/")
+        props.history.replace(redirect?decodeURIComponent(redirect):'/')
+        return null
     }
-    let [mobile,SetMobile]= useState<string>("15323807318")
-    let [password,SetPassword]= useState<string>("123456")
-
-    let ChangeMoblie=(e: React .ChangeEvent<HTMLInputElement>)=>{
-        SetMobile(e.target.value);
+    let changeMobile=(e:React.ChangeEvent<HTMLInputElement>)=>{
+        setMobile(e.target.value)
     }
-    let ChangePassword=(e: React.ChangeEvent<HTMLInputElement>)=>{
-        SetPassword(e.target.value)
+    let changePassword=(e:React.ChangeEvent<HTMLInputElement>)=>{
+        setPassword(e.target.value)
     }
-    let login = ()=>{
+    let login=()=>{
+        // console.log(mobileReg.test(mobile!),passwordReg.test(password!))
         if(!mobileReg.test(mobile!)){
-            Toast.info('请输入手机号');
+            Toast.info('请输入正确的手机号')
             return
         }
         if(!passwordReg.test(password!)){
-            Toast.info("请输入密码");
+            Toast.info('请输入正确的密码号')
             return
         }
         props.login(mobile,password)
     }
-    return <>
-    <div className={styles.logintop}></div>
-    <div className={styles.center}>
-
-        <input type="text" placeholder="请输入手机号" value={mobile} onChange={ChangeMoblie} /><br/>
-        <input type="password" placeholder="请输入密码" value={password} onChange={ChangePassword} /><br/>
-        <div className={styles.buttons} onClick={login}><button>登入</button></div>
+    return <div className={styles.loginBox}>
+        <div className={styles.login}>
+            <img src="https://jasonandjay.com/easyMarket/static/media/logo.f51ce87b.jpg" alt=""/>
+        </div>
+        <div className={styles.loginMain}>
+            <div className={styles.inputWrap}><input type="text" value={mobile} onChange={changeMobile} placeholder='请输入手机号'/></div>
+            <div className={styles.inputWrap}><input type="possword" value={password} onChange={changePassword} placeholder='请输入密码'/></div>        
+            <button className={styles.loginbtn} onClick={login} >登录</button>
+        </div>
     </div>
-    </>;
 }
-const mapStateToProps=(state:any)=>{
+const mapStateToProps = (state: any)=>{
+    // console.log('state.login...', state)
     return {
-        isLogin:state.login.isLogin
+        isFlage:state.login.isFlage
     }
 }
-const mapDispatchToProps = (dispatch:Function)=>{
+const mapDisptachToProps = (dispatch: Function)=>{
     return {
-        login(mobile:string,password:string) {
+        login: (mobile:string,password:string)=>{
             dispatch(loginAction(mobile,password))
         }
     }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(LoginPage);
+
+export default connect(mapStateToProps, mapDisptachToProps)(LoginPage);

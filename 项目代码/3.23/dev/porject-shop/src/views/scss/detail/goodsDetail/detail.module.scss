@@ -1,0 +1,378 @@
+.goodsDetailPage {
+    width: 100%;
+    height: 100%;
+    padding-top: .5rem;
+
+    .goodHeader {
+        width: 100%;
+        height: .49rem;
+        background: #fff;
+        border-bottom: .01rem solid #ccc;
+        display: flex;
+        z-index: 999;
+        position: fixed;
+        top: 0;
+
+        p {
+            flex: 1;
+            text-align: center;
+            line-height: .5rem;
+            font-size: .16rem;
+        }
+    }
+
+    .swiperr {
+        display: inline-block;
+        width: 100%;
+        height: 3.3rem;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .goodBlanktitle {
+        width: 100%;
+        height: .4rem;
+        display: flex;
+
+        li {
+            flex: 1;
+            text-align: center;
+            line-height: .4rem;
+            font-size: .12rem;
+            color: #666;
+
+            span {
+                color: red;
+                // margin-right: .07rem;
+                font-size: .15rem;
+            }
+        }
+    }
+
+    .goodsMsgWrap {
+        padding: .2rem;
+        background: #fff;
+        text-align: center;
+        border-bottom: .01rem solid #ddd;
+
+        .goodsNameTitle {
+            font-size: .2rem;
+            padding-bottom: .1rem;
+        }
+
+        .goodsNameSubTitle {
+            font-size: .15rem;
+            color: #444;
+            padding-bottom: .05rem;
+        }
+
+        .goodsNamePrice {
+            font-size: .2rem;
+            color: red;
+            line-height: .5rem;
+        }
+
+        .goodsBrandTitle {
+            font-size: .12rem;
+            padding: .05rem;
+            color: orange;
+            display: inline;
+            border: .01rem solid orange;
+            border-radius: .05rem;
+        }
+    }
+
+    .goodsImg {
+        width: 100%;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .goodsAttribute {
+        margin-top: .1rem;
+        padding: .2rem;
+        background: #fff;
+
+        .goodsAttributeLine {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #2196f3;
+            padding: .05rem 0;
+        }
+
+        .goodsAttributeList {
+            .goodsAttributeItem {
+                display: flex;
+                align-items: center;
+                line-height: .4rem;
+                background: #dcdfe6;
+                margin-top: .05rem;
+
+                .attributeLabel {
+                    width: 1rem;
+                    color: grey;
+                    padding: 0 .05rem;
+                    font-size: .16rem;
+                    text-align: center;
+                }
+
+                .attributeContent {
+                    flex: 1;
+                    font-size: .15rem;
+                    line-height: .3rem;
+                    padding: 0 .05rem;
+
+                }
+            }
+        }
+
+        .problemWrap {
+            margin-bottom: .1rem;
+
+            .problemLabel {
+                font-size: .16rem;
+                line-height: .3rem;
+
+                span {
+                    color: red;
+                    margin-right: .05rem;
+                }
+            }
+
+            .problemContent {
+                font-size: .15rem;
+                line-height: .25rem;
+                color: grey;
+            }
+        }
+    }
+
+    .goodsPageDo {
+        width: 100%;
+        height: .49rem;
+        background: #fff;
+        display: flex;
+        box-shadow: 0 -.05rem .1rem 0 rgba(0, 0, 0, .2);
+        position: fixed;
+        bottom: 0;
+
+        .isLike {
+            width: 20%;
+            height: 100%;
+            line-height: .5rem;
+            font-size: .3rem;
+            text-align: center;
+            font-weight: bolder;
+
+        }
+
+        .Like {
+            color: yellow;
+            width: 20%;
+            height: 100%;
+            line-height: .5rem;
+            font-size: .3rem;
+            text-align: center;
+            font-weight: bolder;
+        }
+
+        .cartNum {
+            width: 20%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #2196f3;
+            font-size: .45rem;
+
+            i {
+                font-size: .25rem;
+                position: relative;
+
+                span {
+                    position: absolute;
+                    font-size: .16rem;
+                    right: -.1rem;
+                    top: -.05rem;
+                    color: red;
+                    font-weight: bolder;
+                }
+            }
+        }
+
+        .addCart,
+        .payGoods {
+            width: 30%;
+            height: 100%;
+            line-height: .5rem;
+            text-align: center;
+            font-size: .15rem;
+            color: #fff;
+        }
+
+        .addCart {
+            background: linear-gradient(90deg, #ff9500, #ff5e3a);
+        }
+
+        .payGoods {
+            background: linear-gradient(90deg, #1d62f0, #19d5fd);
+        }
+    }
+
+    .amModalWrap {
+        position: fixed;
+        overflow: auto;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 100%;
+        z-index: 999;
+        outline: 0;
+        align-items: center;
+        justify-content: center;
+        transform: translateZ(1px);
+        background: rgba(0, 0, 0, 0.514);
+
+        .amModal {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+
+            .amModalContent {
+                position: relative;
+                background-color: #fff;
+                border: 0;
+                background-clip: padding-box;
+                text-align: center;
+                height: 100%;
+                overflow: hidden;
+
+                .amModalBody {
+                    font-size: 15px;
+                    color: #888;
+                    height: 100%;
+                    line-height: 1.5;
+                    overflow: auto;
+
+                    .goodsSizeDo {
+                        padding: .2rem .1rem;
+                        background: #fff;
+
+                        .goodsSizeSetMsg {
+                            height: 1rem;
+                            display: flex;
+
+                            img {
+                                width: 1rem;
+                                height: 1rem;
+                                display: block;
+                            }
+
+                            .gooodsSizePriceAndSize {
+                                display: flex;
+                                justify-content: center;
+                                flex-direction: column;
+                                padding: 0 .05rem;
+                                flex: 1;
+                                height: 100%;
+                                font-size: .15rem;
+                                text-align: left;
+
+                                div {
+                                    width: 100%;
+                                    height: auto;
+                                    line-height: .3rem;
+
+                                    span {
+                                        color: red;
+                                    }
+                                }
+                            }
+
+                            .closeModel {
+                                width: auto;
+                                color: red;
+                            }
+                        }
+
+                        .goodsSizeWrap .goodsSizeItem {
+                            .goodsSizeItemName {
+                                text-align: left;
+                                color: #000;
+                                padding: .1rem 0;
+                            }
+
+                            .goodsSizeListWrap {
+                                display: flex;
+                                align-items: center;
+                                flex-wrap: wrap;
+
+                                .goodsBuyCount {
+                                    width: 2rem;
+                                    height: .4rem;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    color: #000;
+                                    border: .001rem solid rgb(231, 228, 228);
+
+                                    div {
+                                        height: 100%;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                    }
+
+                                    div:first-child,
+                                    div:nth-child(3) {
+                                        width: 30%;
+                                    }
+
+                                    div:nth-child(2) {
+                                        width: 40%;
+                                        border-left: .001rem solid rgb(231, 228, 228);
+                                        border-right: .001rem solid rgb(231, 228, 228);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .goodsDoWrap {
+                        height: .5rem;
+                        display: flex;
+
+                        .addCart,
+                        .payGoods {
+                            flex: 1;
+                            line-height: .5rem;
+                            text-align: center;
+                            font-size: .15rem;
+                            color: #fff;
+                        }
+
+                        .addCart {
+                            background: linear-gradient(90deg, #ff9500, #ff5e3a);
+                        }
+
+                        .payGoods {
+                            background: linear-gradient(90deg, #1d62f0, #19d5fd);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.left{
+    position: fixed;
+    left: .1rem;
+}

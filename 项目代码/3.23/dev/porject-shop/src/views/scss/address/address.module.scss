@@ -1,0 +1,193 @@
+.addressPage {
+    width: 100%;
+    height: 100%;
+
+    .header {
+        width: 100%;
+        height: .5rem;
+        display: flex;
+        background: #fff;
+        box-shadow: 0 0.04rem 0.08rem 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04);
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        line-height: .5rem;
+        text-align: center;
+
+        .left {
+            width: .3rem;
+        }
+
+        .title {
+            flex: 1;
+            width: 70%;
+            font-size: .16rem;
+        }
+
+    }
+
+    .addressList {
+        width: 100%;
+        margin-top: .5rem;
+        border-top: .05rem dashed #ccc;
+
+        .addressItem {
+            height: .8rem;
+            background: #fff;
+            border-bottom: .01rem solid #dcdcdc;
+            position: relative;
+
+            .addressMsg {
+                position: absolute;
+                left: .15rem;
+                right: .05rem;
+                top: .05rem;
+                bottom: .05rem;
+                width: auto;
+                height: auto;
+                display: flex;
+
+                .concatName {
+                    width: .5rem;
+                    height: 33.3%;
+                    background: #fff;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color: #ff9500;
+                }
+
+                .addressDetail {
+                    flex: 1;
+                    font-size: .16rem;
+
+                    .concatPhone {
+                        height: 33.3%;
+                        display: flex;
+                        align-items: center;
+                    }
+
+                    .concatAddress {
+                        height: 33.3%;
+                        display: flex;
+                        align-items: center;
+                        color: grey;
+                    }
+                }
+
+                .deleteAddress {
+                    width: .4rem;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+
+    .addAddress {
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+
+        button {
+            width: 100%;
+            height: .5rem;
+            border: 0;
+            color: #fff;
+            text-align: center;
+            background: #108ee9;
+            font-size: .18rem;
+        }
+    }
+}
+
+.addAddressPage {
+    width: 100%;
+    min-height: 100%;
+    background: #fff;
+    // padding-top: .5rem;
+
+    .addressHeader {
+        height: .5rem;
+        box-shadow: 0 0.04rem 0.08rem 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: .16rem;
+        margin-bottom: 2px;
+    }
+
+    .addressList {
+        background: #fff;
+
+        .ressItem {
+            position: relative;
+
+            .addressInput {
+                width: 100%;
+                height: .5rem;
+                line-height: .5rem;
+                margin-top: .1rem;
+                text-indent: 1em;
+                border: none;
+                outline: none;
+                border-bottom: .001rem solid #ececec;
+                // overflow: visible;
+            }
+
+            .chooseAddress {
+                height: .5rem;
+                line-height: .5rem;
+                margin-top: .1rem;
+                text-indent: 1em;
+                border-bottom: .001rem solid #ececec;
+            }
+
+            .isDefaultAddress {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: .5rem;
+                line-height: .5rem;
+                margin-top: .1rem;
+                border-bottom: .001rem solid #ececec;
+
+                img {
+                    margin-left: 5px;
+                    width: 20px;
+                    display: inline;
+                }
+            }
+        }
+    }
+
+    .closeAddress {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+
+        button {
+            width: 100%;
+            height: .5rem;
+            line-height: .5rem;
+            padding: 0 15px;
+            border: 0;
+            background: #fff;
+            font-size: 18px;
+            border: .001rem solid #ccc;
+        }
+
+        .cancel {
+            border-radius: .05rem;
+        }
+
+        .preserve {
+            color: #fff;
+            background: #108ee9;
+        }
+    }
+}

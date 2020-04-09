@@ -1,6 +1,5 @@
-import axios from '../utils/request'
-
-//获取首页的banner
-export let getBanner = ()=>{
-    return axios.get("/")
+import axios from '../untils/request'
+//获取首页banner
+export let getBanner=()=>{
+    return axios.get('/')
 }

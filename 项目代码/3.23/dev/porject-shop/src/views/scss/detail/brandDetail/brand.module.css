@@ -1,0 +1,40 @@
+.brandDetail {
+  width: 100%;
+  height: 100%;
+}
+
+.brandDetail .header {
+  width: 100%;
+  height: .49rem;
+  border-bottom: .01rem solid #ccc;
+  display: flex;
+  line-height: .5rem;
+  background: #fff;
+}
+
+.brandDetail .header div {
+  flex: 1;
+  text-align: center;
+}
+
+.brandDetail .detailImg {
+  width: 100%;
+  background: #fff;
+}
+
+.brandDetail .detailImg img {
+  width: 100%;
+}
+
+.brandDetail .detailImg .breadDesc {
+  line-height: .2rem;
+  padding: .2rem;
+  background: #fff;
+  text-indent: 1em;
+  color: grey;
+}
+
+.left {
+  position: fixed;
+  left: .1rem;
+}

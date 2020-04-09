@@ -1,122 +1,76 @@
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useEffect,useState } from 'react'
-import { connect } from 'react-redux'
-import { TypeAction } from "../../store/actions/type"
-import styles from '../../scss/type.module.scss'
-import {TypeRightAction} from '../../store/actions/typeright'
-import {RouteComponentProps} from 'react-router'
-interface DispatchTypes {
-    getType: Function,
-    getTypeRight:Function
-}
-interface StateType{
-    type:{
-        categoryList:categoryList[] 
-    }
-    typeright:{
-        id:number,
-        name:string,
+import React, { useEffect } from 'react'
+import {RouteComponentProps} from 'react-router-dom'
+import {GetClassifyAction,getClassifyCurrentAction,getClassifyCategoryAction,getClassifyGoodListAction} from '../../store/actions/classify'
+import {connect} from 'react-redux'
+import TabsBox from '../../component/tab/index'
+import styles from '../../style/index.module.scss'
+interface StateTypes{
+    categoryList:Array<{
+        [name:string]: string|number
+    }>,
+    currentCategory:{
         front_desc:string,
-        wap_banner_url:string,
-        subCategoryList:subCategoryList[]
+        name:string,
+        wap_banner_url:string
+        id:string,
+        subCategoryList:Array<{
+            wap_banner_url:string,
+            [name:string]: string|number
+        }>,
     }
-   
 }
-interface subCategoryList{
-    id:string,
-    name:string,
-    wap_banner_url:string
+interface DispatchType{
+    getClassifyList:Function,
+    getClassifyCurrent:Function,
 }
-interface categoryList{
-    id:number,
-    name:string,
-    banner_url:string,
-    img_url:string,
-    front_desc:string,
-    icon_url:string,
-    wap_banner_url:string,
-    subCategoryList:subCategoryLists[]
-}
-interface subCategoryLists{
-    name:string,
-    id:number,
-    banner_url:string,
-    wap_banner_url:string
-}
-
-let TypePage: React.FC<DispatchTypes&StateType&RouteComponentProps> = props => {
-     let [newindex,setnewindex]=useState(0)
-    useEffect(() => {
-        props.getType()
-        props.getTypeRight(1005000)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-    let getindex=(index:any,id:number)=>{
-        setnewindex(newindex=index)
-        props.getTypeRight(id)
+let TypePage: React.FC<DispatchType&StateTypes&RouteComponentProps> = props=>{
+    useEffect(()=>{
+        props.getClassifyList()
+    },[])
+    let category=(id:any)=>{
+        // console.log(id)
+        props.history.push('/categorys/'+id)
     }
-    let Typedetail=(id:string)=>{
-        props.history.push(`/typedetail/${id}`)
+    let GoSearch=()=>{
+        props.history.push('/goodsSearch')
     }
-    let search=()=>{
-        props.history.push("/search")
-    }
-    return <>
-        <div className={styles.typeinput} ><input type="text" placeholder="搜索商品，共239款好物" onClick={()=>search()}/></div>
-        <div className={styles.typecenter}>
-        <div className={styles.typeleft}>{
-            
-            props.type.categoryList.map((item,index)=>{
-                [`${styles.typeleftitem}`,`${index===newindex?styles.active:""}`].join(' ')
-            return <div key={item.id}  className={[`${styles.typeleftitem}`,`${index===newindex?styles.active:""}`].join(' ')} onClick={()=>getindex(index,item.id)} >
-                {item.name}
+    return <div>
+        <div className={styles.searchWrap}>
+            <div className={styles.searchInput} onClick={()=>{GoSearch()}}>
+                搜索商品，共239款好物
+            </div>
+        </div>
+        <div>
+            <TabsBox categoryList={props.categoryList} getClassifyCurrent={props.getClassifyCurrent} />
+            <div className={styles.categogContet}>
+                <div className={styles.categoryWrap} style={{backgroundImage:`url(${props.currentCategory.wap_banner_url})`}}>{props.currentCategory.front_desc}</div>
+                <div className={styles.categoryTitle}>—— {props.currentCategory.name}分类 ——</div>
+                <div className={styles.subCategory}>
+                    {
+                        props.currentCategory.subCategoryList?props.currentCategory.subCategoryList.map(item=>{
+                            return <div key={item.id}  onClick={()=>{category(item.id)}} className={styles.subCategoryItem}>
+                                <img src={item.wap_banner_url} alt=""/>
+                                <p className={styles.subCategoryItemName}>{item.name}</p>
+                            </div>
+                        }):''
+                    }
                 </div>
-            })
-            
-        }</div>
-
-        <div className={styles.typeright}>
-            {
-                        <div key={props.typeright&&props.typeright.id}>
-                        <img className={styles.typerightimg} src={props.typeright&&props.typeright.wap_banner_url}/>
-                        <div className={styles.rightimgcenter}>{props.typeright&&props.typeright.front_desc}</div>
-                        <div className={styles.rightTitle}>--{props.typeright&&props.typeright.name} 分类--</div>
-                        <div className={styles.typefooter}>
-                            {
-                                props.typeright&&props.typeright.subCategoryList.map((item)=>{
-                                return <div className={styles.footer} key={item.id} onClick={()=>Typedetail(item.id)}>
-                                    <img src={item.wap_banner_url} alt=""/>
-                                <div className={styles.footertitle}>{item.name}</div>
-                                </div>
-                                })
-                            }
-                        </div>
-                    </div>
-                   }
-            
-           
+            </div>
         </div>
-        </div>
-        
-    </>;
+    </div>
 }
-let mapStateToProps = (state: any) => {
-    console.log(state.type,state.typeright)
-    return {
-        type:state.type,
-        typeright:state.typeright.currentCategory
-    }
+const mapStateToProps = (state: any)=>{
+    // console.log('state.classify...', state.classify)
+    return {...state.classify}
 }
-let mapDispatchToProps = (dispatch: Function) => {
+const mapDisptachToProps = (dispatch: Function)=>{
     return {
-        getType() {
-            dispatch(TypeAction())
+        getClassifyList: ()=>{
+            dispatch(GetClassifyAction())
         },
-        getTypeRight(id:number){
-            dispatch(TypeRightAction(id))
+        getClassifyCurrent: (id:string)=>{
+            dispatch(getClassifyCurrentAction(id))
         }
     }
-
 }
-export default connect(mapStateToProps, mapDispatchToProps)(TypePage);
+export default connect(mapStateToProps,mapDisptachToProps)(TypePage);

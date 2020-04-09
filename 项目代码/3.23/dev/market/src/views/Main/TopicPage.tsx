@@ -1,78 +1,68 @@
-import React,{useEffect,useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {connect} from 'react-redux'
-import {TopiceAction} from '../../store/actions/topice';
-import styles from '../../scss/topice.module.scss'
-import { RouteComponentProps } from 'react-router'
+import {TopicAction} from '../../store/actions/topic'
+import {RouteComponentProps} from 'react-router'
+import styles from '../../style/index.module.scss'
 interface StateType{
-    data:Array<{
-        id:string,
-        [name: string]: string | number,
-        price_info:number,
-        scene_pic_url:string
+    topicList: Array<{
+        scene_pic_url:string,
+        [name:string]: string|number
     }>
 }
-interface SCROLL{
-    scrollButton:Function,
+interface DispatchType{
+    getTopicPage:Function
 }
-interface DispatchTypes{
-    topice:Function
-}
-let TopicDetailPage: React.FC<DispatchTypes&StateType&SCROLL&RouteComponentProps>= props=>{
-    let [page,setPage]=useState(1)
-    useEffect(() => {
-        props.topice(page);
-        console.log(props.data)
-        window.addEventListener('scroll',scrollButton)//添加滚动事件
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-    const scrollButton =()=>{
-        const scrollY= window.scrollY//滚动的距离
-        const viewHeight=window.innerHeight//内容的高度
-        const FatherHeight=document.body.children[1].children[0].clientHeight//父元素的高度
-        if(Math.round(scrollY+viewHeight)>=FatherHeight-50){
-            if(page<2){
-                setPage(page++)
 
-                props.topice(page)
+let TopicPage: React.FC<StateType & DispatchType & RouteComponentProps> = props=>{
+    // console.log('props----',props.topicList)
+    let [page,setPage]=useState(1)//初始化page页数
+    useEffect(()=>{
+        props.getTopicPage(page)
+        window.addEventListener('scroll',scrollBottom)//滚动事件
+    }, []);
+
+    let scrollBottom=()=>{
+        const scrollY=window.scrollY//滚动的距离
+        const viewHeight=window.innerHeight//页面的高度
+        const bodyHeight=document.body.clientHeight//父盒子的高度
+        if(Math.round(scrollY+viewHeight)===bodyHeight){
+            // console.log('到底了')
+            if(page<2){
+                // console.log(page)
+                setPage(page+=1)
+                props.getTopicPage(page)
             }
         }
+        // console.log(Math.round(scrollY+viewHeight),bodyHeight)
+      }
+    let goDetail=(event: React.MouseEvent<HTMLDivElement, MouseEvent>)=>{
+        let id=event.currentTarget.dataset.id
+        props.history.push('/topicDetail/'+id)
     }
-    const getDetail=(id:any)=>{
-        props.history.push(`/topicDetail/${id}`)
-    }
-    
-    return <>
-    {
-       props.data.map(item=>{
-            return <div key={item.id} className={styles.topice} onClick={()=>getDetail(item.id)}>
-                <div className={styles.topiceimg}>
+    return <div className={styles.tabPageContent}>
+        {
+            props.topicList.map(item=>{
+                return <div key={item.id} className={styles.topicItem} data-id={item.id} onClick={goDetail}>
                     <img src={item.scene_pic_url} alt=""/>
+                    <p className={styles.topicItemTitle}>{item.title}</p>
+                    <p className={styles.topicItemSubtitle}>{item.subtitle}</p>
+                    <p className={styles.topicItemPrice}>{item.price_info}元起</p>
                 </div>
-                <div className={styles.topicetop}>
-                    {item.title}
-                </div>
-                <div className={styles.topicecenter}>
-                    {item.subtitle}
-                </div>
-                <div className={styles.topicefooter}>
-                    {item.price_info}元起
-                </div>
-            </div>
-        })
-    }
-    </>;
-}
- const mapStateToProps=(state:any)=>{
-     
-    return  state.topice
-}
-const mapDispatchToProps=(dispatch:Function)=>{
-return {
-    topice: (page:number)=>{
-        console.log(page)
-        dispatch(TopiceAction(page))
-    }
-}
+            })
+        }
+    </div>
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(TopicDetailPage);
+const mapStateToProps = (state: any)=>{
+    // console.log('state.topic...', state.topic)
+    return {topicList:state.topic.TopList}
+}
+const mapDisptachToProps = (dispatch: Function)=>{
+    return {
+        getTopicPage: (page:number)=>{
+            dispatch(TopicAction(page))
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDisptachToProps)(TopicPage);

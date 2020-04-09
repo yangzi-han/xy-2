@@ -1,64 +1,35 @@
-import {createStore, combineReducers, applyMiddleware} from 'redux'
-import ReduxLogger from 'redux-logger'
+import React from 'react'
+import {createStore,combineReducers,applyMiddleware} from 'redux'
+import ReduxLogger from 'redux-logger'//方便调试，实时触发，线下使用 日志中间件
+//redux-logger提供一个生成器createLogger，可以生成日志中间件logger
 import ReduxThunk from 'redux-thunk'
+// 目的：异步解决方案
+// 支持action的写法有对象变为函数
+// 可以发送多个dispatch
+// 改变action
+// 同时会帮我们注入两个参数dispatch和getState
+// 在异步操作完成之后再触发dispatch操作
 
-// 引入子reducer
+//引入子reducer
 import home from './reducers/home'
 import login from './reducers/login'
-import topice from './reducers/topice'
-import type from './reducers/type'
-import topicedetail from './reducers/topicedetail'
-import topicedetailid from './reducers/topicedetailid'
-import typeright from './reducers/typeright'
-import typedetail from './reducers/typedetail'
-import typedetailfooter from './reducers/typedetailfooter'
+import topic from './reducers/topic'
+import classify from './reducers/classify'
 import search from './reducers/search'
-import searchhot from './reducers/searchhot'
-import channeldetail from './reducers/channel'
-import manufacturer from './reducers/manufacturer'
-import goodsdetail from './reducers/goodsdetail'
-import collect from './reducers/collect'
-import deletes from './reducers/detelet'
-import address from './reducers/address'
-import ADDaddress from './reducers/ADDaddress'
-import Cartlist from './reducers/cartlist'
-import addcart from './reducers/addcart'
-import getuseinfo from './reducers/getuserinfo'
-import updata from './reducers/changeimg'
-import changeimg from "./reducers/updata"
-import DeletecartReducer from './reducers/deletecart'
-import Check from './reducers/deletecart'
-
-// 连接子reducer
-let reducers = combineReducers({
+import my from './reducers/my'
+import cart from './reducers/cart'
+//连接子reducer
+let reducers=combineReducers({
     home,
     login,
-    topice,
-    type,
-    topicedetail,
-    topicedetailid,
-    typeright,
-    typedetail,
-    typedetailfooter,
+    topic,
+    classify,
     search,
-    searchhot,
-    channeldetail,
-    manufacturer,
-    goodsdetail,
-    collect,
-    deletes,
-    address,
-    ADDaddress,
-    Cartlist,
-    addcart,
-    getuseinfo,
-    updata,
-    changeimg,
-    DeletecartReducer,
-    Check
-
+    my,
+    cart
 })
-
-let store = createStore(reducers, applyMiddleware(ReduxThunk, ReduxLogger))
+//applyMiddleware方法的三个参数，就是三个中间件:applyMiddleware(thunk, promise, logger)
+//logger就一定要放在最后，否则输出结果会不正确。
+let store=createStore(reducers,applyMiddleware(ReduxThunk,ReduxLogger))
 
 export default store;

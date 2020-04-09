@@ -1,23 +1,21 @@
-import {ActionType} from '../../utils/interface'
-
+import {ActionType} from '../../untils/interface'
 const initVal={
     banner:[],
     channel:[],
-    brandList:[],
     newGoodsList:[],
     hotGoodsList:[],
+    brandList:[],
     topicList:[],
-    categoryList:[],
-    
+    categoryList:[]
 }
+
 function homeReudcer(state:any,action:ActionType){
-    switch (action.type){
+    // console.log('reducer',action)
+    switch(action.type){
         case 'GET_BANNER':
             return {...state,...action.payload}
-            
         default:
-            return state;
+            return state
     }
-
-}
-export default (state=initVal, action:ActionType)=>homeReudcer(state,action)
+}   
+export default (state=initVal,action:ActionType)=>homeReudcer(state,action)

@@ -1,0 +1,103 @@
+.typePageWrap {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+}
+
+.typePageWrap .typePageSearchWrap {
+  width: 100%;
+  height: .45rem;
+  background: #fff;
+  position: fixed;
+  top: 0;
+  border-bottom: .01rem solid #ccc;
+  z-index: 999;
+}
+
+.typePageWrap .typePageSearchWrap .typePageSearchInput {
+  width: 90%;
+  height: .3rem;
+  background: #eee;
+  border: 0;
+  margin: .07rem .2rem;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.typePageWrap .typePageTabWrap {
+  width: 33%;
+  height: 6rem;
+  position: fixed;
+  top: .46rem;
+  left: 0;
+  border-right: .01rem solid #ccc;
+  text-align: center;
+  background: #fff;
+}
+
+.typePageWrap .typePageTabWrap .TabWrapName {
+  width: 100%;
+  line-height: .4rem;
+}
+
+.typePageWrap .typePageTabWrap .active {
+  color: #108ee9;
+  border-left: 0.01rem solid #108ee9;
+}
+
+.typePageWrap .typePageList {
+  width: 67%;
+  margin-left: 33%;
+  margin-top: .46rem;
+}
+
+.typePageWrap .typePageList .typePageNavWrap {
+  width: 100%;
+  height: 1.35rem;
+}
+
+.typePageWrap .typePageList .typePageNavWrap .typePageNavImg {
+  position: relative;
+}
+
+.typePageWrap .typePageList .typePageNavWrap .typePageNavImg img {
+  width: 100%;
+  height: 1rem;
+}
+
+.typePageWrap .typePageList .typePageNavWrap .typePageNavImg .typePageNavTitle {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 0.4rem;
+  left: 0rem;
+  color: #fff;
+}
+
+.typePageWrap .typePageList .typePageNavWrap .typePageNavItem {
+  width: 100%;
+  height: .3rem;
+  text-align: center;
+  color: #2196f3;
+  line-height: .3rem;
+}
+
+.typePageWrap .typePageList .typePageListWrap {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.typePageWrap .typePageList .typePageListWrap .typePageListItem {
+  width: 50%;
+}
+
+.typePageWrap .typePageList .typePageListWrap .typePageListItem img {
+  width: 100%;
+}
+
+.typePageWrap .typePageList .typePageListWrap .typePageListItem .typePageListItemName {
+  text-align: center;
+  height: .3rem;
+  line-height: .3rem;
+}

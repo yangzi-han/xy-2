@@ -1,0 +1,27 @@
+li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    img{
+        width: 30%;
+    }
+
+}
+.desc{
+    flex: 1;
+}
+.action{
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+}
+.active{
+    composes: action desc;   // 继承样式 composes: className from "./style.css";
+    background: greenyellow;
+}
+:global{
+    .desc{
+        flex: 1
+    }
+}

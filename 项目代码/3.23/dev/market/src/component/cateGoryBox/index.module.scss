@@ -1,0 +1,45 @@
+
+.cateGoryGoodsWrap {
+    display: flex;
+    flex-wrap: wrap; 
+}
+.goodsItem{
+    width: 49.5%;
+    height:2rem;
+    margin: 0.007rem;
+    background: #fff;
+    img{
+        height: 70%;
+        width: 100%;
+    }
+}
+.goodsItemName, .goodsItemPrice {
+    text-align: center;
+    font-size: .15rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.goodsItemName {
+    padding-bottom: .1rem;
+    padding-top: .1rem;
+}
+.goodsItemPrice{
+    color: red;
+}
+.categoryMoreGoods {
+    width: 49.5%;
+    height: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    margin: 0.007rem;
+}
+.categoryMoreGoods>img {
+    padding: .2rem;
+    height: 0.3rem;
+    width: 0.3rem;
+}
