@@ -5,6 +5,7 @@ import {DetaileActions, DetlateActions, AddcollectActions} from '../store/action
 import styles from '../style/index.module.scss'
 import Banner from '../components/Banner/banner'
 import {Toast} from 'antd-mobile'
+import {AddCartAction} from '../store/actions/cart'
 interface StateProps{
     userDetaileData:Function,
     getDetlate:Function,
@@ -13,6 +14,7 @@ interface StateProps{
             [name:string]: string|number
         }>,
         info:{
+            is_on_sale:string
             goods_desc:string
             [name:string]: string|number
         },
@@ -31,6 +33,7 @@ interface StateProps{
         list_pic_url:string,
         [name:string]: string|number
     }>,
+    addcart:Function
 }
 
 let GoodsDetailPage: React.FC<RouteComponentProps<{id:string}> & StateProps> = props=>{
@@ -42,6 +45,10 @@ let GoodsDetailPage: React.FC<RouteComponentProps<{id:string}> & StateProps> = p
     let addcollect = ()=>{
         props.addCollect(id)
         Toast.success('收藏成功')
+    }
+    let addCart = () => {
+        props.addcart(id,props.info.is_on_sale,props.productList[0].id)
+        Toast.info('添加成功')
     }
     return <div className={styles.noTabPageContent}>
         <div className={styles.goodsPage}>
@@ -116,7 +123,7 @@ let GoodsDetailPage: React.FC<RouteComponentProps<{id:string}> & StateProps> = p
                 <div className={styles.cartNum}>
                     <i className="iconfont icon-gouwuche"></i>
                 </div>
-                <div className={styles.addCart}>添加购物车</div>
+                <div className={styles.addCart} onClick={()=>addCart()}>添加购物车</div>
                 <div className={styles.payGoods}>立即购买</div>
             </div>
         </div>
@@ -138,6 +145,9 @@ const mapDisptachToProps = (dispatch: Function)=>{
         },
         addCollect(id:string){
             dispatch(AddcollectActions(id))
+        },
+        addcart(goodsId:string,number:string,productId:string){
+            dispatch(AddCartAction(goodsId,number,productId))
         }
     }
 }

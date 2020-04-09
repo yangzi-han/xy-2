@@ -1155,6 +1155,13 @@
             flex:1;
             line-height: .5rem;
             padding-left:0.2rem;
+            .allcheckout{
+                display: inline-block;
+                img{
+                    width: .2rem;
+                    height: .2rem;
+                }
+            }
         }
         .cart_footer_deair{
             flex:1;
@@ -1171,8 +1178,8 @@
 }
 .cart_context{
     width: 100%;
-    height: 1.5rem;
-    padding-top: .1rem;
+    height: auto;
+    padding: .1rem 0 .5rem 0;
 }
 .cart_context_wrap{
     width:100%;
@@ -1184,6 +1191,10 @@
     .cart_context_left{
         flex:1;
         line-height: 1.5rem;
+        img{
+            width: .2rem;
+            height: .2rem;
+        }
 
     }
     .cart_context_middle{

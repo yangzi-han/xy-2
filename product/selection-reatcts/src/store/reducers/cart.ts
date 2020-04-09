@@ -8,7 +8,8 @@ function cartReudcer(state: any, action: ActionType){
     switch (action.type) {
         case 'GET_CARTDATA':
             return {...state, ...action.payload}
-    
+        case 'POST_CHECKOUT':
+            return {...state,...action.payload}
         default:
             return state;
     }

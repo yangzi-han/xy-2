@@ -14,10 +14,10 @@ let Address:React.FC<RouteComponentProps&DispatchProps>=props=>{
   let [mobile,setMobile]=useState<string>()
   let [address,setAddress]=useState<string>()
   let [pickValue,setPickValue]=useState([])
-  // let [is_default,setIs_default]=useState<boolean>()
+  let [pathname] = useState(props.location.pathname)
   useEffect(()=>{
-    //  props.getAddRessAdd(name,mobile,address)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    console.log(pathname)
+    document.title = pathname !== '/add'?'编辑地址':'添加地址'
   },[])
   let btnSure=()=>{
       Toast.success("已设为默认地址",2)
@@ -46,7 +46,9 @@ let Address:React.FC<RouteComponentProps&DispatchProps>=props=>{
   const { getFieldProps } = props.form;
   return <>
     <div className={styles.address_header}>
-       <span>新增地址</span>
+      {
+        pathname!== '/add'?<span>编辑地址</span>:<span>新增地址</span>
+      }
      </div>
      <div className={styles.add_context}>
          <div className={styles.ps}>
@@ -59,7 +61,6 @@ let Address:React.FC<RouteComponentProps&DispatchProps>=props=>{
            <Picker extra="请选择(可选)"
              data={district}
              {...getFieldProps('district')}
-            //  onOk={e => console.log('ok', e)}
              value={pickValue}
              onChange={getPicker}
              onClick={btn}
@@ -73,7 +74,10 @@ let Address:React.FC<RouteComponentProps&DispatchProps>=props=>{
       <div className={styles.sure} onClick={btnSure}>设为默认地址<input type="button"/></div>
      </div>
      <div className={styles.add_footer}>
-        <div className={styles.add_no} onClick={props.history.goBack}>取消</div>
+       {
+         pathname!== '/add'?<div className={styles.add_no}>删除</div>:<div className={styles.add_no} onClick={props.history.goBack}>取消</div>
+       }
+        
         <div className={styles.add_ok} onClick={goOk}>保存</div>
      </div>
   </>

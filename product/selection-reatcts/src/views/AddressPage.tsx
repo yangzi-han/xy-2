@@ -24,17 +24,14 @@ let Address:React.FC<RouteComponentProps&DispatchProps>=props=>{
    let goBack=()=>{
         props.history.push('/main/my')
    }
-   let goAdd=()=>{
-        props.history.push('/add')
+   let goEdit=(del:any)=>{
+      console.log(del)
+      del.typ == 'B'? props.history.push('/add/'+del.data.id) :props.history.push(`/add`) 
    }
    let btnDelet=(id: number,e: React.MouseEvent<HTMLParagraphElement, MouseEvent>)=>{
       e.stopPropagation();
       props.getAddRessDelet(id)
       props.getAddRessList()
-   }
-   let goListItem=(id: number)=>{
-      props.history.push('/add')
-      props.getAddRessAdd(id)
    }
   return <>
      <div className={styles.address_header}>
@@ -45,7 +42,7 @@ let Address:React.FC<RouteComponentProps&DispatchProps>=props=>{
      <div className={styles.address_context}>
        {
           props.addressList&&props.addressList.map((item)=>{
-              return <div key={item.id} className={styles.listItem} onClick={()=>{goListItem(item.id)}}>
+              return <div key={item.id} className={styles.listItem} onClick={()=>{goEdit({typ:'B',data:item})}}>
                   <div className={styles.listName}>{item.name}</div>
                   <div className={styles.listAdd}>
                      <p>{item.mobile}</p>
@@ -59,7 +56,7 @@ let Address:React.FC<RouteComponentProps&DispatchProps>=props=>{
           })
        }
      </div>
-     <div className={styles.address_footer} onClick={goAdd}>
+     <div className={styles.address_footer} onClick={()=>goEdit({typ:'T'})}>
        新建地址  
      </div>
   </>
@@ -78,9 +75,9 @@ const mapDispatchToProps=(dispatch:Function)=>{
       getAddRessDelet:(id:any)=>{
         dispatch(addRessDeletAction(id))
       },
-      getAddRessAdd:(name:string,mobile:string,address:string,is_default:boolean,id:number)=>{
-        dispatch(addRessAddAction(name,mobile,address,is_default,id))
-      }
+      // getAddRessAdd:(name:string,mobile:string,address:string,is_default:boolean,id:number)=>{
+      //   dispatch(addRessAddAction(name,mobile,address,is_default,id))
+      // }
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Address)
