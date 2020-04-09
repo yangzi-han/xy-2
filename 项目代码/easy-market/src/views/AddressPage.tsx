@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import {RouteComponentProps, Link} from 'react-router-dom'
 import {connect} from 'react-redux'//
 import {AddressListAction,AddressAction,DeleteAddressListAction} from '../store/actions/my'
-import {Toast} from 'antd-mobile'
+import { List, Picker,Toast} from 'antd-mobile'
+import { district } from 'antd-mobile-demo-data'
+import { createForm } from 'rc-form'
 import styles from '../style/index.module.scss'
-import Province from '../component/province/index'
 interface StateTpes{
     AddressList:Array<{
         [name:string]:string|number
@@ -23,6 +24,7 @@ let AddressPage: React.FC<RouteComponentProps&DispatchType&StateTpes> = props=>{
     let [is_default,setis_default]=useState(false)
     let [id,setid]=useState()
     let [is_show,setis_show]=useState(false)
+    let [pickValue,setPickValue]=useState([])
     useEffect(()=>{
         props.getAddressList()
     },[])
@@ -63,7 +65,14 @@ let AddressPage: React.FC<RouteComponentProps&DispatchType&StateTpes> = props=>{
             Toast.fail('请输入姓名!!!', 1);
         }
     }
-   
+    let getPicker=(e: any)=>{
+        setPickValue(e)
+    }
+    let btn=()=>{
+    
+    }
+    //@ts-ignore
+    const { getFieldProps } = props.form;
     return<div className={styles.noTabPageContent}>
             <div id={ifFlage?styles.addressPage:styles.addressPagenone}>
                 <div className={styles.header}>
@@ -100,9 +109,21 @@ let AddressPage: React.FC<RouteComponentProps&DispatchType&StateTpes> = props=>{
                 <div className={styles.addressHeader}>新增地址</div>
                 <div className={styles.onePx_bottom}><input className={styles.addressInput} placeholder="姓名" value={name} onChange={(e)=>setname(name=e.target.value)}/></div>
                 <div className={styles.onePx_bottom}><input className={styles.addressInput} placeholder="电话号码" value={mobile} onChange={(e)=>setmobile(mobile=e.target.value)}/></div>
-                <div className={styles.onePx_bottom}><div className={styles.chooseAddress} onClick={()=>{
+                {/* <div className={styles.onePx_bottom}><div className={styles.chooseAddress} onClick={()=>{
                     setis_show(is_show=true)
-                }}>北京/北京市/东城区</div></div>
+                }}>北京/北京市/东城区</div></div> */}
+                 <List>
+                    <Picker extra="请选择(可选)"
+                        data={district}
+                        {...getFieldProps('district')}
+                        onOk={e => console.log('ok', e)}
+                        value={pickValue}
+                        onChange={getPicker}
+                        onClick={btn}
+                        >
+                    <List.Item arrow="horizontal">地址</List.Item>
+                    </Picker>
+                </List>
                 <div className={styles.onePx_bottom}><input className={styles.addressInput} placeholder="详细地址" value={addresss} onChange={(e)=>setaddress(addresss=e.target.value)}/></div>
                 <div className={styles.onePx_bottom}>
                     <div className={styles.isDefaultAddress} onClick={()=>setis_default(is_default=!is_default)}>设置默认地址
@@ -147,9 +168,6 @@ let AddressPage: React.FC<RouteComponentProps&DispatchType&StateTpes> = props=>{
                         </a>
                 </div>
             </div>
-            <div style={{display:is_show?'':'none'}} >
-                <Province/>
-            </div>
          </div>
     </div>
 }
@@ -174,4 +192,5 @@ const mapDisptachToProps = (dispatch: Function)=>{
         }
     }
 }
-export default connect(mapStateToProps,mapDisptachToProps)(AddressPage);
+const TestWrapper = createForm()(AddressPage);
+export default connect(mapStateToProps,mapDisptachToProps)(TestWrapper);
