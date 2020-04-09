@@ -20,7 +20,8 @@ interface DispathProps{
       id:number,
       retail_price:string,
       goods_desc:string,
-      is_new:number
+      is_new:number,
+      is_on_sale:number
    },
    issue:Array<{
        name:string,
@@ -65,7 +66,7 @@ let DetailGoods:React.FC<DispathProps&RouteComponentProps<{id:string}>>=props=>{
      Toast.success('收藏成功',1)
    }
    let goShopCar=()=>{
-      props.getCartAdd(props.info.id,props.info.is_new,props.productList[0].id)
+      props.getCartAdd(props.info.id,props.info.is_on_sale,props.productList[0].id)
       Toast.success('添加成功',1)
    }
    return <>
@@ -223,6 +224,7 @@ const mapDisptachToProps = (dispatch: Function)=>{
             dispatch(collectAddAction(valueId))
         },
         getCartAdd:(goodsId:string,number:string,productId:string)=>{
+           console.log(goodsId,number,productId)
            dispatch(cartAddAction(goodsId,number,productId))
         }
     }

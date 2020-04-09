@@ -40,9 +40,9 @@ export let cartNumAction = ()=>{
     }
 }
 //是否选中
-export let cartCheckedAction = (productId:string,isChecked:number)=>{
+export let cartCheckedAction = (isChecked:number,productIds:string)=>{
     return async (dispatch:Function)=>{
-        let data = await getCartChecked(productId,isChecked);
+        let data = await getCartChecked(isChecked,productIds);
         if (data){
             console.log('data...', data);
             dispatch({

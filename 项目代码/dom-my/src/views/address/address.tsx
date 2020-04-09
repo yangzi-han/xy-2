@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React,{useEffect,useState} from 'react'
 import styles from '../../static/address.module.scss'
 import {RouteComponentProps} from 'react-router-dom'
 import {connect} from 'react-redux'
@@ -24,17 +24,14 @@ let Address:React.FC<RouteComponentProps&DispatchProps>=props=>{
    let goBack=()=>{
         props.history.push('/index/zhuan')
    }
-   let goAdd=()=>{
-        props.history.push('/add')
+   let goAdd=(add:any)=>{
+        // props.history.push('/add')
+        add.type=='E'?props.history.push('/add/'+add.data.id):props.history.push('/add')
    }
    let btnDelet=(id: number,e: React.MouseEvent<HTMLParagraphElement, MouseEvent>)=>{
       e.stopPropagation();
       props.getAddRessDelet(id)
       props.getAddRessList()
-   }
-   let goListItem=(id: number)=>{
-      props.history.push('/add')
-      props.getAddRessAdd(id)
    }
   return <>
      <div className={styles.address_header}>
@@ -47,7 +44,7 @@ let Address:React.FC<RouteComponentProps&DispatchProps>=props=>{
      <div className={styles.address_context}>
        {
           props.addressList&&props.addressList.map((item)=>{
-              return <div key={item.id} className={styles.listItem} onClick={()=>{goListItem(item.id)}}>
+              return <div key={item.id} className={styles.listItem} onClick={()=>{goAdd({type:"E",data:item})}}>
                   <div className={styles.listName}>{item.name}</div>
                   <div className={styles.listAdd}>
                      <p>{item.mobile}</p>
@@ -61,7 +58,7 @@ let Address:React.FC<RouteComponentProps&DispatchProps>=props=>{
           })
        }
      </div>
-     <div className={styles.address_footer} onClick={goAdd}>
+     <div className={styles.address_footer} onClick={()=>goAdd({type:'A'})}>
        新建地址  
      </div>
   </>

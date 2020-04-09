@@ -1,6 +1,7 @@
 import {ActionType} from '../../utils/interface'
 const initVal = {
-     cartList:[]
+     cartList:[],
+     cartTotal:{}
 }
 
 function cartReducer(state: any, action: ActionType){

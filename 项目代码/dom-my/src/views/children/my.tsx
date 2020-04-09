@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 import {cartListAction,cartDeletAction,cartCheckedAction,cartAddAction} from '../../store/actions/shopCar'
 import {RouteComponentProps} from 'react-router-dom'
 import styles from '../../static/cart.module.scss'
+import isChecked from '../../static/isCheck.png'
+import noChecked from '../../static/noCheck.png'
 // import { getCartList, getCartDelet, getCartChecked, getCartAdd } from '../../api/shopCar';
 // import useState from 'react';
 interface DispathProps{
@@ -17,24 +19,24 @@ interface DispathProps{
     checked:1,
     list_pic_url:string,
     retail_price:number,
-    product_id:number
+    product_id:number,
+    id:number
   }>
   cartTotal:{
     goodsCount:number,
-    goodsAmount:number
+    goodsAmount:number,
+    checkedGoodsCount:number,
+    checkedGoodsAmount:number
   }
 }
 let ShopCar:React.FC<RouteComponentProps&DispathProps>=props=>{
-  //  let [flag,setFlag]=useState(false)
+  //  let [flag]=useState(false)
+  //  let [allChecked]=useState(props.shopCar)
    useEffect(()=>{
       props.getCartList()
    // eslint-disable-next-line react-hooks/exhaustive-deps
    },[])
-  // let changeAllChecked=()=>{
-  //     if(!flag){
-
-  //     }
-  //  }
+ console.log(props,'props444444')
    let changeCount=(item: { goods_id: any; number: any; product_id: any; },type: any)=>{
     let {goods_id,number,product_id}=item
     if(number+type>=1){
@@ -45,6 +47,20 @@ let ShopCar:React.FC<RouteComponentProps&DispathProps>=props=>{
         })
         props.getCartList()
     }
+   }
+   let changeChecked=(item:any)=>{
+       if(item.checked==1){
+          item.checked=0
+       }else{
+         item.checked=1
+       }
+       props.getCartChecked(item.checked,item.product_id)
+   }
+   let allChecked=(type:number)=>{
+        let flag=props.cartList.map(item=>{
+            return item.product_id
+        }).join(',')
+       props.getCartChecked(type,flag)
    }
    return <>
       <div className={styles.cart_header}>
@@ -65,7 +81,10 @@ let ShopCar:React.FC<RouteComponentProps&DispathProps>=props=>{
         {
           props.cartList&&props.cartList.map((item,index)=>{
              return <div key={index} className={styles.cart_context_wrap}>
-                <div className={styles.cart_context_left}><input type="radio"/></div>
+                <div className={styles.cart_context_left} onClick={()=>{changeChecked(item)}}>
+                  <img style={{display:item.checked?"none":""}} src={noChecked} alt=""/>
+                  <img style={{display:item.checked?"":"none"}} src={isChecked} alt=""/>
+                </div>
                 <div className={styles.cart_context_middle}>
                   <div className={styles.cart_contxt_img}>
                     <img src={item.list_pic_url} alt=""/>
@@ -86,11 +105,14 @@ let ShopCar:React.FC<RouteComponentProps&DispathProps>=props=>{
       </div>
       <div className={styles.cart_footer}>
         <div className={styles.cart_footer_left}>
-          <p className={styles.cart_footer_dan}>
-            <input type="radio"/>
-            <span>已选({props.cartTotal&&props.cartTotal.goodsCount})</span>
-            <span>￥{props.cartTotal&&props.cartTotal.goodsAmount}</span>
-          </p>
+          <div className={styles.cart_footer_dan} >
+            <div>
+              <img  onClick={()=>allChecked(0)} style={{display:props.cartTotal.checkedGoodsCount===props.cartTotal.goodsCount?"":"none"}} src={isChecked} alt="" />
+              <img  onClick={()=>allChecked(1)} style={{display:props.cartTotal.checkedGoodsCount===props.cartTotal.goodsCount?"none":""}} src={noChecked} alt="" />
+            </div>
+            <span>已选({props.cartTotal&&props.cartTotal.checkedGoodsCount})</span>
+            <span>￥{props.cartTotal&&props.cartTotal.checkedGoodsAmount}</span>
+          </div>
           <p className={styles.cart_footer_deair}>编辑</p>
         </div>
         <div className={styles.cart_footer_right}>
@@ -100,7 +122,7 @@ let ShopCar:React.FC<RouteComponentProps&DispathProps>=props=>{
    </>
 }
 const mapStateToProps = (state: any)=>{
-  console.log(state.shopCar.cartTotal,'2222')
+  // console.log(state,'2222')
   return {
     cartList:state.shopCar.cartList,
     cartTotal:state.shopCar.cartTotal
@@ -114,8 +136,8 @@ const mapDisptachToProps = (dispatch: Function)=>{
      getCartDelet:(productId:any)=>{
        dispatch(cartDeletAction(productId))
      },
-     getCartChecked:(productId:string,isChecked:number,)=>{
-        dispatch(cartCheckedAction(productId,isChecked))
+     getCartChecked:(isChecked:number,productIds:string)=>{
+        dispatch(cartCheckedAction(isChecked,productIds))
      },
      getCartAdd:(goodsId:any,number:any,productId:any)=>{
       //  console.log(goodsId.productId)

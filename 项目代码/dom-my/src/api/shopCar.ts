@@ -16,10 +16,12 @@ export let getCartNumber=()=>{
     return axios.get('/cart/goodscount')
 }
 //是否选中
-export let getCartChecked=(productId:string,isChecked:number)=>{
-    return axios.post('/cart/add',{
-        productId,
+export let getCartChecked=(isChecked:number,productIds:string)=>{
+    console.log(isChecked,productIds)
+    return axios.post('/cart/checked',{
+      
         isChecked,
+        productIds
     })
 }
 //删除购物车
