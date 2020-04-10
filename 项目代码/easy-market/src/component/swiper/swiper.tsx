@@ -1,5 +1,6 @@
 import React from 'react';
 import { Carousel, WingBlank } from 'antd-mobile';
+import Lazyload from 'react-lazyload'
 interface PropsType{
     banner: Array<{
         image_url: string,
@@ -36,8 +37,9 @@ class Swiper extends React.Component<PropsType> {
               key={item.id}
               style={{ display: 'inline-block', width: '100%', height: this.state.imgHeight }}
             >
+              <Lazyload>
               <img
-                src={item.image_url?item.image_url:item.img_url}
+                src={item.image_url?item.image_url.replace('http:',''):item.img_url.replace('http:','')}
                 alt=""
                 style={{ width: '100%', verticalAlign: 'top' }}
                 onLoad={() => {
@@ -45,7 +47,7 @@ class Swiper extends React.Component<PropsType> {
                   window.dispatchEvent(new Event('resize'));
                   this.setState({ imgHeight: 'auto' });
                 }}
-              />
+              /></Lazyload>
             </a>
           ))}
         </Carousel>

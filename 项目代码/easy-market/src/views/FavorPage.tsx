@@ -4,6 +4,7 @@ import {connect} from 'react-redux'//
 import {CollectListAction,DeleteCollectListAction} from '../store/actions/my'
 import styles from '../style/index.module.scss'
 import { SwipeAction, List } from 'antd-mobile';
+import Lazyload from 'react-lazyload'
 interface StateTypes{
     CollectList:Array<{
         list_pic_url:string,
@@ -50,7 +51,9 @@ let FavorPage: React.FC<Dispatch&StateTypes&RouteComponentProps> = props=>{
                                 onClick={e => console.log(e)}
                             >
                                <div className={styles.CollectGoodsItem}>
-                                    <img className={styles.CollectGoodsImgs} src={item.list_pic_url} alt=""/>
+                                   <Lazyload>
+                                    <img className={styles.CollectGoodsImgs} src={item.list_pic_url.replace('http:','')} alt=""/>
+                                    </Lazyload>
                                     <div className={styles.CollectGoodsInfos}>
                                         <p className={styles.CollectGoodsName}>{item.name}</p>
                                         <p className={styles.CollectGoodsInfo}>{item.goods_brief}</p>

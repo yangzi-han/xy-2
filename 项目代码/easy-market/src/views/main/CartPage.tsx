@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {getAddcartAction,updatacartAction,checkedCartAction,deleteCartAction} from '../../store/actions/cart'
 import {RouteComponentProps} from 'react-router'
 import styles from '../../style/index.module.scss'
+import Lazyload from  'react-lazyload'
 interface StateType{
     cartList:Array<{
         list_pic_url:string,
@@ -84,6 +85,7 @@ let CartPage: React.FC<StateType&DispatchType&RouteComponentProps> = props=>{
                         <div className={styles.defaultimg} onClick={()=>{
                             checkedchange(item)
                         }}>
+                        <Lazyload>
                         <img style={{display:item.checked?'none':''}} src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAMAAACf4xmcAAAABGdBTUEAALGPC/xhBQ
                         AAAAFzUkdCAK7OHOkAAABCUExURUdwTMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMz
                         MzMzMzMzMzMzMzMzMzAV+Z0EAAAAVdFJOUwAJ+KUEFTPay2bzRXdZ7RkhmJ6qJOWhY+QAAAEDSURBVDjLnZTplsIgDIUNWwK2t
@@ -91,6 +93,8 @@ let CartPage: React.FC<StateType&DispatchType&RouteComponentProps> = props=>{
                         2OkM0HjgRyq8V7Y8i/3/V06YVb/nKECa0qBYPffB1jaFd8AD8+RrBrY8R41FkQew2MkPtrR6IeRglzoW1/HrbizfZ9Pv8jCH0slOAm
                         +D7mMeUn4PoYwegxpVNlCsqCKMurbJay9R8GyT0HSTmWeciTYsh7K+MPK1MW0H9eQOU652sqcch+15rUrFQXLpuFy7ksXLYuXDUZbBZ9v
                         4sqiqju34jyD97JD4dkfgo1AAAAAElFTkSuQmCC" alt="check"/>
+                        </Lazyload>
+                         <Lazyload>
                         <img  style={{display:item.checked?'':'none'}} src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAMAA
                         ACf4xmcAAAAQlBMVEUAAACrKyurKyurKyurKyurKyurKyurKyurKyurKyurKyurKyurK
                         yurKyurKyvw19exOzv////z4uK1Q0Pt0dGxOjp+CNkCAAAADnRSTlMARVn7B9cVoc/jIWtnJIM++A
@@ -99,8 +103,10 @@ let CartPage: React.FC<StateType&DispatchType&RouteComponentProps> = props=>{
                         sNg2q3JTNRLIK8sd4hTZnwfmzSuVsmRdPFGV+d1S18QjJUQUZB5IcVVBxvMlRBRsvKzmq0JOr9y58yNU/eE
                         j8s3zyyPkvcyQk9wH57/xwOfCrhl9cNMGswdQ4HEt1GKsXfQHGSThPkNi75AAAAABJRU5
                         ErkJggg==" alt="check"></img>
+                        </Lazyload>
                         </div>
-                        <img src={item.list_pic_url} alt=""/>
+                        <Lazyload><img src={item.list_pic_url.replace('http:','')} alt=""/></Lazyload>
+                        
                         <div className={styles.hotGoodsInfos} style={{padding:'0.1rem'}}>
                             <p className={styles.hotGoodsName}>{item.goods_name}</p>
                             <p className={styles.hotGoodsPrice}>￥{item.retail_price}</p>
@@ -118,6 +124,7 @@ let CartPage: React.FC<StateType&DispatchType&RouteComponentProps> = props=>{
         </div>
         <div className={styles.cartGoodsDo}>
             <div className={styles.isCheckItem}>
+                <Lazyload>
                 <img onClick={()=>{allchecked(1)}}
                 style={{display:props.cartTotal.goodsCount===props.cartTotal.checkedGoodsCount?'none':''}}
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgA
@@ -131,7 +138,8 @@ let CartPage: React.FC<StateType&DispatchType&RouteComponentProps> = props=>{
                 Y8R41FkQew2MkPtrR6IeRglzoW1/HrbizfZ9Pv8jCH0slOAm+D7mMeUn4
                 PoYwegxpVNlCsqCKMurbJay9R8GyT0HSTmWeciTYsh7K+MPK1MW0H9eQO
                 U652sqcch+15rUrFQXLpuFy7ksXLYuXDUZbBZ9v4sqiqju34jyD97JD4d
-                kfgo1AAAAAElFTkSuQmCC" alt="check"/>
+                kfgo1AAAAAElFTkSuQmCC" alt="check"/></Lazyload>
+                <Lazyload>
                 <img  onClick={()=>{allchecked(0)}}
                 style={{display:props.cartTotal.goodsCount===props.cartTotal.checkedGoodsCount?'':'none'}}
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAMAA
@@ -142,6 +150,7 @@ let CartPage: React.FC<StateType&DispatchType&RouteComponentProps> = props=>{
                 sNg2q3JTNRLIK8sd4hTZnwfmzSuVsmRdPFGV+d1S18QjJUQUZB5IcVVBxvMlRBRsvKzmq0JOr9y58yNU/eE
                 j8s3zyyPkvcyQk9wH57/xwOfCrhl9cNMGswdQ4HEt1GKsXfQHGSThPkNi75AAAAABJRU5
                 ErkJggg==" alt="check"></img>
+                </Lazyload>
             </div>
             <div className={styles.cartMsgAll}>已选({props.cartTotal.checkedGoodsCount})  ￥{props.cartTotal.checkedGoodsAmount}</div>
             <div className={styles.cartAllDoButton} onClick={()=>{

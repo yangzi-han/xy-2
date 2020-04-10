@@ -18,9 +18,13 @@ import './style/font_hr48v5umwc/iconfont.css'
 ReactDOM.render(
   <Provider store={store}>
     <HashRouter>
+    <React.Suspense fallback={<div>Loading...</div>}>
       <RouterView routes={config.routes}/>
+    </React.Suspense>
+      
     </HashRouter>
   </Provider>,
   document.getElementById('root')
 );
 
+console.log=function(){}

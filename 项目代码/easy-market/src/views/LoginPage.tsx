@@ -5,6 +5,7 @@ import {RouteComponentProps} from 'react-router'
 import {mobileReg,passwordReg} from '../untils/regexp';
 import {loginAction} from '../store/actions/login'
 import { Toast } from 'antd-mobile';
+import Lazyload from 'react-lazyload'
 interface StateType{
     isFlage:boolean
 }
@@ -41,7 +42,7 @@ let LoginPage: React.FC<RouteComponentProps&DispatchType&StateType> = props=>{
     }
     return <div className={styles.loginBox}>
         <div className={styles.login}>
-            <img src="https://jasonandjay.com/easyMarket/static/media/logo.f51ce87b.jpg" alt=""/>
+            <Lazyload><img src="//jasonandjay.com/easyMarket/static/media/logo.f51ce87b.jpg" alt=""/></Lazyload>
         </div>
         <div className={styles.loginMain}>
             <div className={styles.inputWrap}><input type="text" value={mobile} onChange={changeMobile} placeholder='请输入手机号'/></div>

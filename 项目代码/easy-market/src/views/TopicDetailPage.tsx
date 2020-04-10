@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {TopicDetailAction,TopicRelatedAction,TopicCommentAction} from '../store/actions/topic'
 import {RouteComponentProps} from 'react-router-dom'
 import styles from '../style/index.module.scss'
+import Lazyload from 'react-lazyload'
 interface StateType{
     TopicDetailList:{
         title:string,
@@ -42,7 +43,9 @@ let TopicDetailPage: React.FC<DispatchType&StateType&RouteComponentProps<{id:str
             <p>{props.TopicDetailList.title}</p>
             <p></p>
         </div>
-        <div className={styles.topicDetailImg} dangerouslySetInnerHTML = {{ __html:props.TopicDetailList.content }}></div>
+        <Lazyload>
+            <div className={styles.topicDetailImg} dangerouslySetInnerHTML = {{ __html:props.TopicDetailList.content}}></div>
+        </Lazyload>
         <div className={styles.commentWrap}>
             <div className={styles.titleLine}>精选留言</div>
             <div className={styles.commentList}>
@@ -61,7 +64,9 @@ let TopicDetailPage: React.FC<DispatchType&StateType&RouteComponentProps<{id:str
             {
                 props.TopicRelated.map(item=>{
                     return <div className={styles.relateTopicItem} key={item.id} data-id={item.id}>
-                        <img src={item.scene_pic_url} alt=""/>
+                        <Lazyload>
+                           <img src={item.scene_pic_url.replace('http:','')} alt=""/> 
+                        </Lazyload>
                         <p>{item.title}</p>
                     </div>
                 })

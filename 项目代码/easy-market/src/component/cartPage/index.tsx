@@ -3,6 +3,7 @@ import { RouteComponentProps ,withRouter} from 'react-router'
 import styles from'./index.module.scss'
 import { connect } from 'react-redux'
 import {Toast} from 'antd-mobile'
+import Lazyload from 'react-lazyload'
 interface PropsType {
     info:{
         retail_price:number,
@@ -52,7 +53,10 @@ let CartPageView:React.FC<PropsType & DispatchType &RouteComponentProps>=props=>
                             <div className={styles.goodsSizeSetMsg}>
                                 <div className={styles.gooodsSizePriceAndSize}>
                                     <div className={styles.imgs}>
-                                        <img src={props.info.list_pic_url} alt=""/>
+                                        <Lazyload>
+                                            <img src={props.info.list_pic_url} alt=""/>
+                                        </Lazyload>
+                                        
                                     </div>
                                     
                                     <div className={styles.lefsize}>

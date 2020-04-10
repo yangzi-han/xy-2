@@ -6,6 +6,7 @@ import Swiper from '../../component/swiper/swiper'
 import styles from '../../style/index.module.scss'
 import SwiperCarousel from '../../component/swiperCarousel/carousel'
 import CateGoryBox from '../../component/cateGoryBox/index'
+import Lazyload from 'react-lazyload'
 interface StateType{
     banner: Array<{
         image_url: string,
@@ -63,7 +64,7 @@ let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = 
                     return <div key={item.id} onClick={()=>{
                         goclassify(item.id)
                     }} className={styles.channelItem}>
-                        <img src={item.icon_url} alt=""/>
+                        <Lazyload><img src={item.icon_url.replace('http:','')} alt=""/></Lazyload>
                         <p>{item.name}</p>
                     </div>
                 })
@@ -77,7 +78,8 @@ let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = 
                         return <div className={styles.brandItem} key={item.id}>
                             <div className={styles.brandItemName}>{item.name}</div>
                             <div className={styles.brandItemMinPrice}>{item.floor_price}元起</div>
-                            <img src={item.new_pic_url} alt=""/>
+                            <Lazyload><img src={item.new_pic_url.replace('http:','')} alt=""/></Lazyload>
+                            
                         </div>
                     })
                 }
@@ -89,7 +91,8 @@ let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = 
                 {
                     props.newGoodsList.map(item=>{
                         return <div className={styles.newGoodsItem} key={item.id}>
-                            <img src={item.list_pic_url} alt=""/>
+                            <Lazyload> <img src={item.list_pic_url.replace('http:','')} alt=""/></Lazyload>
+                           
                             <div className={styles.newGoodsName}>{item.name}</div>
                             <div className={styles.newGoodsPrice}>￥{item.retail_price}</div>
                         </div>
@@ -103,7 +106,8 @@ let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = 
                 {
                     props.hotGoodsList.map(item=>{
                         return <div className={styles.hotGoodsItem} key={item.id}>
-                            <img src={item.list_pic_url} alt=""/>
+                            <Lazyload><img src={item.list_pic_url} alt=""/></Lazyload>
+                            
                             <div className={styles.hotGoodsInfos}>
                                 <p className={styles.hotGoodsName}>{item.name}</p>
                                 <p className={styles.hotGoodsInfo}>{item.goods_brief}</p>

@@ -2,6 +2,8 @@ import Axios from 'axios';
 import {Toast} from 'antd-mobile'
 import { getToken } from './index';
 const axios = Axios.create({//拦截器
+    // baseURL:/jasonandjay\.com/.test(window.location.host)?'//easymarket.jasonandjay.com/':'127.0.0.1:8888',
+    // baseURL:process.env.NODE_ENV ==='production'?'//easymarket.jasonandjay.com/':'127.0.0.1:8888', 
     baseURL: 'http://127.0.0.1:8888',//配置baseURL
     timeout: 5000,//配置timeout
     // headers: {'X-Custom-Header': 'foobar'}//配置请求头登录态

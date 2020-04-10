@@ -4,6 +4,7 @@ import {MYAction} from '../../store/actions/my'
 import {connect} from 'react-redux'
 import styles from '../../style/index.module.scss'
 import { Toast } from 'antd-mobile'
+import Lazyload from 'react-lazyload'
 import {uploadAvatarAction, updateAvatarAction,logoutAction} from '../../store/actions/login'
 interface StateTpes{
     myList:Array<{
@@ -64,7 +65,7 @@ let MyPage: React.FC<RouteComponentProps&Dispatch&StateTpes> = props=>{
     return <div className={styles.minePage}>
         <div className={styles.userMsgWrap}>
             <div className={styles.userLogo} onClick={()=>showFile()}>
-                <img src={props.uploadAvatar?props.uploadAvatar:props.info.avatar} alt=""/>
+                <Lazyload><img src={props.uploadAvatar?props.uploadAvatar.replace('http:',''):props.info.avatar.replace('http:','')} alt=""/></Lazyload>
             </div>
             <div className={styles.userMsgs}>
                 <p>{props.info.mobile}</p>
@@ -74,9 +75,8 @@ let MyPage: React.FC<RouteComponentProps&Dispatch&StateTpes> = props=>{
         <div className={styles.changeFile} style={{display:isShow?'':'none'}}>
             <div className={styles.wrapper}>
                 <div style={{width:'1rem',height:'1rem'}}>
-                    <img style={{width:'100%',height:'100%'}} src={props.uploadAvatar?props.uploadAvatar:props.info.avatar} alt=""/>
+                    <img style={{width:'100%',height:'100%'}} src={props.uploadAvatar?props.uploadAvatar.replace('http:',''):props.info.avatar.replace('http:','')} alt=""/>
                 </div>
-                
                 <input type="file" onChange={(e)=>fileChange(e)}/>
                 <button onClick={()=>updateAvatar()}>确定</button>
             </div>

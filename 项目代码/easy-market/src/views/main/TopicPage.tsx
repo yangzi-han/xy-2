@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {TopicAction} from '../../store/actions/topic'
 import {RouteComponentProps} from 'react-router'
 import styles from '../../style/index.module.scss'
+import Lazyload from 'react-lazyload'
 interface StateType{
     topicList: Array<{
         scene_pic_url:string,
@@ -43,7 +44,7 @@ let TopicPage: React.FC<StateType & DispatchType & RouteComponentProps> = props=
         {
             props.topicList.map(item=>{
                 return <div key={item.id} className={styles.topicItem} data-id={item.id} onClick={goDetail}>
-                    <img src={item.scene_pic_url} alt=""/>
+                    <Lazyload><img src={item.scene_pic_url.replace('http:','')} alt=""/></Lazyload>
                     <p className={styles.topicItemTitle}>{item.title}</p>
                     <p className={styles.topicItemSubtitle}>{item.subtitle}</p>
                     <p className={styles.topicItemPrice}>{item.price_info}元起</p>

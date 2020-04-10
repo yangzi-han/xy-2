@@ -6,6 +6,7 @@ import { List, Picker,Toast} from 'antd-mobile'
 import { district } from 'antd-mobile-demo-data'
 import { createForm } from 'rc-form'
 import styles from '../style/index.module.scss'
+import Lazyload from 'react-lazyload'
 interface StateTpes{
     AddressList:Array<{
         [name:string]:string|number
@@ -127,21 +128,27 @@ let AddressPage: React.FC<RouteComponentProps&DispatchType&StateTpes> = props=>{
                 <div className={styles.onePx_bottom}><input className={styles.addressInput} placeholder="详细地址" value={addresss} onChange={(e)=>setaddress(addresss=e.target.value)}/></div>
                 <div className={styles.onePx_bottom}>
                     <div className={styles.isDefaultAddress} onClick={()=>setis_default(is_default=!is_default)}>设置默认地址
-                        <img style={{display:is_default?'none':''}} src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAMAAACf4xmcAAAABGdBTUEAALGPC/xhBQ
-                        AAAAFzUkdCAK7OHOkAAABCUExURUdwTMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMz
-                        MzMzMzMzMzMzMzMzMzAV+Z0EAAAAVdFJOUwAJ+KUEFTPay2bzRXdZ7RkhmJ6qJOWhY+QAAAEDSURBVDjLnZTplsIgDIUNWwK2t
-                        dt9/1cdxHGmVcAc+dH25Hw0+71cvjhztDIZM4mNc4txo+BwZKxSVwbSFoMn8iFuCeDrG0RLNkc6GGK+ttCZ8gIzuJcgBgPxJ4rB4T
-                        2OkM0HjgRyq8V7Y8i/3/V06YVb/nKECa0qBYPffB1jaFd8AD8+RrBrY8R41FkQew2MkPtrR6IeRglzoW1/HrbizfZ9Pv8jCH0slOAm
-                        +D7mMeUn4PoYwegxpVNlCsqCKMurbJay9R8GyT0HSTmWeciTYsh7K+MPK1MW0H9eQOU652sqcch+15rUrFQXLpuFy7ksXLYuXDUZbBZ9v
-                        4sqiqju34jyD97JD4dkfgo1AAAAAElFTkSuQmCC" alt="check"/>
-                        <img  style={{display:is_default?'':'none'}} src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAMAA
-                        ACf4xmcAAAAQlBMVEUAAACrKyurKyurKyurKyurKyurKyurKyurKyurKyurKyurKyurK
-                        yurKyurKyvw19exOzv////z4uK1Q0Pt0dGxOjp+CNkCAAAADnRSTlMARVn7B9cVoc/jIWtnJIM++A
-                        MAAADUSURBVDjLndRLEoMgEEVRPyCg+FAh+99qYqmAabFL7/hMaKCrN/VWyRZopbJ9ETUaWbq5RLXB
-                        X6YmSChcpMRZdRKX6e6kDAqZzAmNYlpEpnCTimfEbfWmhLlnZp8qmLY5a47pVY0oNIWArfV+h5Jy88F
-                        sNg2q3JTNRLIK8sd4hTZnwfmzSuVsmRdPFGV+d1S18QjJUQUZB5IcVVBxvMlRBRsvKzmq0JOr9y58yNU/eE
-                        j8s3zyyPkvcyQk9wH57/xwOfCrhl9cNMGswdQ4HEt1GKsXfQHGSThPkNi75AAAAABJRU5
-                        ErkJggg==" alt="check"></img>
+                        <Lazyload>
+                            <img style={{display:is_default?'none':''}} 
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAMAAACf4xmcAAAABGdBTUEAALGPC/xhBQ
+                            AAAAFzUkdCAK7OHOkAAABCUExURUdwTMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMz
+                            MzMzMzMzMzMzMzMzMzAV+Z0EAAAAVdFJOUwAJ+KUEFTPay2bzRXdZ7RkhmJ6qJOWhY+QAAAEDSURBVDjLnZTplsIgDIUNWwK2t
+                            dt9/1cdxHGmVcAc+dH25Hw0+71cvjhztDIZM4mNc4txo+BwZKxSVwbSFoMn8iFuCeDrG0RLNkc6GGK+ttCZ8gIzuJcgBgPxJ4rB4T
+                            2OkM0HjgRyq8V7Y8i/3/V06YVb/nKECa0qBYPffB1jaFd8AD8+RrBrY8R41FkQew2MkPtrR6IeRglzoW1/HrbizfZ9Pv8jCH0slOAm
+                            +D7mMeUn4PoYwegxpVNlCsqCKMurbJay9R8GyT0HSTmWeciTYsh7K+MPK1MW0H9eQOU652sqcch+15rUrFQXLpuFy7ksXLYuXDUZbBZ9v
+                            4sqiqju34jyD97JD4dkfgo1AAAAAElFTkSuQmCC" alt="check"/>
+                        </Lazyload>
+                        <Lazyload>
+                            <img  style={{display:is_default?'':'none'}} 
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAMAA
+                            ACf4xmcAAAAQlBMVEUAAACrKyurKyurKyurKyurKyurKyurKyurKyurKyurKyurKyurK
+                            yurKyurKyvw19exOzv////z4uK1Q0Pt0dGxOjp+CNkCAAAADnRSTlMARVn7B9cVoc/jIWtnJIM++A
+                            MAAADUSURBVDjLndRLEoMgEEVRPyCg+FAh+99qYqmAabFL7/hMaKCrN/VWyRZopbJ9ETUaWbq5RLXB
+                            X6YmSChcpMRZdRKX6e6kDAqZzAmNYlpEpnCTimfEbfWmhLlnZp8qmLY5a47pVY0oNIWArfV+h5Jy88F
+                            sNg2q3JTNRLIK8sd4hTZnwfmzSuVsmRdPFGV+d1S18QjJUQUZB5IcVVBxvMlRBRsvKzmq0JOr9y58yNU/eE
+                            j8s3zyyPkvcyQk9wH57/xwOfCrhl9cNMGswdQ4HEt1GKsXfQHGSThPkNi75AAAAABJRU5
+                            ErkJggg==" alt="check"></img>
+                        </Lazyload>
                     </div>
                 </div>
                 <div className={styles.closeAddress}>

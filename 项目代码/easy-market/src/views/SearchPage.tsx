@@ -5,6 +5,7 @@ import {SearchAction,SearchListAction} from '../store/actions/search'
 import styles from '../style/index.module.scss'
 import {throttle,debounce} from '../untils/index'
 import CateGoryBox from '../component/cateGoryBox/index'
+import Lazyload from 'react-lazyload'
 interface StateTypes{
     defaultKeyword:{
         keyword:string,
@@ -106,6 +107,7 @@ let SearchPage: React.FC<RouteComponentProps&DispatchType&StateTypes> = props=>{
                     setisOrderd(isOrderd=false)
                 }}>综合</div>
                 <div className="">价格
+                    <Lazyload>
                     <img style={{display:isOrders?'':'none'}}  onClick={()=>{orderchange(false,true,false)}}
                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
                     AAAA8AAAAVCAMAAACuRUSFAAAABGdBTUEAALGPC/xhBQAAAAFzUkdC
@@ -114,7 +116,8 @@ let SearchPage: React.FC<RouteComponentProps&DispatchType&StateTypes> = props=>{
                     EsAgDEKNBtf6/9fWse3Ea7lkIAkAbERmD4Oj6CFEjtS1fcKkTpSu8RF
                     q0GRjL7aeKBXwXd1nM1hwSbMYuZDP4JbxF9ns4HNY/s6oBJTB+FKnfW
                     VN4XzqaC+7p4ZqY93tRRUm2GPiiEeOynBHCd/40htqjAOfArDeuwAAA
-                    ABJRU5ErkJggg==" alt="sort" className={styles.sortPrice}/>
+                    ABJRU5ErkJggg==" alt="sort" className={styles.sortPrice}/></Lazyload>
+                    <Lazyload>
                     <img style={{display:isOrder?'':'none'}} onClick={()=>{orderchange(false,false,true)}} 
                     src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA
                     8AAAAVCAMAAACuRUSFAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHO
@@ -123,8 +126,11 @@ let SearchPage: React.FC<RouteComponentProps&DispatchType&StateTypes> = props=>{
                     VBjTlY1HFoQwDEOVguVQQ73/UYGEGTPL0Ubvu0jArSxBMkyiqmI46eIXnT44
                     apgxBx0r+mHwZrYoZ9jt8YrZsb2CRTccqxXn9cC/SukXEpsvNkxwPbsHO/YOc
                     GRbsCXd7ZGMZnUR7aw+RospwXzVlMGDJy9ABE2PslE1AAAAAElFTkSuQmCC"
-                     alt="sort" className={styles.sortPrice}></img>
-                    <img  style={{display:isOrderd?'':'none'}} onClick={()=>{orderchange(false,true,false)}}  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA
+                     alt="sort" className={styles.sortPrice}></img></Lazyload>
+                     <Lazyload>
+                    <img  style={{display:isOrderd?'':'none'}} 
+                    onClick={()=>{orderchange(false,true,false)}}  
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA
                     8AAAAVCAMAAACuRUSFAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkA
                     AAB7UExURf///+fn58/Pz68zM6gkJM3NzdLS0svLy/7+/vz7++3t7fLy8t
                     ra2qooKP79/eDg4Pf399fX19eZmbE5Oa0uLvz29s2AgPLd3cJlZdzc3OK2
@@ -133,7 +139,7 @@ let SearchPage: React.FC<RouteComponentProps&DispatchType&StateTypes> = props=>{
                     MgHAifAygyjCEQ8B4TxPsfZBnmABTYqkclgkmItg7kG4MY6FgOy3KEJNAw
                     oH4XtrVFCWVbw7KPhX0yPun/oexs54zJ7yBZZ2ekcjlxmqu6Rnh5q1dvML
                     a6/BthbNFgvrPrYFho1rR9/hzmdikt4On5h7j1/xZwfGevdtjgAAAABJRU
-                    5ErkJggg==" alt="sort" className={styles.sortPrice}></img>
+                    5ErkJggg==" alt="sort" className={styles.sortPrice}></img></Lazyload>
                 </div>
                 <div className={styles.chooseCategory}>全部分类</div>
             </div>

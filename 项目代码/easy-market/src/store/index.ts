@@ -30,6 +30,6 @@ let reducers=combineReducers({
 })
 //applyMiddleware方法的三个参数，就是三个中间件:applyMiddleware(thunk, promise, logger)
 //logger就一定要放在最后，否则输出结果会不正确。
-let store=createStore(reducers,applyMiddleware(ReduxThunk,ReduxLogger))
+let store=createStore(reducers,applyMiddleware(ReduxThunk))
 
 export default store;

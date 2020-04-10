@@ -4,6 +4,7 @@ import {GetClassifyAction,getClassifyCurrentAction,getClassifyCategoryAction,get
 import {connect} from 'react-redux'
 import TabsBox from '../../component/tab/index'
 import styles from '../../style/index.module.scss'
+import Lazyload from 'react-lazyload'
 interface StateTypes{
     categoryList:Array<{
         [name:string]: string|number
@@ -49,7 +50,7 @@ let TypePage: React.FC<DispatchType&StateTypes&RouteComponentProps> = props=>{
                     {
                         props.currentCategory.subCategoryList?props.currentCategory.subCategoryList.map(item=>{
                             return <div key={item.id}  onClick={()=>{category(item.id)}} className={styles.subCategoryItem}>
-                                <img src={item.wap_banner_url} alt=""/>
+                                <Lazyload><img src={item.wap_banner_url.replace('http:','')} alt=""/></Lazyload>
                                 <p className={styles.subCategoryItemName}>{item.name}</p>
                             </div>
                         }):''

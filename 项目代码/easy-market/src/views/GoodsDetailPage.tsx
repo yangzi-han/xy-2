@@ -8,6 +8,7 @@ import styles from '../style/index.module.scss'
 import Swiper from '../component/swiper/swiper'
 import CateGoryBox from '../component/cateGoryBox/index'
 import CartPageView from '../component/cartPage/index'
+import Lazyload from 'react-lazyload'
 interface StateTypes{
     info:{
         retail_price:number,
@@ -101,7 +102,7 @@ let GoodsDetailPage: React.FC<DispatchType&StateTypes&RouteComponentProps<{id:st
                 })
             }
         </div>
-        <div className={styles.topicDetailImg} dangerouslySetInnerHTML = {{__html:props.info.goods_desc}}></div>
+        <Lazyload><div className={styles.topicDetailImg} dangerouslySetInnerHTML = {{__html:props.info.goods_desc}}></div></Lazyload>
         <div className={styles.goodsAttribute}>
             <div className={styles.goodsAttributeLine}>—— 常见问题 ——</div>
             {
