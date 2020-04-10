@@ -186,10 +186,7 @@
   margin-top: .2rem;
   background: #fff;
   width:100%;
-  height:314px;
-  background: red;
   .topicText{
-    width:100%;
     height:1rem;
     font-size: 0.3rem;
     line-height: 1rem;
@@ -198,4 +195,56 @@
     text-align: center;
     background: #FFF;
   }
+  .topicItem{
+    width:100%;
+    height: 153px;
+    img{
+      width:100%;
+      height: 153px;
+    }
+    .space_carousel {
+      overflow: hidden;
+    }
+  }
 }
+.cateList{
+  height: auto;
+  .cateText{
+    height: 1rem;
+    text-align: center;
+    line-height: 1rem;
+  }
+  .cateItem{
+    display: flex;
+    flex-wrap: wrap;
+    .goodsItems{
+    width: 44.5%;
+    height: auto;
+    background: #fff;
+    padding: .2rem;
+    position: relative;
+    .goodsItemImg{
+        width: 100%;
+      height: auto;
+      img{
+        width:100%
+      }
+     }
+     .goodsItemName,.goodsItemPrice{
+      text-align: center;
+      font-size: .28rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+     }
+     .goodsItemName{
+      padding-bottom: .3rem;
+      padding-top: .1rem;
+       }
+       .goodsItemPrice{
+          color: red;
+       }
+     }
+    }
+
+  }

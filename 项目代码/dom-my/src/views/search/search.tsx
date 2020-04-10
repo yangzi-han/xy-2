@@ -3,7 +3,7 @@ import styles from '../../static/search.module.scss'
 import {connect} from 'react-redux'
 import {SeachAction, getpaoodAction} from '../../store/actions/search'
 import {RouteComponentProps} from 'react-router'
-import {throttle,debounce} from '../../utils/index'
+import {throttle} from '../../utils/index'
 interface StateProps{
   gethistory:Function,
   gethelper:(keyword:string)=>void
@@ -29,9 +29,9 @@ let SeachPage: React.FC<StateProps & RouteComponentProps> = props=>{
       let inpText = document.querySelector('input') as HTMLInputElement
       let WrapSeach = throttle(changeWrap)//节流
       inpText.addEventListener('input',WrapSeach) 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },['keyword'])
   let changeWrap = (e:any)=>{
-      console.log(e.target.value)
       if(e.target.value){
           props.gethelper(e.target.value)
       }
@@ -41,7 +41,6 @@ let SeachPage: React.FC<StateProps & RouteComponentProps> = props=>{
   }
   let claBth = () =>{
      let allcla = document.querySelector('#classifySeach') as HTMLInputElement
-     console.log(allcla)
      allcla.style.display='block'
   }
   return <div className={styles.noTabPageContent}>
@@ -108,7 +107,7 @@ let SeachPage: React.FC<StateProps & RouteComponentProps> = props=>{
   </div>;
 }
 const mapStateToProps = (state: any)=>{
-  console.log('seacPage.....',state.search)    
+ 
   return{
       ...state.search
   }

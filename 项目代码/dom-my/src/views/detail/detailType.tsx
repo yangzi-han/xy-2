@@ -94,7 +94,7 @@ let goGoodsDetail=(e:React.MouseEvent<HTMLDivElement>)=>{
   </>
 }
 const mapStateToProps=(state:any)=>{
-   console.log(state.type.list.data,'22222')
+  
   return {
            brotherCategory:state.type.nav.brotherCategory,
            data:state.type.list.data

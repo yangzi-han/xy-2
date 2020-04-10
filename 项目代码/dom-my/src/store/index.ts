@@ -1,6 +1,6 @@
 // import React from 'react'
 import {createStore, combineReducers, applyMiddleware} from 'redux'
-import ReduxLogger from 'redux-logger'
+// import ReduxLogger from 'redux-logger'
 import ReduxThunk from 'redux-thunk'
 
 // 引入子reducer
@@ -27,6 +27,6 @@ let reducers = combineReducers({
     shopCar
 })
 
-let store = createStore(reducers, applyMiddleware(ReduxThunk, ReduxLogger))
+let store = createStore(reducers, applyMiddleware(ReduxThunk))
 
 export default store;

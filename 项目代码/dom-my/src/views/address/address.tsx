@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react'
+import React,{useEffect} from 'react'
 import styles from '../../static/address.module.scss'
 import {RouteComponentProps} from 'react-router-dom'
 import {connect} from 'react-redux'
@@ -17,6 +17,9 @@ interface DispatchProps{
   }>
 }
 let Address:React.FC<RouteComponentProps&DispatchProps>=props=>{
+  // let [name,setName]=useState<string>()
+  // let [mobile,setMobile]=useState<string>()
+  // let [address,setAddress]=useState<string>()
    useEffect(()=>{
       props.getAddRessList()
    // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -26,7 +29,19 @@ let Address:React.FC<RouteComponentProps&DispatchProps>=props=>{
    }
    let goAdd=(add:any)=>{
         // props.history.push('/add')
-        add.type=='E'?props.history.push('/add/'+add.data.id):props.history.push('/add')
+        // console.log(add.data.name)
+        add.type=='E'?props.history.push('/add/'+add.data.id,{
+          params:{
+             name:add.data.name,
+             mobile:add.data.mobile,
+             address:add.data.address
+          }
+        }):props.history.push('/add')
+        // if(add.type=='E'){
+        //   props.history.push('/add/'+add.data.id)
+        // }else{
+        //   props.history.push('/add')
+        // }
    }
    let btnDelet=(id: number,e: React.MouseEvent<HTMLParagraphElement, MouseEvent>)=>{
       e.stopPropagation();

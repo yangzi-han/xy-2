@@ -216,12 +216,9 @@
   margin-top: .2rem;
   background: #fff;
   width: 100%;
-  height: 314px;
-  background: red;
 }
 
 .topicList .topicText {
-  width: 100%;
   height: 1rem;
   font-size: 0.3rem;
   line-height: 1rem;
@@ -229,4 +226,67 @@
   font-weight: 700;
   text-align: center;
   background: #FFF;
+}
+
+.topicList .topicItem {
+  width: 100%;
+  height: 153px;
+}
+
+.topicList .topicItem img {
+  width: 100%;
+  height: 153px;
+}
+
+.topicList .topicItem .space_carousel {
+  overflow: hidden;
+}
+
+.cateList {
+  height: auto;
+}
+
+.cateList .cateText {
+  height: 1rem;
+  text-align: center;
+  line-height: 1rem;
+}
+
+.cateList .cateItem {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cateList .cateItem .goodsItems {
+  width: 44.5%;
+  height: auto;
+  background: #fff;
+  padding: .2rem;
+  position: relative;
+}
+
+.cateList .cateItem .goodsItems .goodsItemImg {
+  width: 100%;
+  height: auto;
+}
+
+.cateList .cateItem .goodsItems .goodsItemImg img {
+  width: 100%;
+}
+
+.cateList .cateItem .goodsItems .goodsItemName, .cateList .cateItem .goodsItems .goodsItemPrice {
+  text-align: center;
+  font-size: .28rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cateList .cateItem .goodsItems .goodsItemName {
+  padding-bottom: .3rem;
+  padding-top: .1rem;
+}
+
+.cateList .cateItem .goodsItems .goodsItemPrice {
+  color: red;
 }

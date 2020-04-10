@@ -1,4 +1,4 @@
-import React,{useEffect,useState}from 'react';
+import React,{useEffect}from 'react';
 import {connect} from 'react-redux'
 import {cartListAction,cartDeletAction,cartCheckedAction,cartAddAction} from '../../store/actions/shopCar'
 import {RouteComponentProps} from 'react-router-dom'
@@ -36,7 +36,7 @@ let ShopCar:React.FC<RouteComponentProps&DispathProps>=props=>{
       props.getCartList()
    // eslint-disable-next-line react-hooks/exhaustive-deps
    },[])
- console.log(props,'props444444')
+
    let changeCount=(item: { goods_id: any; number: any; product_id: any; },type: any)=>{
     let {goods_id,number,product_id}=item
     if(number+type>=1){
@@ -61,6 +61,10 @@ let ShopCar:React.FC<RouteComponentProps&DispathProps>=props=>{
             return item.product_id
         }).join(',')
        props.getCartChecked(type,flag)
+   }
+   let btnDelet=(item: { goods_id: number; goods_name: number; number: number; checked: 1; list_pic_url: string; retail_price: number; product_id: number; id: number; })=>{
+       props.getCartDelet(item.product_id)
+       props.getCartList()
    }
    return <>
       <div className={styles.cart_header}>
@@ -99,6 +103,9 @@ let ShopCar:React.FC<RouteComponentProps&DispathProps>=props=>{
                   <div className={styles.cartMiddle}>{item.number}</div>
                   <div className={styles.cartRight} onClick={()=>{changeCount(item,+1)}}>+</div>
                 </div>
+                <div className={styles.cart_context_delet} onClick={()=>btnDelet(item)}>
+                  <i className='iconfont icon-shanchu'></i>
+                </div>
              </div>
           })
         }
@@ -110,10 +117,11 @@ let ShopCar:React.FC<RouteComponentProps&DispathProps>=props=>{
               <img  onClick={()=>allChecked(0)} style={{display:props.cartTotal.checkedGoodsCount===props.cartTotal.goodsCount?"":"none"}} src={isChecked} alt="" />
               <img  onClick={()=>allChecked(1)} style={{display:props.cartTotal.checkedGoodsCount===props.cartTotal.goodsCount?"none":""}} src={noChecked} alt="" />
             </div>
+            <div className={styles.cart_footer_price}>
             <span>已选({props.cartTotal&&props.cartTotal.checkedGoodsCount})</span>
             <span>￥{props.cartTotal&&props.cartTotal.checkedGoodsAmount}</span>
+            </div>
           </div>
-          <p className={styles.cart_footer_deair}>编辑</p>
         </div>
         <div className={styles.cart_footer_right}>
           下单
@@ -133,8 +141,9 @@ const mapDisptachToProps = (dispatch: Function)=>{
      getCartList:()=>{
        dispatch(cartListAction())
      },
-     getCartDelet:(productId:any)=>{
-       dispatch(cartDeletAction(productId))
+     getCartDelet:(productIds:string)=>{
+  
+       dispatch(cartDeletAction(productIds))
      },
      getCartChecked:(isChecked:number,productIds:string)=>{
         dispatch(cartCheckedAction(isChecked,productIds))

@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import { typeAction, currentAction } from '../../store/actions/type';
 import {RouteComponentProps} from 'react-router-dom'
 import styles from '../../static/classfly.module.scss'
+// import LazyLoad from 'react-lazyload';
 // import { getClassFly, getType } from '../../api/classfly';
 // import { getCurrent } from '../../api/type';
 interface DispatchProps{
@@ -79,7 +80,9 @@ let Classfly:React.FC<DispatchProps&RouteComponentProps>=(props)=>{
                    {
                        props.currentCategory&&props.currentCategory.subCategoryList.map((item,index)=>{
                            return <div key={item.id} className={styles.subItem} onClick={goTypeDetail} data-id={item.id}>
-                               <img src={item.wap_banner_url} alt="" className={styles.subImg}/>
+                     
+                                 <img src={item.wap_banner_url} alt="" className={styles.subImg}/>
+                           
                                <div className={styles.subName}>{item.name}</div>
                            </div>
                        })

@@ -4,7 +4,7 @@ export let loginAction = (mobile: string, password: string)=>{
     return async (dispatch:Function)=>{
         let data = await login(mobile, password);
         if (data){
-            console.log('data...', data);
+          
             dispatch({
                 type: 'LOGIN',
                 payload: data
@@ -21,7 +21,7 @@ export let logoutAction = ()=>{
 export let userInfoAction = ()=>{
     return async (dispatch:Function)=>{
         let data = await getUserInfo();
-         console.log(data)
+       
         if (data){
             dispatch({
                 type: 'UPDATE_INFO',
@@ -34,7 +34,7 @@ export let userInfoAction = ()=>{
 export let uploadAvatarAction = (form: FormData)=>{
     return async (dispatch:Function)=>{
         let data = await uploadAvatar(form);
-        console.log('login...', data);
+       
         if (data){
             dispatch({
                 type: 'UPLOAD_AVATAR',

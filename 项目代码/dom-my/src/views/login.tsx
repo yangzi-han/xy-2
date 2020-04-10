@@ -21,11 +21,11 @@ let Login : React.FC<LoginType&LoginDispatchType&RouteComponentProps>=props=>{
    }
    let getMobile=(e:React.ChangeEvent<HTMLInputElement>)=>{
      setMobile(e.target.value)
-     console.log(e.target.value)
+   
    }
    let getPassword=(e:React.ChangeEvent<HTMLInputElement>)=>{
      setPassword(e.target.value)
-     console.log(e.target.value)
+     
    }
    let btnLogin=()=>{
     if(!(/^1[3456789]\d{9}$/.test(mobile!))){ 
@@ -56,7 +56,7 @@ let Login : React.FC<LoginType&LoginDispatchType&RouteComponentProps>=props=>{
      </>
 }
 const mapStateToProps = (state: any)=>{
-  console.log(state.login.isLogin)
+  
   return {
       isLogin: state.login.isLogin
   }

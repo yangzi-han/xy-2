@@ -56,9 +56,10 @@ let logout = ()=>{
               <input type="file" onChange={fileChange} className={styles.btn}/>
            </div>
            <span>{props.info.username}</span>
-           {/* <button onClick={updateAvatar}>确定</button> */}
+          
            </div>
       </div>
+      {/* <button onClick={updateAvatar}>确定</button> */}
       <div className={styles.mineRight}>
         <p className={styles.mineRight_num}>17501679924</p>
         <p className={styles.mineRight_name}>普通用户</p>
@@ -112,7 +113,7 @@ let logout = ()=>{
   </>
 }
 const mapStateToProps = (state: any) => {
-  console.log(state.login,'111')
+
   return state.login
 }
 const mapDisptachToProps = (dispatch: Function) => {
@@ -121,7 +122,7 @@ const mapDisptachToProps = (dispatch: Function) => {
           dispatch(updateAvatarAction(avatar))
       },
       changeAvatar: (form: FormData) => {
-          console.log(form)
+        
           dispatch(uploadAvatarAction(form))
       },
       logout: () => {

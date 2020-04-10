@@ -5,7 +5,7 @@ import { bannerAction, channelAction, brandListAction, newGoodsListAction, hotGo
 import {RouteComponentProps} from 'react-router'
 import { Carousel, WingBlank } from 'antd-mobile';
 import styles from '../../static/home.module.scss'
-// import { getChannel, getNewGoodsList, getBrandList, getHotGoodsList, getTopicList, getCategoryList } from '../../api/home';
+import LazyLoad from 'react-lazyload';
 interface StateType{
     banner: Array<{
         image_url: string,
@@ -33,10 +33,17 @@ interface StateType{
     }>,
     categoryList: Array<{
         list_pic_url:string,
-        [name:string]: string|number
+        name:string,
+        id:number,
+        goodsList:Array<ItemType>
     }>
 }
-
+interface ItemType{
+   id:number,
+   name:string,
+   list_pic_url:string,
+   retail_price:string
+}
 interface DispatchType{
     getBanner: Function
     getChannel:Function
@@ -78,18 +85,20 @@ let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = 
         >
         {
             props.banner.map(item=>{
-                return <div
-                  key={item.id}
-                  style={{ display: 'inline-block', width: '100%', height:'200px'}}
-                >
-                  <img 
-                   src={item.image_url} 
-                   style={{ width: '100%', height:'200px' }}
-                   onLoad={() => {
-                    window.dispatchEvent(new Event('resize'));
-                    }}
-                  />
-                </div> 
+                return <LazyLoad key={item.id}>
+                       <div
+                          key={item.id}
+                          style={{ display: 'inline-block', width: '100%', height:'200px'}}
+                          >
+                          <img 
+                           src={item.image_url.replace('http:', '')} 
+                           style={{ width: '100%', height:'200px' }}
+                           onLoad={() => {
+                            window.dispatchEvent(new Event('resize'));
+                            }}
+                          />
+                    </div> 
+              </LazyLoad>
             })
         }
         </Carousel>
@@ -98,9 +107,13 @@ let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = 
           {
               props.channel.map(item=>{
                  return <div key={item.id} className={styles.conterItem}>
+               
                      <p>
-                        <img src={item.icon_url} alt=""/>
+                        <LazyLoad>
+                        <img src={item.icon_url.replace('http:', '')} alt=""/>
+                        </LazyLoad>
                      </p>
+                
                      <p>
                        {item.name}  
                      </p>
@@ -121,7 +134,9 @@ let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = 
                         {item.floor_price}
                         元起
                       </div>
-                      <img src={item.pic_url} alt="" className={styles.brandImg}/>
+                      <LazyLoad>
+                        <img src={item.pic_url.replace('http:', '')} alt="" className={styles.brandImg}/>
+                      </LazyLoad>
                    </div>
                })
             }
@@ -135,7 +150,9 @@ let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = 
             {
                 props.newGoodsList.map(item=>{
                     return <div key={item.id} className={styles.goodsTitle} onClick={goGoodsDetail} data-id={item.id}>
-                      <img src={item.list_pic_url} alt=""/>
+                      <LazyLoad>
+                      <img src={item.list_pic_url.replace('http:', '')} alt=""/>
+                      </LazyLoad>
                       <div className={styles.goodsName}>{item.name}</div>
                       <div className={styles.goodsPrice}>
                         $
@@ -152,7 +169,10 @@ let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = 
             {
               props.hotGoodsList.map(item=>{
                  return <div key={item.id} className={styles.hotTitle} onClick={goGoodsDetail} data-id={item.id}>
-                    <img src={item.list_pic_url} alt=""/>
+                    <LazyLoad>
+                        <img src={item.list_pic_url.replace('http:', '')} alt=""/>
+                    </LazyLoad>
+                  
                     <div className={styles.hotRight}>
                       <div className={styles.hotName}>{item.name}</div>
                       <div className={styles.hotBrief}>{item.goods_brief}</div>
@@ -169,13 +189,39 @@ let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = 
         <div className={styles.topicList}>
           <div className={styles.topicText}>专题精选</div>
           <div className={styles.topicItem}>
-           {
+          <WingBlank>
+        <Carousel className={styles.space_carousel}
+          frameOverflow="visible"
+          cellSpacing={10}
+          slideWidth={0.8}
+          autoplay
+          infinite
+        >
+          {props.topicList.map((item) => (
+             <LazyLoad key={item.id}>
+                  <a  href=" "
+            >
+              <img
+                src={item.item_pic_url.replace('http:', '')}
+                alt=""
+                style={{ width: '100%', verticalAlign: 'top' }}
+                onLoad={() => {
+                  // fire window resize event to change height
+                  window.dispatchEvent(new Event('resize'));
+                }}
+              />
+            </a>
+             </LazyLoad>
+          ))}
+        </Carousel>
+      </WingBlank>
+           {/* {
              props.topicList.map(item=>{
                 return <div key={item.id} className={styles.topicTitle}>
                    
                 </div>
              })
-           }
+           } */}
           </div>
         </div>
         <div className={styles.cateList}>
@@ -184,6 +230,22 @@ let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = 
                 return <div key={item.id} className={styles.cateTitle}>
                    <div className={styles.cateText}>{item.name}</div>
                    <div className={styles.cateItem}>
+                     { 
+                       item.goodsList.map(item=>{
+                          return <div className={styles.goodsItems}>
+                              <div className={styles.goodsItemImg}>
+                              <LazyLoad><img src={item.list_pic_url.replace('http:', '')} alt=""/></LazyLoad>
+                              </div>
+                              <div className={styles.goodsItemName}>
+                                {item.name}
+                              </div>
+                              <div className={styles.goodsItemPrice}>
+                              ￥
+                              {item.retail_price}
+                              </div>
+                          </div>
+                       })
+                     }
                    </div>
                 </div>
              })
@@ -193,7 +255,7 @@ let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = 
 }
 
 const mapStateToProps = (state: any)=>{
-    console.log(state.home)
+    console.log(state.home.categoryList)
     return state.home
 }
 const mapDisptachToProps = (dispatch: Function)=>{

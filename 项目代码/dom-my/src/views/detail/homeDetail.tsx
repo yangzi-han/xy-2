@@ -15,7 +15,7 @@ interface DispatchProps{
 }
 let Detail:React.FC<RouteComponentProps&DispatchProps>=props=>{
  let [id]=useState(props.match.params)
- console.log(id)
+ 
  useEffect(()=>{
      props.getHomeDetail(id)
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -43,7 +43,7 @@ let Detail:React.FC<RouteComponentProps&DispatchProps>=props=>{
 }
 
 const mapStateToProps=(state:any)=>{
-  console.log(state.detail.homeDetail.brand)
+
   return {
       brand:state.detail.homeDetail.brand
   }

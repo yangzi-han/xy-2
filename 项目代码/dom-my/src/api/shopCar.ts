@@ -25,8 +25,8 @@ export let getCartChecked=(isChecked:number,productIds:string)=>{
     })
 }
 //删除购物车
-export let getCartDelet=(productId:string)=>{
-    return axios.post('/cart/add',{
-        productId,
+export let getCartDelet=(productIds:string)=>{
+    return axios.post('/cart/delete',{
+        productIds,
     })
 }

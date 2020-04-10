@@ -18,7 +18,6 @@ interface DispatchProps{
 }
 let Detail:React.FC<RouteComponentProps&DispatchProps>=props=>{
   let [id]=useState(props.match.params)
-  console.log(id)
   useEffect(()=>{
       props.getDetailList(id)
       props.getDetailRelated(id)

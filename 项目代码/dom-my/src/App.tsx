@@ -7,17 +7,20 @@ import config from './router/routerConfig'
 import RouterView from './router/routerViews'
 import {Provider} from 'react-redux'
 import store from './store'
-import 'antd-mobile/dist/antd-mobile.css'
+// import 'antd-mobile/dist/antd-mobile.css'
 const App: React.FC = () => {
   return (
     <div className="App">
      <Provider store={store}>
        <HashRouter>
-        <RouterView routes={config.routes}/>
+        <React.Suspense fallback={<div>Loading...</div>}>
+           <RouterView routes={config.routes}/>
+        </React.Suspense>
        </HashRouter>
       </Provider>
     </div>
   );
 }
-
+// 重载console
+console.log = function(){};
 export default App;

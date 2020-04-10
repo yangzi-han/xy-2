@@ -32,7 +32,12 @@
 .cart_footer .cart_footer_left .cart_footer_dan {
   flex: 1;
   line-height: 1rem;
-  padding-left: 0.2rem;
+  padding-left: 0.35rem;
+  display: flex;
+}
+
+.cart_footer .cart_footer_left .cart_footer_dan .cart_footer_price {
+  margin-left: 0.2rem;
 }
 
 .cart_footer .cart_footer_left .cart_footer_deair {
@@ -121,4 +126,10 @@
   border: 1px solid #ccc;
   line-height: 30px;
   text-align: center;
+}
+
+.cart_context_delet {
+  line-height: 2.1rem;
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
 }

@@ -1,20 +1,38 @@
-import Home from "../views/Home";
+import React from 'react';
 import {PropType} from '../utils/interface'
-import MyHome from '../views/children/Myhome';
-import Release from '../views/children/release';
-import Massage from '../views/children/message';
-import My from '../views/children/my';
-import Login from '../views/login'
-import Regst from '../views/regest'
-import Zhuan from '../views/children/zhuan'
-import Detail from '../views/detail/detail'
-import Search from '../views/search/search'
-import TypeDetail from '../views/detail/detailType'
-import HomeDetail from '../views/detail/homeDetail'
-import GoodsDetail from '../views/detail/detailGoods'
-import Address from '../views/address/address'
-import Add from '../views/address/add'
-import Collect from '../views/collect/collect'
+import Home from "../views/Home";
+const MyHome= React.lazy(() => import('../views/children/Myhome'));
+const Release= React.lazy(() => import('../views/children/release'));
+const Massage= React.lazy(() => import('../views/children/message'));
+const My= React.lazy(() => import('../views/children/my'));
+const Login= React.lazy(() => import('../views/login'));
+const Regst= React.lazy(() => import('../views/regest'));
+const Zhuan= React.lazy(() => import('../views/children/zhuan'));
+const Detail= React.lazy(() => import('../views/detail/detail'));
+const Search = React.lazy(() => import('../views/search/search'));
+const TypeDetail = React.lazy(() => import('../views/detail/detailType'));
+const  HomeDetail = React.lazy(() => import('../views/detail/homeDetail'));
+const GoodsDetail = React.lazy(() => import('../views/detail/detailGoods'));
+const Address = React.lazy(() => import('../views/address/address'));
+const  Add = React.lazy(() => import('../views/address/add'));
+const Collect = React.lazy(() => import('../views/collect/collect'));
+
+
+// import MyHome from '../views/children/Myhome';
+// import Release from '../views/children/release';
+// import Massage from '../views/children/message';
+// import My from '../views/children/my';
+// import Login from '../views/login'
+// import Regst from '../views/regest'
+// import Zhuan from '../views/children/zhuan'
+// import Detail from '../views/detail/detail'
+// import Search from '../views/search/search'
+// import TypeDetail from '../views/detail/detailType'
+// import HomeDetail from '../views/detail/homeDetail'
+// import GoodsDetail from '../views/detail/detailGoods'
+// import Address from '../views/address/address'
+// import Add from '../views/address/add'
+// import Collect from '../views/collect/collect'
 let config = {
     routes:[{
         path:'/',

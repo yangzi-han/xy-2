@@ -8,7 +8,7 @@ import styles from '../../static/detail.module.scss'
 import '../../static/foot/font_mahgalwz6ys/iconfont.css'
 // import { Carousel, WingBlank,Toast} from 'antd-mobile';
 import {Toast} from 'antd-mobile'
-import { getCartAdd } from '../../api/shopCar';
+
 interface DispathProps{
    getGoodsDetail:Function,
    getGoodsRelated:Function,
@@ -61,7 +61,6 @@ let DetailGoods:React.FC<DispathProps&RouteComponentProps<{id:string}>>=props=>{
     props.history.push('/index/home')
    }
    let goCollect=()=>{
-     console.log(props.match.params)
      props.getCollectAdd(props.match.params.id)
      Toast.success('收藏成功',1)
    }
@@ -224,7 +223,6 @@ const mapDisptachToProps = (dispatch: Function)=>{
             dispatch(collectAddAction(valueId))
         },
         getCartAdd:(goodsId:string,number:string,productId:string)=>{
-           console.log(goodsId,number,productId)
            dispatch(cartAddAction(goodsId,number,productId))
         }
     }

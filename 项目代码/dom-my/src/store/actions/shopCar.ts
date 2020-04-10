@@ -5,7 +5,6 @@ export let cartListAction = ()=>{
     return async (dispatch:Function)=>{
         let data = await getCartList();
         if (data){
-            console.log('data...', data);
             dispatch({
                 type: 'GET_CARTLIST',
                 payload: data
@@ -18,7 +17,6 @@ export let cartAddAction = (goodsId:string,number:string,productId:string)=>{
     return async (dispatch:Function)=>{
         let data = await getCartAdd(goodsId,number,productId);
         if (data){
-            console.log('data...', data);
             dispatch({
                 type: 'GET_CARTADD',
                 payload: data
@@ -31,7 +29,6 @@ export let cartNumAction = ()=>{
     return async (dispatch:Function)=>{
         let data = await getCartNumber();
         if (data){
-            console.log('data...', data);
             dispatch({
                 type: 'GET_CARTNUM',
                 payload: data
@@ -44,7 +41,6 @@ export let cartCheckedAction = (isChecked:number,productIds:string)=>{
     return async (dispatch:Function)=>{
         let data = await getCartChecked(isChecked,productIds);
         if (data){
-            console.log('data...', data);
             dispatch({
                 type: 'GET_CARTCHECKED',
                 payload: data
@@ -53,11 +49,11 @@ export let cartCheckedAction = (isChecked:number,productIds:string)=>{
     }
 }
 //删除购物车
-export let cartDeletAction = (productId:string)=>{
+export let cartDeletAction = (productIds:string)=>{
     return async (dispatch:Function)=>{
-        let data = await getCartDelet(productId);
+        let data = await getCartDelet(productIds);
         if (data){
-            console.log('data...', data);
+        
             dispatch({
                 type: 'GET_CARTDELET',
                 payload: data

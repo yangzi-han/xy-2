@@ -26,7 +26,11 @@
         .cart_footer_dan{
             flex:1;
             line-height: 1rem;
-            padding-left:0.2rem;
+            padding-left:0.35rem;
+            display: flex;
+            .cart_footer_price{
+                margin-left: 0.2rem;
+            }
         }
         .cart_footer_deair{
             flex:1;
@@ -105,4 +109,9 @@
             text-align: center;
           }
     }
+}
+.cart_context_delet{
+    line-height: 2.1rem;
+    margin-left:0.2rem;
+    margin-right: 0.2rem;
 }

@@ -7,14 +7,20 @@ import {addRessAddAction} from '../../store/actions/address'
 import {connect} from 'react-redux'
 import { createForm } from 'rc-form';
 interface DispatchProps{
-   getAddRessAdd:Function
+   getAddRessAdd:Function,
+   addressList:Array<{
+     name:string
+   }>,
+    
 }
-let Address:React.FC<RouteComponentProps&DispatchProps>=props=>{
+let Address:React.FC<RouteComponentProps<{0:string}>&DispatchProps>=props=>{
   let [name,setName]=useState<string>()
   let [mobile,setMobile]=useState<string>()
   let [address,setAddress]=useState<string>()
   let [pickValue,setPickValue]=useState([])
   let [pathname]=useState(props.location.pathname)
+
+
   // let [is_default,setIs_default]=useState<boolean>()
   useEffect(()=>{
     //  props.getAddRessAdd(name,mobile,address)
